@@ -388,8 +388,6 @@ pip install openjij==0.11.6
 python -c "import openjij; print(f'OpenJij version: {openjij.__version__}')"
 ```
 
-## 7. Repository Structure
-
 ## 7. Project Structure
 
 ```text
