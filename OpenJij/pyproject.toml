@@ -1,0 +1,190 @@
+# Copyright 2023 Jij Inc.
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#     http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+[build-system]
+requires = [
+    "scikit-build-core>=0.10",
+    "setuptools_scm[toml]",
+    "pybind11>=2.12.0",
+    "oldest-supported-numpy",
+]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "openjij"
+dynamic = ["version"]
+description = "Framework for the Ising model and QUBO."
+readme = "README.md"
+license = {text = "Apache License 2.0"}
+authors = [
+    {name = "Jij Inc.", email = "info@openjij.org"}
+]
+requires-python = ">=3.9, <3.14"
+dependencies = [
+    "numpy >=1.19.3, < 2.4.0",
+    "dimod >=0.9.11, < 0.13.0",
+    "jij-cimod >= 1.7.0, < 1.8.0",
+]
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11", 
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Operating System :: Unix",
+    "Operating System :: MacOS",
+]
+
+[project.urls]
+Homepage = "https://www.openjij.org"
+Source = "https://github.com/Jij-Inc/OpenJij"
+Documentation = "https://openjij.github.io/OpenJij"
+Reference = "https://jij-inc.github.io/OpenJij-Reference-Page/"
+
+# PEP 735準拠のdependency-groups（cimod実証済みパターン）
+[dependency-groups]
+build = [
+    "build>=1.2",
+]
+
+test = [
+    "pytest>=8.0",
+    "pytest-mock",
+    "pytest-cov",
+    "pytest-randomly",
+    "pytest-spec",
+    "coverage",
+    "scipy"
+]
+
+format = [
+    "ruff>=0.5.0",
+]
+
+# cimod準拠のinclude-group階層構造
+dev = [
+    {include-group = "build"},
+    {include-group = "test"},
+    {include-group = "format"}
+]
+
+[tool.scikit-build]
+minimum-version = "0.10"
+strict-config = true
+build.verbose = true
+wheel.install-dir = "openjij"
+wheel.packages = [
+    "openjij",
+    "openjij.model",
+    "openjij.sampler",
+    "openjij.utils",
+]
+metadata.version.provider = "scikit_build_core.metadata.setuptools_scm"
+sdist.include = ["openjij/_version.py"]
+
+[tool.setuptools_scm]
+write_to = "openjij/_version.py"
+
+[tool.pytest.ini_options]
+addopts = "--continue-on-collection-errors --full-trace --color=yes --code-highlight=yes --cov-context=test --cov --cov-append --cov-report term --randomly-seed=last -vv -v --capture=no"
+testpaths = [
+    "tests",
+]
+spec_header_format = "{module_path}:"
+spec_test_format = "{result} {name}"
+log_level = "INFO"
+log_cli_level = "INFO"
+console_output_style = "count"
+log_auto_indent = true
+junit_logging = "all"
+
+# Ruff configuration
+[tool.ruff]
+line-length = 120  # OpenJij既存設定を継承（999→120段階的調整）
+target-version = "py39"  # 最小サポート版（python_requires = >=3.9）
+exclude = [
+    ".git",
+    ".venv", 
+    "__pycache__",
+    "build",
+    "dist", 
+    "_skbuild",
+    "openjij/cxxjij",  # C++バインディング除外
+    "include/",        # C++ヘッダー除外
+]
+
+[tool.ruff.lint]
+# Phase 1: 基本設定（ruffベストプラクティス準拠）
+select = [
+    "E",               # pycodestyle errors
+    "F",               # Pyflakes
+    "I",               # isort
+    "UP",              # pyupgrade
+]
+ignore = [
+    "E501",    # 行長制限無視（120文字移行期のため一時的に）
+    "UP007",   # typing.Union → X | Y (Python 3.9互換性維持)
+    "S101",    # assert使用許可（pytest用）
+    "T20",     # print文許可（デバッグ用）
+]
+
+# 自動修正対象
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+lines-between-types = 1
+known-first-party = ["openjij"]  # OpenJij既存設定をruff形式に変換
+
+[tool.ruff.format]
+# black互換設定
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.cibuildwheel]
+# musllinuxはサポート対象外（manylinuxのみ対応）
+# cp38以下はrequires-python = ">=3.9"により不要
+skip = ["*musllinux*"]
+build-verbosity = 1
+dependency-versions = "latest"
+
+[tool.cibuildwheel.linux]
+archs = ["x86_64", "aarch64"]
+manylinux-aarch64-image = "quay.io/pypa/manylinux_2_28_aarch64:latest"
+repair-wheel-command = "auditwheel repair --lib-sdir . -w {dest_dir} {wheel}"
+
+[tool.cibuildwheel.macos]
+archs = ["x86_64", "arm64"]
+before-build = [ 
+    "pip install --upgrade wheel build 'pybind11' cmake ninja", 
+]
+
+[tool.cibuildwheel.windows]
+archs = ["AMD64"]
+before-build = [ 
+    'pip install --upgrade wheel build cmake "pybind11" delvewheel', 
+]
+repair-wheel-command = "delvewheel repair -w {dest_dir} {wheel}"

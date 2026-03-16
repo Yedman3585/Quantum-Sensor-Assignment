@@ -1,0 +1,287 @@
+# Copyright 2019-2025 Jij Inc.
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#     http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+## Generated Version Files ##
+openjij/_version.py
+msbuild_version.txt
+
+## Development Environment & Editor Files ##
+# IDEs and Editors
+.idea/
+.vim.custom
+.vscode/
+
+# Visual Studio
+*.iobj
+*.ipdb
+.vs/
+
+# Xcode
+*.DS_Store
+*.entitlements
+*.xcodeproj
+
+## C++ Build Artifacts & Scientific Computing ##
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.lo
+*.o
+*.obj
+*.slo
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.dll
+*.dylib
+*.so
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.a
+*.la
+*.lai
+*.lib
+
+# Executables
+*.app
+*.exe
+*.out
+
+# Debug symbols
+*.dSYM
+
+# CMake and build directories
+build/
+cmake-build-debug/
+
+# CMake generated files (not source .cmake files)
+CMakeCache.txt
+CMakeFiles/
+CTestTestfile.cmake
+DartConfiguration.tcl
+Makefile
+Testing/
+_deps/
+cmake_install.cmake
+
+## Python Development & Package Management ##
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Testing
+.cache
+.coverage
+.coverage.*
+.hypothesis/
+.nox/
+.pytest_cache/
+.tox/
+*.cover
+coverage.xml
+htmlcov/
+nosetests.xml
+
+# Virtual environments
+.env
+.python-version
+.venv
+ENV/
+env/
+env.bak/
+venv/
+venv.bak/
+
+# Package management and distribution
+*.egg
+*.egg-info/
+*.whl
+.eggs/
+.installed.cfg
+.Python
+.sccache/
+_skbuild/
+develop-eggs/
+dist/
+downloads/
+eggs/
+jij_cimod.egg-info/
+lib/
+lib64/
+MANIFEST
+parts/
+sdist/
+share/python-wheels/
+var/
+wheels/
+
+# Requirements files
+*requirements.txt
+Pipfile
+Pipfile.lock
+python_version.txt
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-delete-this-directory.txt
+pip-log.txt
+
+# Type checking
+.dmypy.json
+.mypy_cache/
+.pyre/
+dmypy.json
+
+
+## Documentation & Web ##
+# Sphinx documentation
+docs/_build/
+docs/ja/_build/
+docs/en/_build/
+docs/autoapi/
+/docs/reference/
+
+# mkdocs documentation
+/site
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+ipython_config.py
+profile_default/
+
+## Framework-specific ##
+# Django stuff
+*.log
+db.sqlite3
+local_settings.py
+
+# Flask stuff
+.webassets-cache
+instance/
+
+# Scrapy stuff
+.scrapy
+
+# SageMath parsed files
+*.sage.py
+
+# Celery beat schedule file
+celerybeat-schedule
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# PyBuilder
+target/
+
+## External Dependencies & Tools ##
+# External dependencies (auto-installed during build)
+openjij/include/pybind11_json/
+openjij/share/
+
+# Node.js (minimal usage)
+package-lock.json
+
+# Comparison and testing artifacts
+compare_wheels/
+test/*.out
+
+# Scientific computing data files
+*.npy
+*.npz
+
+## Development Tools & Workflows ##
+# Backup files
+*.backup
+
+# Memory and AI tools
+memory-bank/
+
+# Scientific computing and benchmarking
+benchmark_results/
+simulation_data/
+numerical_results/
+
+# Cline rules and ignore files
+.clineignore
+.clinerule
+.clinerules/
+
+# Claude Code
+.claude/
+.claude-generated/
+CLAUDE.md
+CLAUDE.sub.md
+CLAUDE.overview.md
+
+# Tutorial files
+project_template/tutorial
+
+# Public directory
+public/
+
+# Translations
+*.mo
+*.pot
+
+## Modern Development Tools (uv, ruff, etc.) ##
+# uv package manager
+.uv/
+.uv-cache/
+
+# ruff linter and formatter
+.ruff_cache/
+.ruff.toml
+
+# scikit-build-core
+.scikit-build/
+_skbuild-cross/
+
+# Modern Python tools
+.pdm-python
+.pdm.toml
+.pdm-build/
+.hatch/
+.pixi/
+pixi.lock
+
+## OpenJij-specific Patterns ##
+# Research and development
+experiments/
+prototypes/
+research_notes/
+
+# Large datasets and experimental data
+datasets/
+experiment_data/
+research_data/

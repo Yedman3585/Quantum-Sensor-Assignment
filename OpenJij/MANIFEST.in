@@ -1,0 +1,40 @@
+prune cmake
+prune benchmark
+prune project_template
+prune public
+prune www
+prune share
+prune docs
+prune example
+prune .github
+prune .git
+prune **/include
+
+include CMakeLists.txt
+include LICENSE
+include README.md
+include pyproject.toml
+include include/CMakeLists.txt
+
+graft openjij
+graft tests 
+graft external
+graft include/openjij
+
+include cmake/GenerateDocs.cmake
+include cmake/PythonAutoDetectOSX.cmake
+include cmake/FindGcov.cmake 
+include cmake/FindLcov.cmake
+include cmake/Findcodecov.cmake
+include cmake/llvm-cov-wrapper
+
+global-exclude .clang-format
+global-exclude codecov.yml
+global-exclude oneAPI.repo
+global-exclude .gitignore 
+global-exclude Doxyfile
+global-exclude Doxyfile.bak
+global-exclude .coveragerc
+global-exclude .gitattribute
+global-exclude CODE_OF_CONDUCT.md
+global-exclude doc-requirements
