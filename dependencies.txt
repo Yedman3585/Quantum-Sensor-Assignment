@@ -1,0 +1,29 @@
+Common program structure:
+
+  Data input:
+- Priorities:
+ priority I = 3 ( sidewalk )
+ priority II = 2 (pedestrian Crosses)
+ Priority III = 1 (road where is the least possible amount of people to be considered by AI)
+Application: irl that means that data flow from camera with priority I have to be processed firstly.
+The data flow from camera with priority II have to be processed secondly and thirdly from camera with Priority III.
+Сами значения которые имеют приоритеты фигурируют в целевой функции, квантовый отжиг предпочтёт активировать камеры с большим приоритетом,
+даже если другие варианты дают такую же нагрузку и стоимость
+
+-Camera/Server:
+Set of cameras(flow): Ci where each camera is i
+Set of servers(source or computing node): Si where each camera is j
+for each camera i in C :
+1) Computing Load or Computing Demand - Li - вычислительная нагрузка (доля ресурса нужная для ее потока) - нагрузка на сервер 
+2) weight - = wi - вес видеопотока
+3) приоритет
+for each server j in S:
+1) maximal Capacity - Cap_j - емкость сервера
+2) x_ij (1 - camera_i's flow is on server j ;  0 -else )
+y_ij (1- if camera processed by at least one server) ;  0 - if camera is not processed )
+
+Cost Matrix - матрица стоимостей передачи данных
+
+A, B, C  — положительные коэффициенты, определяющие относительную важность целевой функции и ограничений.
+
+

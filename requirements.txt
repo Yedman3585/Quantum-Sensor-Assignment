@@ -1,0 +1,17 @@
+pip install numpy==1.24.3
+
+pip install pandas==2.0.3
+
+pip install scipy==1.10.1
+
+pip install openjij==0.11.6
+
+pip install dwave-neal==0.5.5
+
+pip install dimod==0.12.6
+
+pip install dash==2.14.0
+
+pip install plotly==5.15.0
+
+pip install python-dateutil==2.8.2

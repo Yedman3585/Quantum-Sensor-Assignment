@@ -1,0 +1,142 @@
+# # app.py
+# from flask import Flask, render_template, request, jsonify
+# import numpy as np
+# import pandas as pd
+# from main import OptimizedQuantumScheduler
+# import logging
+# import json
+# import threading
+# import time
+#
+# app = Flask(__name__)
+#
+# # Logging setup
+# logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# logger = logging.getLogger(__name__)
+#
+# class OptimizationThread(threading.Thread):
+#     def __init__(self, method, params):
+#         super().__init__()
+#         self.method = method
+#         self.params = params
+#         self.result = None
+#         self.progress = []
+#
+#     def run(self):
+#         scheduler = OptimizedQuantumScheduler(**self.params)
+#         scheduler.generate_realistic_data()
+#         if self.method == "greedy":
+#             assignment, objective, time = scheduler.solve_with_greedy_optimized_with_timeout(timeout_seconds=180)
+#             covered = np.sum(np.any(assignment, axis=1))
+#             self.result = {"method": "Greedy", "objective": objective, "time": time, "covered": covered}
+#         elif self.method == "quantum":
+#             assignment, objective, time, qubo_time, quantum_time = scheduler.solve_with_quantum_optimized(num_reads=100)
+#             covered = np.sum(np.any(assignment, axis=1))
+#             self.result = {"method": "Quantum", "objective": objective, "time": time, "covered": covered,
+#                           "qubo_time": qubo_time, "quantum_time": quantum_time}
+#         self.progress.append({"coverage": covered / self.params["n_cameras"] * 100, "completed": True})
+#
+# @app.route('/')
+# def index():
+#     return render_template('index.html')
+#
+#
+# @app.route('/run_optimization', methods=['POST'])
+# def run_optimization():
+#     data = request.json
+#     method = data.get('method')
+#     params = {
+#         "n_cameras": int(data.get('n_cameras', 20000)),
+#         "n_servers": int(data.get('n_servers', 800)),
+#         "batch_size": int(data.get('batch_size', 80)),
+#         "max_servers_per_batch": int(data.get('max_servers_per_batch', 20))
+#     }
+#     thread = OptimizationThread(method, params)
+#     thread.start()
+#     while thread.is_alive():
+#         time.sleep(1)  # Simulate progress updates
+#         # In practice, modify to emit batch progress from scheduler
+#     thread.join()
+#     return jsonify(thread.result)
+#
+# if __name__ == '__main__':
+#     app.run(debug=True, port=5000)
+
+
+
+
+
+
+
+
+
+
+
+# dashboard.py
+# from dash import Dash, dcc, html, Input, Output
+# import plotly.graph_objects as go
+# from plotly.subplots import make_subplots
+# import pandas as pd
+# import json
+# import glob
+#
+# app = Dash(__name__)
+#
+# app.layout = html.Div([
+#     html.H1("Quantum Scheduler Dashboard"),
+#     dcc.Dropdown(
+#         id='run-selector',
+#         options=[],
+#         value=None,
+#         placeholder="Select Run ID"
+#     ),
+#     dcc.Graph(id='dashboard-graph')
+# ])
+#
+# def load_logs():
+#     files = sorted(glob.glob("logs/progress_*.jsonl"))
+#     options = []
+#     data_dict = {}
+#     for file in files:
+#         run_id = file.split("_")[-1].replace(".jsonl", "")
+#         options.append({'label': run_id, 'value': run_id})
+#         with open(file, "r") as f:
+#             data_dict[run_id] = [json.loads(line) for line in f]
+#     return options, data_dict
+#
+# @app.callback(
+#     [Output('run-selector', 'options'), Output('run-selector', 'value')],
+#     Input('run-selector', 'id')
+# )
+# def update_dropdown(_):
+#     options, _ = load_logs()
+#     value = options[0]['value'] if options else None
+#     return options, value
+#
+# @app.callback(
+#     Output('dashboard-graph', 'figure'),
+#     Input('run-selector', 'value')
+# )
+# def update_graph(run_id):
+#     if not run_id:
+#         return go.Figure()
+#
+#     _, data_dict = load_logs()
+#     d = pd.DataFrame(data_dict[run_id])
+#
+#     fig = make_subplots(rows=2, cols=2,
+#                         subplot_titles=("Coverage", "QUBO Success", "Energy", "Assigned/Batch"))
+#
+#     fig.add_trace(go.Scatter(x=d['batch_idx'], y=d['coverage_percent'], mode='lines+markers', name='Coverage'), row=1, col=1)
+#     fig.add_trace(go.Scatter(x=d['batch_idx'], y=d['qubo_success_rate'], mode='lines', name='QUBO Success'), row=1, col=2)
+#     if 'energy' in d.columns:
+#         fig.add_trace(go.Scatter(x=d['batch_idx'], y=d['energy'], mode='lines', name='Energy'), row=2, col=1)
+#     fig.add_trace(go.Bar(x=d['batch_idx'], y=d['batch_assigned'], name='Assigned'), row=2, col=2)
+#
+#     fig.update_layout(height=700, title=f"Run: {run_id}")
+#     return fig
+#
+# if __name__ == '__main__':
+#     # app.run_server(debug=True)
+#     app.run(debug=True)
+#
