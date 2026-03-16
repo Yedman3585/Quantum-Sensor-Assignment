@@ -1,7 +1,7 @@
 # Quantum-Inspired Optimization for Sensor-to-Server Assignment in Smart-City Surveillance Systems
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![OpenJij](https://img.shields.io/badge/OpenJij-0.11.6-purple.svg)](https://openjij.github.io/)
+[![OpenJij](https://img.shields.io/badge/OpenJij-0.11.6-purple.svg)](https://github.com/Jij-Inc/OpenJij) 
 [![D-Wave Neal](https://img.shields.io/badge/D--Wave-Neal%20Sampler-orange.svg)](https://dwave-neal-docs.readthedocs.io/en/latest/reference/sampler.html)
 ---
 
