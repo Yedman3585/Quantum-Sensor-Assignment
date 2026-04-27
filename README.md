@@ -13,9 +13,6 @@
 - [5. Results and Visualization](#5-results-and-visualization)
 - [6. Getting Started](#6-getting-started)
 - [7. Repository Structure](#7-repository-structure)
-- [8. Citation](#8-citation)
-- [9. License and Acknowledgments](#9-license-and-acknowledgments)
-
 ---
 
 ## 1. Introduction
