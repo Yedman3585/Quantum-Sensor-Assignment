@@ -420,26 +420,7 @@ QAnnealing/
 ├── SA_Chronology.txt           # Historical SA run records
 └── SQA_Chronology.txt          # Historical SQA run records
 
-```
+``
 
-## 8 Citation
-
-If you use this code or the results of our research in your work, please cite it as follows:
-
-**BibTeX:**
-```bibtex
-@article{mussabayev2026quantum,
-  title={Quantum-Inspired Optimization for Camera-to-Server Assignment in Smart City Surveillance Systems},
-  author={Mussabayev, Y. and Bykov, A.},
-  year={2026},
-  url={https://github.com/Yedman3585/Quantum-Sensor-Assignment}
-}
-```
-
-## 9 Contributors and Notes
-
-This project is part of a scientific research paper currently submitted to the **MDPI Sensors** journal.
-
-The given research is supervised and supported by **[Artem Bykov](https://github.com/username111213)** — Associate Professor, PhD.
 
 
