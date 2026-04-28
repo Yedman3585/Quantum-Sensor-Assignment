@@ -1171,7 +1171,7 @@ If you use this repository or its benchmark results, please cite the associated 
 ```bibtex
 @misc{mussabayev2026quantum_sensor_assignment,
   title={Simulated quantum annealing for city-scale camera-to-edge server assignment using batch-decomposed QUBO with reproducible open-source benchmarking},
-  author={Mussabayev, Yedige and Bykov, Artem and Lavrov, Evgeniy},
+  author={Yedige Mussabayev, Artem Bykov, Evgeniy Lavrov, Diana Yermekova},
   year={2026},
   howpublished={GitHub repository},
   url={https://github.com/Yedman3585/Quantum-Sensor-Assignment}
