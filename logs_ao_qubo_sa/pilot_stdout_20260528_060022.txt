@@ -1,0 +1,16 @@
+
+==========================================================================================
+AO-QUBO + SA RESULTS
+==========================================================================================
+Coverage: 3955/20000 (19.78%)
+Objective: 242972.050
+Assignment cost: 2297.050
+Uncovered penalty: 240675.000
+Overload penalty: 0.000
+Total time: 317.046s
+Throughput: 12.475 cameras/s
+Successful batches: 24/250
+Failed batches: 226
+Fallback count: 0
+Capacity-rejected raw assignments: 16045
+==========================================================================================

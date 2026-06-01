@@ -1,0 +1,16 @@
+
+==========================================================================================
+Static-QCP-QUBO + SQA RESULTS
+==========================================================================================
+Coverage: 3935/20000 (19.68%)
+Objective: 243278.551
+Assignment cost: 2303.551
+Uncovered penalty: 240975.000
+Overload penalty: 0.000
+Total time: 385.633s
+Throughput: 10.204 cameras/s
+Successful batches: 22/250
+Failed batches: 228
+Fallback count: 0
+Capacity-rejected raw assignments: 16065
+==========================================================================================

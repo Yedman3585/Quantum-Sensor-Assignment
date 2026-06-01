@@ -1,0 +1,28 @@
+2026-05-28 06:07:48,873 - INFO - Static-QCP-QUBO + SA: data generation for 20000 cameras and 800 servers
+2026-05-28 06:07:49,979 - INFO - total load 88453.0, total capacity 372165.7, utilization 23.8%
+2026-05-28 06:07:49,981 - INFO - Static-QCP-QUBO + SA processing 250 batches
+2026-05-28 06:08:09,672 - INFO - batch 10: assigned 80, coverage 4.00%, success 100.0%, failed 0
+2026-05-28 06:08:28,866 - INFO - batch 20: assigned 47, coverage 7.25%, success 100.0%, failed 0
+2026-05-28 06:08:50,945 - INFO - batch 30: assigned 29, coverage 8.64%, success 70.0%, failed 9
+2026-05-28 06:09:11,836 - INFO - batch 40: assigned 3, coverage 9.52%, success 52.5%, failed 19
+2026-05-28 06:09:33,609 - INFO - batch 50: assigned 0, coverage 9.98%, success 42.0%, failed 29
+2026-05-28 06:09:52,747 - INFO - batch 60: assigned 8, coverage 10.49%, success 35.0%, failed 39
+2026-05-28 06:10:12,256 - INFO - batch 70: assigned 18, coverage 11.13%, success 30.0%, failed 49
+2026-05-28 06:10:26,127 - INFO - batch 80: assigned 5, coverage 11.87%, success 27.5%, failed 58
+2026-05-28 06:10:35,999 - INFO - batch 90: assigned 7, coverage 12.50%, success 24.4%, failed 68
+2026-05-28 06:10:45,333 - INFO - batch 100: assigned 15, coverage 13.08%, success 22.0%, failed 78
+2026-05-28 06:10:52,856 - INFO - batch 110: assigned 5, coverage 13.50%, success 20.0%, failed 88
+2026-05-28 06:11:02,118 - INFO - batch 120: assigned 0, coverage 13.73%, success 18.3%, failed 98
+2026-05-28 06:11:10,142 - INFO - batch 130: assigned 17, coverage 14.13%, success 16.9%, failed 108
+2026-05-28 06:11:19,134 - INFO - batch 140: assigned 15, coverage 14.57%, success 15.7%, failed 118
+2026-05-28 06:11:26,868 - INFO - batch 150: assigned 31, coverage 15.08%, success 14.7%, failed 128
+2026-05-28 06:11:35,999 - INFO - batch 160: assigned 5, coverage 15.66%, success 13.8%, failed 138
+2026-05-28 06:11:44,972 - INFO - batch 170: assigned 29, coverage 16.11%, success 12.9%, failed 148
+2026-05-28 06:11:52,929 - INFO - batch 180: assigned 2, coverage 16.68%, success 12.8%, failed 157
+2026-05-28 06:12:02,042 - INFO - batch 190: assigned 0, coverage 16.98%, success 12.1%, failed 167
+2026-05-28 06:12:10,404 - INFO - batch 200: assigned 24, coverage 17.62%, success 11.5%, failed 177
+2026-05-28 06:12:19,613 - INFO - batch 210: assigned 17, coverage 17.95%, success 11.0%, failed 187
+2026-05-28 06:12:27,825 - INFO - batch 220: assigned 15, coverage 18.41%, success 10.5%, failed 197
+2026-05-28 06:12:37,149 - INFO - batch 230: assigned 4, coverage 18.78%, success 10.0%, failed 207
+2026-05-28 06:12:45,940 - INFO - batch 240: assigned 3, coverage 19.23%, success 9.6%, failed 217
+2026-05-28 06:12:53,378 - INFO - batch 250: assigned 1, coverage 19.77%, success 9.2%, failed 227
