@@ -83,10 +83,10 @@ This is why the implementation uses iterative batch decomposition instead of a m
 All QUBO models use the standard binary quadratic form:
 
 ```math
-H_QUBO(x) =
+H_{\mathrm{QUBO}}(x) =
 \sum_u Q_{u,u}x_u
 +
-\sum_{u<v}Q_{u,v}x_u x_v .
+\sum_{u \lt v}Q_{u,v}x_u x_v .
 ```
 
 Raw QUBO energies are not compared across formulations, because each Hamiltonian contains different penalty terms. The final comparison uses the common post-hoc evaluation objective: assignment cost, uncovered-sensor penalty, overload penalty, and validated coverage.
@@ -96,7 +96,7 @@ Raw QUBO energies are not compared across formulations, because each Hamiltonian
 The manuscript first presents the conceptual full target assignment QUBO:
 
 ```math
-H_full(x)
+H_{\mathrm{full}}(x)
 =
 \sum_{i,j} c_{i,j}x_{i,j}
 +
@@ -134,7 +134,7 @@ R_j^{(t)}
 =
 K_j
 -
-\sum_{\tau<t}
+\sum_{\tau \lt t}
 \sum_{i\in B_\tau}
 l_i x_{i,j}.
 ```
@@ -142,7 +142,7 @@ l_i x_{i,j}.
 The batch-level PRC-QUBO Hamiltonian is:
 
 ```math
-H_t^{PRC}(x)
+H_t^{\mathrm{PRC}}(x)
 =
 \sum_{i\in B_t}
 \sum_{j\in S_t}
@@ -150,7 +150,7 @@ H_t^{PRC}(x)
 +
 \lambda
 \sum_{i\in B_t}
-\sum_{\substack{j,k\in S_t\\j<k}}
+\sum_{\substack{j,k\in S_t\\j \lt k}}
 x_{i,j}x_{i,k}.
 ```
 
@@ -161,7 +161,7 @@ The residual-capacity-dependent linear coefficient is:
 =
 -\alpha r_i(1-c_{i,j})\mathbf{1}\{l_i \le R_j^{(t)}\}
 +
-\beta\mathbf{1}\{l_i > R_j^{(t)}\}.
+\beta\mathbf{1}\{l_i \gt R_j^{(t)}\}.
 ```
 
 Equivalently:
@@ -171,7 +171,7 @@ Equivalently:
 =
 \begin{cases}
 -\alpha r_i(1-c_{i,j}), & l_i \le R_j^{(t)},\\
-\beta, & l_i > R_j^{(t)}.
+\beta, & l_i \gt R_j^{(t)}.
 \end{cases}
 ```
 
@@ -209,7 +209,7 @@ AO-QUBO is the assignment-only baseline. It uses the same batch variables and so
 For each batch:
 
 ```math
-H_t^{AO}(x)
+H_t^{\mathrm{AO}}(x)
 =
 \sum_{i\in B_t}
 \sum_{j\in S_t}
@@ -217,7 +217,7 @@ H_t^{AO}(x)
 +
 2\lambda_A
 \sum_{i\in B_t}
-\sum_{\substack{j,k\in S_t\\j<k}}
+\sum_{\substack{j,k\in S_t\\j \lt k}}
 x_{ij}x_{ik}.
 ```
 
@@ -251,9 +251,9 @@ Let:
 The compact form is:
 
 ```math
-H_t^{StaticQCP}(x)
+H_t^{\mathrm{StaticQCP}}(x)
 =
-H_t^{AO}(x)
+H_t^{\mathrm{AO}}(x)
 +
 \lambda_K
 \sum_{j\in S_t}
@@ -268,7 +268,7 @@ H_t^{AO}(x)
 The implemented expanded form is:
 
 ```math
-H_t^{StaticQCP}(x)
+H_t^{\mathrm{StaticQCP}}(x)
 =
 \sum_{i\in B_t}\sum_{j\in S_t}
 \left[
@@ -283,12 +283,12 @@ c_{ij}
 +
 2\lambda_A
 \sum_{i\in B_t}
-\sum_{\substack{j,k\in S_t\\j<k}}
+\sum_{\substack{j,k\in S_t\\j \lt k}}
 x_{ij}x_{ik}
 +
 2\lambda_K
 \sum_{j\in S_t}
-\sum_{\substack{i,k\in B_t\\i<k}}
+\sum_{\substack{i,k\in B_t\\i \lt k}}
 \tilde{l}_i\tilde{l}_k x_{ij}x_{kj}.
 ```
 
