@@ -622,12 +622,16 @@ QAnnealing/
 
 ## Citation
 
-If you use this repository or its benchmark results, cite the associated manuscript and repository.
+If you use this repository or its benchmark results, cite the associated manuscript and repository. Author order follows the manuscript:
+
+> Yedige Mussabayev, Artem Bykov, Evgeniy Lavrov, and Diana Yermekova.  
+> *Priority-Aware Residual-Capacity QUBO Decomposition for Stateful Resource Allocation in Distributed Edge Data Processing*.  
+> Manuscript submitted to *Applied Soft Computing*, 2026.
 
 ```bibtex
 @misc{mussabayev2026prcqubo,
-  title        = {Priority-Aware Residual-Capacity QUBO Decomposition for Large-Scale Sensor-to-Server Assignment in Smart City Edge Systems},
-  author       = {Mussabayev, Yedige and Bykov, Artem and Lavrov, Evgeniy},
+  title        = {Priority-Aware Residual-Capacity QUBO Decomposition for Stateful Resource Allocation in Distributed Edge Data Processing},
+  author       = {Mussabayev, Yedige and Bykov, Artem and Lavrov, Evgeniy and Yermekova, Diana},
   year         = {2026},
   howpublished = {Manuscript submitted to Applied Soft Computing; GitHub repository},
   url          = {https://github.com/Yedman3585/Quantum-Sensor-Assignment}
