@@ -1,447 +1,641 @@
-# Quantum-Inspired Optimization for Sensor-to-Server Assignment in Smart-City Surveillance Systems
+# PRC-QUBO Decomposition for Large-Scale Sensor-to-Server Assignment
 
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![OpenJij](https://img.shields.io/badge/OpenJij-0.11.6-purple.svg)](https://openjij.github.io/)
-[![D-Wave Neal](https://img.shields.io/badge/D--Wave-Neal%20Sampler-orange.svg)](https://dwave-neal-docs.readthedocs.io/en/latest/reference/sampler.html)
----
+[![Python](https://img.shields.io/badge/Python-3.10%20recommended-blue.svg)](https://www.python.org/)
+[![OpenJij](https://img.shields.io/badge/OpenJij-0.11.6-purple.svg)](https://www.openjij.org/)
+[![D-Wave Neal](https://img.shields.io/badge/D--Wave-Neal%200.5.5-orange.svg)](https://dwave-neal-docs.readthedocs.io/)
 
-## 📋 Table of Contents
-- [1. Introduction](#1-introduction)
-- [2. Problem Formulation](#2-problem-formulation-and-input-data)
-- [3. QUBO Formulation](#3-qubo-formulation)
-- [4. Optimization Approaches](#4-optimization-approaches)
-- [5. Results and Visualization](#5-results-and-visualization)
-- [6. Getting Started](#6-getting-started)
-- [7. Repository Structure](#7-repository-structure)
-- [8. Citation](#8-citation)
-- [9. License and Acknowledgments](#9-license-and-acknowledgments)
+This repository accompanies the current Applied Soft Computing manuscript draft on **priority-aware residual-capacity QUBO decomposition (PRC-QUBO)** for large-scale sensor-to-server assignment in smart-city edge systems.
 
----
+The main contribution is formulation-level: the work studies which QUBO representation is appropriate for a sequential, capacity-constrained edge-resource allocation problem where accepted assignments consume server capacity and change the feasible region for later batches. Solver behavior is evaluated after that formulation question is fixed.
 
-## 1. Introduction
+The benchmark uses a synthetic but reproducible city-scale instance with:
 
+- `20,000` sensors/cameras
+- `800` heterogeneous edge servers
+- fixed random seed `42`
+- priority classes, sensor loads, bandwidth demands, server capacities, coordinates, and a shared assignment-cost matrix
+- batch decomposition into `80 x 20` QUBO subproblems
 
-**The main question of this work: Can simulated quantum annealing (SQA) with batch decomposition solve real-life camera-to-edge-server assignment problems with 20,000 cameras and 800 servers more effectively than classical optimization approaches, while maintaining practical runtime and full reproducibility using open-source tools?**
+## Contents
 
+- [Research Focus](#research-focus)
+- [Problem Setting](#problem-setting)
+- [QUBO Formulations](#qubo-formulations)
+- [Execution Pipeline](#execution-pipeline)
+- [Experimental Results](#experimental-results)
+- [Reproducing Runs](#reproducing-runs)
+- [Logs and Figures](#logs-and-figures)
+- [OpenJij Installation Notes](#openjij-installation-notes)
+- [Repository Structure](#repository-structure)
+- [Citation](#citation)
 
-The given work is completely experimentally reproducible*. Unlike proprietary quantum hardware solutions that may have variable access or performance characteristics, our framework leverages:
+## Research Focus
 
-- **OpenJij** — An open-source framework for the Ising model and QUBO problems, developed and maintained by Jij Inc.
-- **Fixed random seeds** — All experiments use NumPy seed 42 for deterministic data generation
-- **Structured JSONL logging** — Every batch's metrics are recorded for post-hoc analysis
-- **Version-controlled dependencies** — Exact library versions specified for environment recreation
+Earlier versions of this project emphasized a direct comparison between simulated quantum annealing (SQA) and simulated annealing (SA). The current manuscript shifts the emphasis to the QUBO formulation itself.
 
-Thus, anyone can replicate our experiments by:
-1. Installing OpenJij 0.11.6 (as used in this study)
-2. Running the provided Python scripts with identical parameters
-3. Comparing results against our logs 
+The benchmark demonstrates that the QUBO seen by the solver must represent the current residual server capacity in order to produce feasible assignments in this sequential edge-resource allocation setting.
 
-The OpenJij framework implements Simulated Quantum Annealing (SQA) through path-integral Monte Carlo with Trotter decomposition, making quantum-inspired optimization accessible on standard computing hardware without requiring access to physical quantum processors.
+To answer this, the repository contains three QUBO formulations evaluated under the same benchmark protocol:
 
-### Key Topics
+| Formulation | Capacity information inside the sampled QUBO | Purpose |
+|---|---|---|
+| **AO-QUBO** | None | Assignment-only baseline |
+| **Static-QCP-QUBO** | Initial server capacity `K_j` | Static quadratic capacity-penalty baseline |
+| **PRC-QUBO** | Current residual capacity `R_j^(t)` | Proposed state-aware decomposition |
 
-| Topic | Description |
-|-------|-------------|
-| **Simulated Quantum Annealing (SQA)** | Quantum-inspired optimization using OpenJij's path-integral Monte Carlo with Trotter decomposition |
-| **Simulated Annealing (SA)** | Classical probabilistic metaheuristic implemented via D-Wave's Neal library |
-| **QUBO** | Quadratic Unconstrained Binary Optimization — NP-hard problem formulation |
-| **Smart City Sensors** | 20,000 cameras with heterogeneous priorities and computational loads |
-| **Distributed Data Processing** | Edge computing architecture with 800 servers of varying capacities |
+SQA and SA are then treated as solver backends. Within PRC-QUBO, they solve the same residual-capacity-aware batch Hamiltonians and differ only in the annealing dynamics and implementation.
 
+## Problem Setting
 
-## 2. Problem Formulation and Input Data
+Let:
 
-Let $C = \{1, 2, \dots, 20000\}$ denote the set of surveillance cameras and $S = \{1, 2, \dots, 800\}$ the set of edge servers.
+- `C` be the set of sensors/cameras
+- `S` be the set of edge servers
+- `x_ij in {0,1}` indicate whether sensor `i` is assigned to server `j`
+- `c_ij` be the normalized assignment cost
+- `l_i` be the computational load of sensor `i`
+- `K_j` be the initial processing capacity of server `j`
+- `p_i in {1,2,3}` be the priority level of sensor `i`
 
-**Camera Parameters:**
-- $p_i \in \{1,2,3\}$ — priority level of camera $i$ (3 = highest, 2 = middle, 1 = lowest)
-- $w_i = 4 - p_i \in \{1,2,3\}$ — priority weight (higher value → higher reward)
-- $l_i > 0$ — computational demand of camera $i$ (in GFLOPs)
+The target assignment problem combines:
 
-**Server Parameters:**
-- $K_j > 0$ — total processing capacity of server $j$ (in GFLOPs)
+- low assignment cost
+- one server per assigned sensor
+- server-capacity feasibility
+- high-priority sensors processed earlier in the sequence
 
-**Decision Variable:**
-$$
-x_{ij} = \begin{cases} 
-1, & \text{if camera } i \text{ is assigned to server } j \\
-0, & \text{otherwise}
+A direct full assignment model would contain:
+
+```text
+20,000 x 800 = 16,000,000 binary assignment variables
+```
+
+Even the one-hot assignment penalty alone would generate:
+
+```text
+20,000 * C(800, 2) = 6,392,000,000 pairwise terms
+```
+
+This is why the implementation uses iterative batch decomposition instead of a monolithic QUBO.
+
+## QUBO Formulations
+
+All QUBO models use the standard binary quadratic form:
+
+```math
+H_QUBO(x) =
+\sum_u Q_{u,u}x_u
++
+\sum_{u<v}Q_{u,v}x_u x_v .
+```
+
+Raw QUBO energies are not compared across formulations, because each Hamiltonian contains different penalty terms. The final comparison uses the common post-hoc evaluation objective: assignment cost, uncovered-sensor penalty, overload penalty, and validated coverage.
+
+### Full Target Assignment QUBO
+
+The manuscript first presents the conceptual full target assignment QUBO:
+
+```math
+H_full(x)
+=
+\sum_{i,j} c_{i,j}x_{i,j}
++
+\lambda_1\sum_i
+\left(
+\sum_j x_{i,j}-1
+\right)^2
++
+\lambda_2\sum_j
+\left[
+\max
+\left(
+0,
+\sum_i l_i x_{i,j}-K_j
+\right)
+\right]^2 .
+```
+
+This form is useful for describing the target constrained assignment objective. It is not constructed directly at city scale because the capacity penalty either requires slack variables or introduces dense server-wise couplings.
+
+### PRC-QUBO Decomposition
+
+PRC-QUBO replaces the full QUBO with a sequence of residual-capacity-aware batch subproblems.
+
+For batch `t`, let:
+
+- `B_t` be the selected sensor batch
+- `S_t` be the selected candidate-server subset
+- `R_j^(t)` be the residual capacity of server `j` before solving batch `t`
+
+Residual capacity is updated as:
+
+```math
+R_j^{(t)}
+=
+K_j
+-
+\sum_{\tau<t}
+\sum_{i\in B_\tau}
+l_i x_{i,j}.
+```
+
+The batch-level PRC-QUBO Hamiltonian is:
+
+```math
+H_t^{PRC}(x)
+=
+\sum_{i\in B_t}
+\sum_{j\in S_t}
+\phi_{i,j}^{(t)}x_{i,j}
++
+\lambda
+\sum_{i\in B_t}
+\sum_{\substack{j,k\in S_t\\j<k}}
+x_{i,j}x_{i,k}.
+```
+
+The residual-capacity-dependent linear coefficient is:
+
+```math
+\phi_{i,j}^{(t)}
+=
+-\alpha r_i(1-c_{i,j})\mathbf{1}\{l_i \le R_j^{(t)}\}
++
+\beta\mathbf{1}\{l_i > R_j^{(t)}\}.
+```
+
+Equivalently:
+
+```math
+\phi_{i,j}^{(t)}
+=
+\begin{cases}
+-\alpha r_i(1-c_{i,j}), & l_i \le R_j^{(t)},\\
+\beta, & l_i > R_j^{(t)}.
 \end{cases}
-$$
+```
 
-**Constraints:**
+The released implementation uses:
 
-1. **Unique assignment constraint:** Each camera must be assigned to exactly one server
-   $$
-   \sum_{j=1}^{M} x_{ij} = 1, \quad \forall i = 1,\ldots,N
-   $$
+| Parameter | Value | Role |
+|---|---:|---|
+| `alpha` | 25 | feasible-assignment reward scale |
+| `beta` | 100 | infeasible pair penalty |
+| `lambda` | 15 | same-sensor multi-selection penalty |
 
-2. **Server capacity constraint:** The total computational load on each server must not exceed its processing capacity
-   $$
-   \sum_{i=1}^{N} l_i x_{ij} \leq K_j, \quad \forall j = 1,\ldots,M
-   $$
+The priority term is not the only priority mechanism. Operational priority is represented jointly by:
 
+- sorting sensors by `p_i l_i` before batching
+- including priority in the cost construction
+- using the priority-related weight in the PRC-QUBO coefficient
+- decoding, validation, repair, and post-processing
 
-The normalized assignment cost $c_{ij} \in [0,1]$ represents the cost of connecting camera $i$ to server $j$, incorporating four weighted factors:
+In the released implementation, `p_i = 3` denotes the highest priority and `p_i = 1` the lowest. The coefficient `r_i` is a bounded class-dependent scaling factor used in the QUBO reward/evaluation scale; it should not be interpreted as the only priority score. Operational priority is produced by the combined ordering, cost construction, decoding, and residual-capacity validation procedure.
 
-$$
-c_{ij} = 0.40 \cdot \frac{d_{ij}}{d_{\text{max}}} + 0.35 \cdot \frac{l_i}{l_{\text{max}}} + 0.20 \cdot \frac{3-p_i}{2} + 0.05 \cdot \frac{K_{\text{max}}/K_j}{(K_{\text{max}}/K_{\text{min}})}
-$$
+The quadratic term discourages multiple server selections for the same sensor, but it is not claimed to be a complete exact-penalty reformulation of the full ILP. Final feasibility is enforced by binary decoding, residual-capacity validation, optional fallback handling, local reassignment refinement, and residual-state updates.
 
-where:
-- $d_{ij}$ — Euclidean distance between camera $i$ and server $j$
-- $d_{\text{max}}$ — maximum distance across all camera-server pairs
-- $l_{\text{max}}$ — maximum computational load across all cameras
-- $K_{\text{max}}, K_{\text{min}}$ — maximum and minimum server capacities
+Each released PRC-QUBO batch contains:
 
-**Weight distribution:**
-- **40% Network latency** — prioritizes physical proximity to minimize transmission delays
-- **35% Computational load** — balances processing demands across servers
-- **20% Priority weighting** — ensures high-priority cameras receive better service
-- **5% Capacity utilization** — lightly favors underutilized servers for load balancing
+```text
+80 x 20 = 1,600 binary variables
+80 * C(20, 2) = 15,200 one-hot pairwise terms
+16,800 total linear + quadratic QUBO coefficients per full batch
+```
 
-The resulting cost matrix is min-max normalized to $[0,1]$ to ensure numerical stability during the annealing process.
+### AO-QUBO Baseline
 
-### Data Generation
-To ensure a realistic evaluation of the scheduling algorithms, we generate synthetic data mimicking a large-scale video surveillance system with 20,000 cameras and 800 servers. The data generation process is identical for both Simulated Annealing (SA) and Simulated Quantum Annealing (SQA) methods, using **fixed random seed 42** for perfect reproducibility across all experiments.
+AO-QUBO is the assignment-only baseline. It uses the same batch variables and solver interface, but capacity is not represented inside the sampled Hamiltonian.
 
-| Parameter | Distribution | Details |
-|-----------|--------------|---------|
-| **Camera Priorities** | $p_i = 3$ (15%), $p_i = 2$ (25%), $p_i = 1$ (60%) | High: pedestrian crossings<br>Medium: sidewalks<br>Low: roadways |
-| **Camera Load (GFLOPs)** | High: $l_i \sim \mathcal{U}[8,15]$<br>Medium: $l_i \sim \mathcal{U}[4,8]$<br>Low: $l_i \sim \mathcal{U}[1,3]$ | Computational demand for AI-based video analytics |
-| **Server Capacities (GFLOPs)** | High: $K_j \sim \mathcal{U}[800,1000]$ (10%)<br>Medium: $K_j \sim \mathcal{U}[400,800]$ (30%)<br>Standard: $K_j \sim \mathcal{U}[200,400]$ (60%) | Heterogeneous edge server infrastructure |
-| **Geographic Distribution** | $(x,y) \sim \mathcal{U}[0,1000]^2$ | Uniform random placement in $1000 \times 1000$ grid |
+For each batch:
 
-**System-wide metrics:**
-- Total computational load: $\displaystyle \sum_{i=1}^{N} l_i \approx 88,453$ GFLOPs
-- Total server capacity: $\displaystyle \sum_{j=1}^{M} K_j \approx 372,166$ GFLOPs
-- System utilization: $\approx 23.8\%$
+```math
+H_t^{AO}(x)
+=
+\sum_{i\in B_t}
+\sum_{j\in S_t}
+\left(c_{ij}-\lambda_A\right)x_{ij}
++
+2\lambda_A
+\sum_{i\in B_t}
+\sum_{\substack{j,k\in S_t\\j<k}}
+x_{ij}x_{ik}.
+```
 
+This is the expanded form of:
 
-![Simulated Surveillance Environment o](imgs_readme/map.jpg)
+```math
+\sum_{i,j}c_{ij}x_{ij}
++
+\lambda_A\sum_i
+\left(
+\sum_j x_{ij}-1
+\right)^2
+```
 
-*The figure illustrates 3 edge servers with capacities 800–1000 GFLOPs (high), 400–800 GFLOPs (medium), and 200–400 GFLOPs (standard), with 15 cameras distributed by priority: 15% high (red: pedestrian crossings), 25% medium (yellow: sidewalks), and 60% low (blue: roadways). Computational loads ($l_i$ in GFLOPs) are annotated near cameras, following the uniform distributions described above.*
+after dropping constants and using `x_ij^2 = x_ij`.
 
----
+AO-QUBO is not deliberately broken. It is a valid lower-information QUBO baseline for assignment structure. Its limitation is that capacity information enters only after solving, during the shared residual-capacity validation stage.
 
-## 3. QUBO Formulation
+### Static-QCP-QUBO Baseline
 
-### From ILP to QUBO
+Static-QCP-QUBO augments AO-QUBO with a static quadratic capacity penalty based on initial capacities.
 
-The constrained Integer Linear Programming (ILP) problem is transformed into an Quadratic Unconstrained Binary Optimization (QUBO) problem using a penalty-reward approach:
+Let:
 
-$$
-H_{\text{QUBO}}(\mathbf{x}) = \underbrace{\sum_{i=1}^{N}\sum_{j=1}^{M} c_{ij} x_{ij}}_{\text{Primary cost}} + \lambda_1 \underbrace{\sum_{i=1}^{N} \left(\sum_{j=1}^{M} x_{ij} - 1\right)^2}_{\text{Assignment penalty}} + \lambda_2 \underbrace{\sum_{j=1}^{M} \max\left(0, \sum_{i=1}^{N} l_i x_{ij} - K_j\right)^2}_{\text{Capacity penalty}}
-$$
+```math
+\tilde{l}_i = l_i / K_{max},
+\qquad
+\tilde{K}_j = K_j / K_{max}.
+```
 
-where $\lambda_1, \lambda_2 > 0$ are penalty coefficients chosen sufficiently large to enforce constraint satisfaction.
+The compact form is:
 
-### Batch-Level Hamiltonian
+```math
+H_t^{StaticQCP}(x)
+=
+H_t^{AO}(x)
++
+\lambda_K
+\sum_{j\in S_t}
+\left(
+\sum_{i\in B_t}
+\tilde{l}_i x_{ij}
+-
+\tilde{K}_j
+\right)^2 .
+```
 
-Due to the huge size of the full problem (16 million binary variables), we decompose it into tractable subproblems using an iterative batch strategy. For each batch of $n$ cameras $B$ and $m$ candidate servers $S$, the QUBO Hamiltonian is constructed as:
+The implemented expanded form is:
 
-$$
-H(\mathbf{x}) = \sum_{i \in B} \sum_{j \in S} Q_{ij}^{(1)} x_{ij} + \lambda \sum_{i \in B} \sum_{\substack{j,k \in S \\ j < k}} x_{ij} x_{ik}
-$$
+```math
+H_t^{StaticQCP}(x)
+=
+\sum_{i\in B_t}\sum_{j\in S_t}
+\left[
+c_{ij}
+- \lambda_A
++ \lambda_K
+\left(
+\tilde{l}_i^2
+- 2\tilde{K}_j\tilde{l}_i
+\right)
+\right]x_{ij}
++
+2\lambda_A
+\sum_{i\in B_t}
+\sum_{\substack{j,k\in S_t\\j<k}}
+x_{ij}x_{ik}
++
+2\lambda_K
+\sum_{j\in S_t}
+\sum_{\substack{i,k\in B_t\\i<k}}
+\tilde{l}_i\tilde{l}_k x_{ij}x_{kj}.
+```
 
-where $\mathbf{x} = \{x_{ij} \in \{0,1\}\}$ represents binary assignment variables for the current batch.
+Static-QCP-QUBO represents the initial-capacity level of modeling. It exposes capacity information to the solver, but the penalty remains tied to `K_j`, not to the residual state `R_j^(t)` produced by earlier committed batches. The squared term behaves as a static capacity target, not as an exact inequality encoding of `sum_i l_i x_ij <= K_j`.
 
-### Coefficient Definition
+The full `80 x 20` Static-QCP-QUBO batches contain about:
 
-The linear coefficients $Q_{ij}^{(1)}$ encode feasibility and objective preferences:
+```text
+1,600 linear terms
+78,400 quadratic terms
+80,000 total QUBO coefficients
+```
 
-$$
-Q_{ij}^{(1)} = \begin{cases} 
--\alpha \cdot w_i \cdot (1 - c_{ij}), & \text{if } l_i \leq R_j \\
-+\beta, & \text{otherwise}
-\end{cases}
-$$
+## Execution Pipeline
 
-where:
-- $w_i = 4 - p_i \in \{1,2,3\}$ — priority weight
-- $c_{ij} \in [0,1]$ — normalized connection cost
-- $l_i > 0$ — camera computational load
-- $R_j > 0$ — remaining server capacity at batch time
-- $\alpha, \beta, \lambda$ — experimentally tuned constants
+The common benchmark pipeline is:
 
-### QUBO Parameters
+1. Generate the synthetic `20,000 x 800` instance using seed `42`.
+2. Build priority, load, bandwidth, capacity, coordinate, and cost arrays.
+3. Process sensors in priority-aware batches of size `80`.
+4. Select up to `20` candidate servers per batch.
+5. Build one of the three QUBO formulations.
+6. Solve the batch QUBO with either SQA or SA.
+7. Decode the raw binary/spin sample into candidate assignments.
+8. Validate decoded assignments against current residual capacities.
+9. Commit feasible assignments and update `R_j^(t)`.
+10. Log batch-level and final metrics.
 
-| Parameter | Value | Description |
-|-----------|-------|-------------|
-| $\alpha$ | 25 | Reward coefficient for feasible assignments |
-| $\beta$ | 100 | Penalty for capacity violations |
-| $\lambda$ | 15 | Penalty for multiple assignments (one-hot encoding) |
+For the formulation benchmark, AO-QUBO and Static-QCP-QUBO use the same input stream, batch size, candidate-server budget, solvers, decoding, validation, and final evaluation objective as PRC-QUBO. Their non-residual nature is localized to the QUBO-construction block.
 
-### Encoding Three Key Aspects
+For publication baseline runs, final local optimization is not used for the non-residual baselines. This keeps AO-QUBO and Static-QCP-QUBO as formulation baselines rather than optimized hybrid methods. For PRC-QUBO, the main solver tables report the complete annealing-backed pipeline, while the capacity-stress table below reports pre-refinement diagnostic objectives with final local reassignment disabled for every formulation.
 
-This formulation encodes:
+## Experimental Results
 
-1. **Primary objective** — via reward term $-\alpha w_i(1-c_{ij})$ for feasible assignments:
-   - Higher priority cameras ($w_i$ larger) receive stronger negative coefficients
-   - Lower connection costs ($c_{ij}$ smaller) produce larger rewards
-   - The negative sign makes better assignments lower-energy states
+### Formulation-Level Comparison
 
-2. **Capacity constraints** — through large penalty $\beta$ for infeasible pairs where $l_i > R_j$:
-   - Any assignment violating server capacity gets a high positive contribution to energy
-   - The optimizer avoids these configurations during annealing
+The formulation-level comparison aggregates full-scale runs on the same `20,000 x 800` benchmark.
 
-3. **One-hot assignment** — via quadratic term $\lambda x_{ij}x_{ik}$:
-   - For a given camera $i$, assigning it to two different servers $j$ and $k$ creates a positive energy contribution
-   - This enforces $\sum_j x_{ij} \leq 1$ without hard constraints
-   - The coefficient $\lambda$ is tuned to balance against the objective terms
+| Formulation | Capacity state in QUBO | Runs | Coverage mean +/- sd | Covered | Uncovered | Evaluation objective | Avg. QUBO terms |
+|---|---|---:|---:|---:|---:|---:|---:|
+| **AO-QUBO** | No capacity term | 6 | 19.26 +/- 0.32% | 3,853 | 16,148 | 244,392 +/- 928 | 16,800 |
+| **Static-QCP-QUBO** | Static initial `K_j` | 6 | 19.76 +/- 0.34% | 3,951 | 16,049 | 243,001 +/- 1,000 | 80,000 |
+| **PRC-QUBO** | Residual `R_j^(t)` | 15 | 99.60 +/- 0.00% | 19,920 | 80 | about 7,108 | 16,800 |
 
+The PRC-QUBO objective in this table corresponds to the complete solver-backed pipeline after final local reassignment refinement. The capacity-stress table reports the no-final-refinement diagnostic objective separately, so the two objective values should not be treated as contradictory.
 
+The key result is not that AO-QUBO or Static-QCP-QUBO are invalid QUBOs. They are valid non-residual formulations. Their weakness in this benchmark is that they solve a stale approximation of a sequential problem: after earlier batches consume capacity, later low-energy decoded assignments often fail residual-capacity validation.
 
-## 4. Optimization Approaches
+Static-QCP-QUBO increases the average number of QUBO coefficients from `16,800` to `80,000`, but improves coverage by less than one percentage point over AO-QUBO. PRC-QUBO preserves the smaller AO-style batch scale while making the sampled Hamiltonian aware of the current residual resource state.
 
-### Architectural Overview
+![Formulation-level comparison](manuscript_revision/figures/formulation_comparison_600dpi.png)
 
+### Non-Residual Baselines by Solver
 
-![System Architecture](imgs_readme/architecture.jpg)
+| Baseline + solver | Coverage mean +/- sd | Objective mean +/- sd | Time (s) mean +/- sd | Failed batches | Avg. QUBO terms |
+|---|---:|---:|---:|---:|---:|
+| **AO-QUBO + SQA** | 19.15 +/- 0.47% | 244,758 +/- 1,324 | 192.6 +/- 96.9 | 227.7 | 16,800 |
+| **AO-QUBO + SA** | 19.38 +/- 0.00% | 244,026 +/- 0 | 1,702.6 +/- 268.2 | 226.0 | 16,800 |
+| **Static-QCP-QUBO + SQA** | 19.47 +/- 0.18% | 243,865 +/- 509 | 1,219.2 +/- 1,443.0 | 226.0 | 80,000 |
+| **Static-QCP-QUBO + SA** | 20.05 +/- 0.00% | 242,137 +/- 0 | 1,885.1 +/- 61.4 | 226.0 | 80,000 |
 
+Changing the annealing backend does not rescue the non-residual formulations. The limiting factor is the mismatch between the capacity state represented in the sampled Hamiltonian and the residual capacity used for final feasibility checking.
 
-The architecture features **fully shared preprocessing stages** (Data Initialization, Cost Matrix Construction, and QUBO Batch Decomposition) before branching into the three solving approaches:
+### Capacity-Stress Sensitivity
 
-1. **Simulated Quantum Annealing (SQA)** — OpenJij SQASampler
-2. **Classical Simulated Annealing (SA)** — D-Wave Neal
-3. **Greedy Baseline** — Deterministic heuristic
+The capacity-stress experiment uniformly scales server capacities after data generation while keeping seed `42`, the `20,000 x 800` instance, priority ordering, `80 x 20` batch structure, SQA backend, decoding, validation, and evaluation formula fixed. Final local reassignment refinement is disabled in these runs for all formulations; the PRC-QUBO objective column is therefore a pre-refinement diagnostic value.
 
-### Batch Decomposition Strategy
+| Capacity scale | Utilization | AO-QUBO coverage | Static-QCP-QUBO coverage | PRC-QUBO coverage | PRC-QUBO objective, pre-refinement |
+|---:|---:|---:|---:|---:|---:|
+| 1.00 | 23.77% | 19.05% | 19.31% | 99.60% | 12,852 |
+| 0.50 | 47.53% | 8.91% | 8.84% | 99.56% | 12,939 |
+| 0.33 | 72.02% | 5.64% | 5.42% | 98.69% | 15,659 |
+| 0.25 | 95.07% | 4.18% | 4.15% | 94.44% | 27,388 |
 
-Due to the problem scale (20,000 cameras × 800 servers), we implement an iterative batch strategy:
+These runs show that the formulation-level gap is not caused only by the default capacity surplus. AO-QUBO and Static-QCP-QUBO degrade sharply as utilization increases, while PRC-QUBO preserves high validated coverage because the sampled Hamiltonian is rebuilt from the current residual-capacity state before each batch.
 
-$$
-\text{Total variables} = N \times M = 20,000 \times 800 = 16,000,000
-$$
+![Capacity-stress formulation comparison](manuscript_revision/figures/capacity_stress_sqa_600dpi.png)
 
-The batch decomposition reduces each subproblem to:
+### PRC-QUBO Solver-Level Comparison
 
-$$
-\text{Batch variables} = B \times M = 80 \times 20 = 1,600
-$$
+After the formulation issue is removed by using PRC-QUBO, the solver-level comparison focuses on backend behavior.
 
-**Algorithm:**
-1. **Step 1:** Initialize remaining server capacities $R_j = K_j$
-2. **Step 2:** Sort cameras by priority score = $p_i \times l_i$ (higher first)
-3. **Step 3:** While unassigned cameras remain:
-    * Select next batch of $B = 80$ highest-priority unassigned cameras
-    * Select $M = 20$ candidate servers with largest remaining capacity $R_j$
-    * Construct QUBO subproblem with current remaining capacities $R_j$
-    * Solve QUBO using SQA, SA, or Greedy
-    * Update assignments and reduce server capacities
-4. **Step 4:** Apply local optimization to improve assignments across batch boundaries
+| Method | Objective value | Coverage (%) | Mean time (s) | Mean throughput (cam/s) |
+|---|---:|---:|---:|---:|
+| **PRC-QUBO + SQA** | 7,108.3 | 99.6 | 299.61 | 66.46 |
+| **PRC-QUBO + SA** | 7,108.1 | 99.6 | 2,779.26 | 7.22 |
+| **Priority-capacity greedy baseline** | 225,163.4 | 25.33 | 180.01 | 28.14 |
 
+SQA and SA reach comparable PRC-QUBO assignment quality, while the implemented OpenJij SQA-backed pipeline is about `9.3x` faster than the Neal SA-backed pipeline in the reported benchmark. This is an implementation-level solver result inside the PRC-QUBO decomposition, not a claim of universal quantum advantage.
 
+### Additional Validation Baselines
 
-### Simulated Quantum Annealing (SQA) with OpenJij
+Two additional non-QUBO validation baselines are provided for reviewer-facing robustness checks.
 
-**Library:** OpenJij 0.11.6 ([official documentation](https://jij-inc.github.io/OpenJij/))  
-**Sampler:** `SQASampler` (Simulated Quantum Annealing)  
-**Core Mechanism:** Path-Integral Monte Carlo with Trotter decomposition
+| Method | Scale | Runs | Coverage mean +/- sd | Objective mean +/- sd | Time (s) mean +/- sd | Role |
+|---|---:|---:|---:|---:|---:|---|
+| **RC-Greedy-20** | `20,000 x 800` | 3 | 99.60 +/- 0.00% | 13,269.984 +/- 0.000 | 0.743 +/- 0.054 | strong residual-capacity heuristic |
+| **RC-Greedy-20** | `500 x 25` | 3 | 100.00 +/- 0.00% | 283.762 +/- 30.378 | 0.029 +/- 0.004 | small heuristic reference |
+| **Small-MILP-Oracle** | `500 x 25` | 3 | 100.00 +/- 0.00% | 189.433 +/- 13.992 | 0.378 +/- 0.039 | reduced-instance exact validation |
 
-SQA transforms the $N$-variable QUBO into an extended $(N \times P)$-variable classical Ising model via the Suzuki-Trotter decomposition:
+`RC-Greedy-20` uses the same data generator, priority ordering, residual-capacity state, `80 x 20` batch interface, and `99.5%` early-stop rule as the PRC-QUBO runs, but it does not construct or solve a QUBO. On the full benchmark it reaches the same validated coverage as PRC-QUBO, but with a higher evaluation objective.
 
-$$
-H_{\text{SQA}} = -\frac{1}{P}\sum_{k=1}^{P} H_{\text{QUBO}}^{(k)} - J_{\perp} \sum_{k=1}^{P} \sum_{i=1}^{N} \sigma_{i,k} \sigma_{i,k+1}
-$$
+`Small-MILP-Oracle` uses SciPy/HiGHS MILP on reduced instances. It is not intended as a full-scale competitor for the `20,000 x 800` benchmark. Its role is to validate small-instance assignment quality and to show the gap between a constructive residual-capacity heuristic and an exact reduced-instance assignment model.
 
-where:
-- $P = 8$ — Trotter slices (replicas)
-- $H_{\text{QUBO}}^{(k)}$ — the $k$-th replica of the QUBO Hamiltonian
-- $\sigma_{i,k} \in \{\pm 1\}$ — classical Ising spins
-- $J_{\perp}$ — inter-replica coupling strength simulating quantum tunneling
+An optional diagnostic run of `RC-Greedy-20 --final-opt` is useful as an ablation of post-hoc reassignment. It should not be mixed into the main formulation benchmark without explanation, because it changes the comparison from online constructive assignment to global local reassignment after the sequence has already been built.
 
-**Key Parameters:**
-- Trotter number ($P$): 8 — balances simulation fidelity and computational cost
-- Monte Carlo sweeps: 1000 — annealing duration
-- Transverse field schedule: geometric decrease from $\Gamma_0$ to near-zero
+## Reproducing Runs
 
-**OpenJij Implementation:**
+### Create a Virtual Environment
+
+Windows PowerShell:
+
+```powershell
+py -3.10 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip setuptools wheel
+```
+
+Linux/macOS:
+
+```bash
+python3.10 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip setuptools wheel
+```
+
+### Install Dependencies
+
+The repository includes pinned package versions in `requirements.txt`. Install them with:
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
+### Smoke Tests
+
+Use reduced problem sizes before full-scale runs:
+
+```powershell
+python ao_qubo_sa.py --n-cameras 500 --n-servers 25 --batch-size 20 --max-servers-per-batch 5 --num-reads 10 --log-every 5
+python ao_qubo_sqa.py --n-cameras 500 --n-servers 25 --batch-size 20 --max-servers-per-batch 5 --num-reads 10 --log-every 5
+python static_qcp_qubo_sa.py --n-cameras 500 --n-servers 25 --batch-size 20 --max-servers-per-batch 5 --num-reads 10 --log-every 5
+python static_qcp_qubo_sqa.py --n-cameras 500 --n-servers 25 --batch-size 20 --max-servers-per-batch 5 --num-reads 10 --log-every 5
+```
+
+### Full Baseline Runs
+
+The full baseline scripts default to the paper-scale `20,000 x 800` problem.
+
+```powershell
+python ao_qubo_sqa.py --log-every 10
+python ao_qubo_sa.py --log-every 10
+python static_qcp_qubo_sqa.py --log-every 10
+python static_qcp_qubo_sa.py --log-every 10
+```
+
+For publication-style non-residual baseline runs, do not add `--final-opt`.
+
+### Capacity-Stress Runs
+
+The SQA-backed capacity-stress experiment is controlled by `capacity_stress_experiment.py`. Example commands:
+
+```powershell
+python capacity_stress_experiment.py --formulation PRC-QUBO --solver SQA --capacity-scale 1.00 --log-every 10
+python capacity_stress_experiment.py --formulation AO-QUBO --solver SQA --capacity-scale 0.50 --log-every 10
+python capacity_stress_experiment.py --formulation Static-QCP-QUBO --solver SQA --capacity-scale 0.25 --log-every 10
+```
+
+The reported stress table uses `capacity_scale` values `1.00`, `0.50`, `0.33`, and `0.25`, with final local reassignment refinement disabled.
+
+### Additional Validation Baselines
+
+```powershell
+python rc_greedy_20.py --log-every 10
+python small_milp_oracle.py --n-cameras 500 --n-servers 25 --seed 42 --time-limit 300
+```
+
+For multi-run validation, repeat `small_milp_oracle.py` with seeds `42`, `43`, and `44`. The MILP script uses `scipy.optimize.milp`; if SciPy is unavailable, it can still run a tiny exact backtracking smoke test with `--n-cameras <= 18`.
+
+### PRC-QUBO Runs
+
+The original PRC-QUBO solver-backed pipelines are:
+
+```powershell
+python main_Q.py
+python main.py
+```
+
+`main_Q.py` runs the OpenJij SQA-backed PRC-QUBO pipeline. `main.py` runs the Neal SA-backed PRC-QUBO pipeline.
+
+### Regenerate the Formulation Comparison Figure
+
+The figure script reads the stored JSON summaries and PRC-QUBO reference logs.
+
+```powershell
+python scripts\plot_formulation_comparison.py --show-data
+```
+
+Expected outputs:
+
+```text
+manuscript_revision/figures/formulation_comparison_600dpi.png
+manuscript_revision/figures/qubo_comparison_graphs_cropped.pdf
+```
+
+## Logs and Figures
+
+The non-residual baselines use the same logging style as the PRC-QUBO experiments: run-level summaries plus batch-level progress files.
+
+Important directories:
+
+| Directory | Contents |
+|---|---|
+| `logs_ao_qubo_sqa/` | AO-QUBO + SQA summaries and progress logs |
+| `logs_ao_qubo_sa/` | AO-QUBO + SA summaries and progress logs |
+| `logs_static_qcp_qubo_sqa/` | Static-QCP-QUBO + SQA summaries and progress logs |
+| `logs_static_qcp_qubo_sa/` | Static-QCP-QUBO + SA summaries and progress logs |
+| `logs_capacity_stress/` | capacity-stress summaries, progress logs, and CSV exports |
+| `logs_rc_greedy_20/` | residual-capacity greedy validation baseline summaries and progress logs |
+| `logs_small_milp_oracle/` | reduced-instance MILP oracle summaries and progress logs |
+| `logs_openjij_windows/` | PRC-QUBO + SQA logs from the Windows/OpenJij runs |
+| `logs/` | PRC-QUBO + SA logs and earlier classical run outputs |
+| `manuscript_revision/figures/` | Paper figures generated from logs |
+
+Typical baseline log files:
+
+```text
+summary_YYYYMMDD_HHMMSS.json
+progress_YYYYMMDD_HHMMSS.jsonl
+```
+
+The summary JSON files contain final coverage, objective value, total time, throughput, failed/weak batches, fallback count, rejected assignments, and QUBO structural metrics such as variables, linear terms, quadratic terms, coefficient range, and average QUBO coefficient count.
+
+## OpenJij Installation Notes
+
+The SQA-backed pipeline uses the standard Python package:
+
 ```python
 import openjij as oj
-
-sampler = oj.SQASampler(
-    trotter=8,           # Number of replicas (P)
-    num_sweeps=1000,     # Monte Carlo steps
-    num_reads=10         # Parallel runs per batch
-)
-
-response = sampler.sample_qubo(Q)  # Q is the QUBO matrix
+sampler = oj.SQASampler()
+response = sampler.sample_qubo(Q, num_reads=..., num_sweeps=...)
 ```
 
-### Classical Simulated Annealing (SA)
+The official OpenJij documentation describes OpenJij as a heuristic optimization library for Ising and QUBO models with a Python interface and C++ core, installable with:
 
-* **Library:** D-Wave Neal (`SimulatedAnnealingSampler`)
-* **Core Mechanism:** Metropolis-Hastings with thermal fluctuations
-
-The algorithm interprets the QUBO objective as an energy function to be minimized:
-
-$$H(\sigma) = \sum_{i<j} J_{ij}\sigma_i\sigma_j + \sum_{i} h_i\sigma_i$$
-
-where binary variables $x_i \in \{0,1\}$ correspond to spins via $\sigma_i = 2x_i - 1$.
-
-**Dynamics:** The Metropolis-Hastings acceptance rule governs state transitions:
-* If $\Delta E < 0$: always accept (downhill move).
-* Else: accept with probability $\exp(-\Delta E / T)$.
-
-**Key Parameters:**
-* **Number of reads:** 150 — independent annealing runs.
-* **Cooling schedule:** geometric with $\alpha = 0.995$.
-* **Initial temperature:** sufficiently high for broad exploration.
-
----
-
-### Greedy Baseline
-
-* **Mechanism:** Deterministic assignment using priority-capacity scoring.
-
-For each camera (processed in priority order), select the server maximizing:
-
-$$\text{score}_{ij} = w_i \cdot (1 - c_{ij}) \cdot \frac{R_j}{K_j}$$
-
-**Where:**
-* $w_i = 4 - p_i$ — priority weight.
-* $c_{ij}$ — connection cost.
-* $R_j$ — remaining capacity.
-* $K_j$ — total capacity.
-
-**Timeout:** 180 seconds — ensures practical runtime for comparison.
-
-
-## 5. Results and Visualization
-
-### Final Performance Comparison
-
-| Method | Objective Value | Coverage (%) | Total Time (s) | Core Time (s) | Eff. (%) | Throughput (cam/s) |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Simulated Quantum Annealing (SQA)** | 7,108.1 | 99.6 | 1,162.92 | 1,058.81 | 91.1% | 17.13 |
-| **Classical Simulated Annealing (SA)** | 7,108.1 | 99.6 | 5,082.57 | 4,985.86 | 98.1% | 3.92 |
-| **Optimized Greedy Algorithm** | 18,584.1 | 95.7 | 19.27 | 1.29 | 6.7% | 1,037.88 |
-
-
-### Visualization Dashboards
-
-The project includes two interactive Dash applications for visualizing optimization progress:
-
-* **Classical Annealing Dashboard** (`app.py` — port 8050)
-    * **Features:**
-        * Coverage progression vs. Greedy baseline.
-        * Batch success rate tracking.
-        * Energy minimization dynamics.
-        * 3D energy landscape with global minimum.
-* **Quantum Annealing Dashboard** (`app_Q.py` — port 8051)
-    * **Features:**
-        * Purple-themed visualizations for SQA.
-        * Quantum tunneling effect visualization.
-        * Dark theme 3D landscapes.
-        * Real-time batch monitoring.
-
----
-
-### Logging Framework
-
-Both implementations use a three-tier logging architecture to ensure **maximal** data integrity and traceability:
-
-| Level | Format | Purpose |
-| :--- | :--- | :--- |
-| **Console** | Text (`logging` module) | Real-time monitoring |
-| **Structured** | JSON Lines (`.jsonl`) | Batch-level metrics |
-| **Snapshots** | NumPy (`.npz`) | Checkpointing & recovery |
-
-
-### Log Entry Structure (JSON)
-
-Each batch processed by the system generates a structured entry in the `.jsonl` log file. This ensures **maximum** transparency for post-run analysis:
-
-```json
-{
-  "run_id": "20251213_235835",
-  "timestamp": "2025-12-13T23:58:36.123456",
-  "batch_idx": 42,
-  "batch_assigned": 80,
-  "coverage_percent": 33.6,
-  "qubo_success_rate": 100.0,
-  "qubo_time_sec": 0.15,
-  "annealing_time_sec": 18.5,
-  "energy": -1567.8,
-  "assignments": [...]
-}
-```
-
-## 6. Getting Started
-
-### Prerequisites
-* **Python 3.8** or higher.
-* **pip** package manager.
-* (Optional) **CMake ≥ 3.22** for building from source.
-* (Optional) **C++17 compatible compiler** for development.
-
-### Installing OpenJij
-This project utilizes **OpenJij 0.11.6** for Simulated Quantum Annealing (SQA). You can find more detailed information about the framework in the [OpenJij Documentation](OpenJij/README_OpenJij.md).
-
-#### Option 1: Quick Install via pip (Recommended)
 ```bash
-# Install binary distribution (fastest)
-pip install openjij==0.11.6
-
-# Verify installation
-python -c "import openjij; print(f'OpenJij version: {openjij.__version__}')"
+pip install openjij
 ```
 
-## 7. Repository Structure
+This repository pins:
 
-## 7. Project Structure
+```bash
+openjij==0.11.6
+```
+
+### Recommended Windows Installation
+
+Use Python 3.10 in a clean virtual environment. This avoids many wheel and dependency issues that appear with newer Python versions.
+
+```powershell
+py -3.10 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install numpy==1.24.3 scipy==1.10.1 dimod==0.12.6 openjij==0.11.6
+python -m pip install dwave-neal==0.5.5 pandas==2.0.3 dash==2.14.0 plotly==5.15.0
+```
+
+Verify:
+
+```powershell
+python -c "import openjij as oj; print(oj.__version__); print(oj.SQASampler())"
+python -c "import neal; print('neal ok')"
+```
+
+If installation fails:
+
+- Check that the active interpreter is the project venv: `python -c "import sys; print(sys.executable)"`.
+- Upgrade build helpers: `python -m pip install --upgrade pip setuptools wheel`.
+- Prefer Python 3.10 or 3.11 rather than Python 3.13.
+- If pip tries to compile from source on Windows, install Microsoft C++ Build Tools and CMake.
+- If exact reproduction is not required, try `pip install openjij` without the version pin.
+
+### CPU, GPU, and CUDA
+
+The experiments reported in this repository use the normal OpenJij Python interface on conventional CPU hardware. No physical quantum processor is used, and no CUDA-specific code path is enabled by the repository scripts.
+
+OpenJij documentation exposes lower-level C++/core interfaces and mentions GPU-implemented classical and quantum Ising model systems. Older PyPI documentation also notes that GPGPU algorithms require building OpenJij from source with CUDA detected by CMake. That is a different installation path from the standard binary `pip install openjij` workflow.
+
+For this project:
+
+- CUDA is **not required**.
+- Installing CUDA alone will **not** make these scripts use the GPU.
+- The reported SQA results are produced through `openjij.SQASampler()` as used from Python.
+- A GPU-enabled OpenJij experiment would need an explicit source/GPU build and code-level verification that the GPU backend is actually selected.
+- If you use a GPU-enabled build in future work, report it separately because runtime values would no longer be directly comparable with the current CPU-based benchmark logs.
+
+## Repository Structure
 
 ```text
 QAnnealing/
-├── imgs_readme/                # Images and badges used in documentation
-├── logs/                       # Execution logs and checkpoints
-│   ├── snapshots/              # Batch-level metrics (*.jsonl) & recovery checkpoints (*.npz)
-│   ├── logs_adaptive/          # Logs for adaptive parameter runs
-│   ├── logs_diagnostic/        # Diagnostic and error logs
-│   ├── logs_final/             # Final summary logs for completed runs
-│   └── logs_greedy_windows/    # Logs specific to the greedy baseline
-├── OpenJij/                    # Cloned OpenJij framework repository
-│   ├── benchmark/              # OpenJij performance benchmarks
-│   ├── openjij/                # Core Python and C++ source code
-│   ├── tests/                  # C++ and Python test suites
-│   ├── CMakeLists.txt          # Build configuration
-│   └── README_OpenJIJ.md       # OpenJij documentation
-├── templates/                  # HTML templates for dashboards
-│   └── index.html
-├── *.png                       # Generated visualizations 
-├── cost_matrix.npy             # Precomputed connection costs 
-├── cost_matrix.txt             # Precomputed connection costs 
-├── requirements.txt            # Python environment dependencies
-│
-# --- Core Application Scripts & Dashboards ---
-├── main.py                     # Classical Simulated Annealing implementation
-├── main_Q.py                   # Simulated Quantum Annealing (OpenJij) implementation
-├── app.py                      # Dashboard for classical annealing (port 8050)
-├── app_Q.py                    # Dashboard for quantum annealing (port 8051) 
-├── SA_Chronology.txt           # Historical SA run records
-└── SQA_Chronology.txt          # Historical SQA run records
-
+|-- main_Q.py                         # PRC-QUBO + OpenJij SQA pipeline
+|-- main.py                           # PRC-QUBO + Neal SA pipeline
+|-- ao_qubo_sqa.py                    # AO-QUBO + SQA baseline
+|-- ao_qubo_sa.py                     # AO-QUBO + SA baseline
+|-- static_qcp_qubo_sqa.py            # Static-QCP-QUBO + SQA baseline
+|-- static_qcp_qubo_sa.py             # Static-QCP-QUBO + SA baseline
+|-- capacity_stress_experiment.py     # capacity-scaling sensitivity experiment
+|-- rc_greedy_20.py                   # residual-capacity greedy validation baseline
+|-- small_milp_oracle.py              # reduced-instance MILP oracle
+|-- greedy.py                         # priority-capacity greedy reference
+|-- scripts/
+|   |-- plot_formulation_comparison.py
+|   |-- plot_capacity_stress.py
+|-- manuscript_revision/
+|   |-- figures/
+|       |-- formulation_comparison_600dpi.png
+|       |-- capacity_stress_sqa_600dpi.png
+|       |-- qubo_comparison_graphs_cropped.pdf
+|-- logs_ao_qubo_sqa/
+|-- logs_ao_qubo_sa/
+|-- logs_static_qcp_qubo_sqa/
+|-- logs_static_qcp_qubo_sa/
+|-- logs_capacity_stress/
+|-- logs_rc_greedy_20/
+|-- logs_small_milp_oracle/
+|-- logs_openjij_windows/
+|-- logs/
+|-- requirements.txt
+|-- README.md
 ```
 
-## 8 Citation
+## Citation
 
-If you use this code or the results of our research in your work, please cite it as follows:
+If you use this repository or its benchmark results, cite the associated manuscript and repository.
 
-**BibTeX:**
 ```bibtex
-@article{mussabayev2026quantum,
-  title={Quantum-Inspired Optimization for Camera-to-Server Assignment in Smart City Surveillance Systems},
-  author={Mussabayev, Y. and Bykov, A.},
-  year={2026},
-  url={https://github.com/Yedman3585/Quantum-Sensor-Assignment}
+@misc{mussabayev2026prcqubo,
+  title        = {Priority-Aware Residual-Capacity QUBO Decomposition for Large-Scale Sensor-to-Server Assignment in Smart City Edge Systems},
+  author       = {Mussabayev, Yedige and Bykov, Artem and Lavrov, Evgeniy},
+  year         = {2026},
+  howpublished = {Manuscript submitted to Applied Soft Computing; GitHub repository},
+  url          = {https://github.com/Yedman3585/Quantum-Sensor-Assignment}
 }
 ```
 
-## 9 Contributors and Notes
+## License and Acknowledgments
 
-This project is part of a scientific research paper currently submitted to the **MDPI Sensors** journal.
+This repository accompanies the scientific manuscript on PRC-QUBO decomposition for smart-city sensor-to-server assignment.
 
-The given research is supervised and supported by **[Artem Bykov](https://github.com/username111213)** — Associate Professor, PhD.
-
-
+The research and software development were led by Yedige Mussabayev. Scientific supervision and methodological guidance were provided by Artem Bykov. Additional scientific review and recommendations were provided by Evgeniy Lavrov.

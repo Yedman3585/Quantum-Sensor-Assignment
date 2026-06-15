@@ -1,0 +1,8 @@
+2026-06-02 10:01:28,252 - INFO - AO-QUBO + SQA stress data generation: cameras=20000 servers=800 capacity_scale=1.000
+2026-06-02 10:01:28,891 - INFO - total load 88453.0, base capacity 372165.7, scaled capacity 372165.7, utilization 23.8%
+2026-06-02 10:01:28,892 - INFO - AO-QUBO + SQA processing 250 batches
+2026-06-02 10:02:43,962 - INFO - batch 50: assigned 2, coverage 9.87%, success 44.0%, failed 28
+2026-06-02 10:03:59,357 - INFO - batch 100: assigned 27, coverage 13.08%, success 23.0%, failed 77
+2026-06-02 10:05:17,832 - INFO - batch 150: assigned 22, coverage 14.77%, success 15.3%, failed 127
+2026-06-02 10:06:36,433 - INFO - batch 200: assigned 20, coverage 17.16%, success 12.0%, failed 176
+2026-06-02 10:07:54,708 - INFO - batch 250: assigned 3, coverage 19.05%, success 9.6%, failed 226

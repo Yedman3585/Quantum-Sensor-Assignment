@@ -1,0 +1,8 @@
+2026-06-02 09:33:42,178 - INFO - PRC-QUBO + SQA stress data generation: cameras=20000 servers=800 capacity_scale=1.000
+2026-06-02 09:33:43,234 - INFO - total load 88453.0, base capacity 372165.7, scaled capacity 372165.7, utilization 23.8%
+2026-06-02 09:33:43,240 - INFO - PRC-QUBO + SQA processing 250 batches
+2026-06-02 09:35:01,154 - INFO - batch 50: assigned 80, coverage 20.00%, success 100.0%, failed 0
+2026-06-02 09:36:19,562 - INFO - batch 100: assigned 80, coverage 40.00%, success 100.0%, failed 0
+2026-06-02 09:37:38,564 - INFO - batch 150: assigned 80, coverage 60.00%, success 100.0%, failed 0
+2026-06-02 09:38:58,015 - INFO - batch 200: assigned 80, coverage 80.00%, success 100.0%, failed 0
+2026-06-02 09:40:29,393 - INFO - 99.50% coverage threshold reached, completing
