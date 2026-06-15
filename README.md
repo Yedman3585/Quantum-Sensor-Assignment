@@ -631,7 +631,7 @@ If you use this repository or its benchmark results, cite the associated manuscr
 ```bibtex
 @misc{mussabayev2026prcqubo,
   title        = {Priority-Aware Residual-Capacity QUBO Decomposition for Stateful Resource Allocation in Distributed Edge Data Processing},
-  author       = {Mussabayev, Yedige and Bykov, Artem and Lavrov, Evgeniy and Yermekova, Diana},
+  author       = {Yedige Mussabayev},
   year         = {2026},
   howpublished = {Manuscript submitted to Applied Soft Computing; GitHub repository},
   url          = {https://github.com/Yedman3585/Quantum-Sensor-Assignment}
