@@ -4,7 +4,7 @@
 [![OpenJij](https://img.shields.io/badge/OpenJij-0.11.6-purple.svg)](https://www.openjij.org/)
 [![D-Wave Neal](https://img.shields.io/badge/D--Wave-Neal%200.5.5-orange.svg)](https://dwave-neal-docs.readthedocs.io/)
 
-This repository accompanies the current Applied Soft Computing manuscript draft on **priority-aware residual-capacity QUBO decomposition (PRC-QUBO)** for large-scale sensor-to-server assignment in smart-city edge systems.
+This repository accompanies a manuscript on **priority-aware residual-capacity QUBO decomposition (PRC-QUBO)** for large-scale sensor-to-server assignment in smart-city edge systems.
 
 The main contribution is formulation-level: the work studies which QUBO representation is appropriate for a sequential, capacity-constrained edge-resource allocation problem where accepted assignments consume server capacity and change the feasible region for later batches. Solver behavior is evaluated after that formulation question is fixed.
 
@@ -33,14 +33,14 @@ The benchmark uses a synthetic but reproducible city-scale instance with:
 
 Earlier versions of this project emphasized a direct comparison between simulated quantum annealing (SQA) and simulated annealing (SA). The current manuscript shifts the emphasis to the QUBO formulation itself.
 
-The benchmark demonstrates that the QUBO seen by the solver must represent the current residual server capacity in order to produce feasible assignments in this sequential edge-resource allocation setting.
+The benchmark evaluates whether representing the current residual server capacity in the sampled QUBO is necessary for maintaining feasible assignments under the tested sequential edge-resource allocation protocol.
 
 To answer this, the repository contains three QUBO formulations evaluated under the same benchmark protocol:
 
 | Formulation | Capacity information inside the sampled QUBO | Purpose |
 |---|---|---|
 | **AO-QUBO** | None | Assignment-only baseline |
-| **Static-QCP-QUBO** | Initial server capacity `K_j` | Static quadratic capacity-penalty baseline |
+| **Static-QCP-QUBO** | Initial server capacity `K_j` | Static quadratic capacity-target penalty baseline |
 | **PRC-QUBO** | Current residual capacity `R_j^(t)` | Proposed state-aware decomposition |
 
 SQA and SA are then treated as solver backends. Within PRC-QUBO, they solve the same residual-capacity-aware batch Hamiltonians and differ only in the annealing dynamics and implementation.
@@ -60,9 +60,9 @@ Let:
 The target assignment problem combines:
 
 - low assignment cost
-- one server per assigned sensor
+- at most one committed server assignment per sensor
 - server-capacity feasibility
-- high-priority sensors processed earlier in the sequence
+- priority-aware sequencing of higher-priority and higher-load sensors
 
 A direct full assignment model would contain:
 
@@ -183,16 +183,16 @@ The released implementation uses:
 | `beta` | 100 | infeasible pair penalty |
 | `lambda` | 15 | same-sensor multi-selection penalty |
 
-The priority term is not the only priority mechanism. Operational priority is represented jointly by:
+Operational priority is not represented by a single coefficient. It is represented jointly by:
 
 - sorting sensors by `p_i l_i` before batching
 - including priority in the cost construction
 - using the priority-related weight in the PRC-QUBO coefficient
-- decoding, validation, repair, and post-processing
+- decoding, residual-capacity validation, optional fallback handling, and final local refinement
 
-In the released implementation, `p_i = 3` denotes the highest priority and `p_i = 1` the lowest. The coefficient `r_i` is a bounded class-dependent scaling factor used in the QUBO reward/evaluation scale; it should not be interpreted as the only priority score. Operational priority is produced by the combined ordering, cost construction, decoding, and residual-capacity validation procedure.
+In the released implementation, `p_i = 3` denotes the highest priority and `p_i = 1` the lowest. The coefficient `r_i` denotes the priority-related reward multiplier used in the PRC-QUBO linear coefficient. It should not be interpreted as the sole priority mechanism. Operational priority is produced by the combined ordering, cost construction, decoding, residual-capacity validation, optional fallback handling, and final local refinement procedure.
 
-The quadratic term discourages multiple server selections for the same sensor, but it is not claimed to be a complete exact-penalty reformulation of the full ILP. Final feasibility is enforced by binary decoding, residual-capacity validation, optional fallback handling, local reassignment refinement, and residual-state updates.
+The quadratic term discourages multiple server selections for the same sensor, but the batch QUBO is not claimed to be a complete exact-penalty reformulation of the full ILP. Final feasibility is enforced by binary decoding, residual-capacity validation, optional fallback handling, final local reassignment refinement, and residual-state updates.
 
 Each released PRC-QUBO batch contains:
 
@@ -238,7 +238,7 @@ AO-QUBO is not deliberately broken. It is a valid lower-information QUBO baselin
 
 ### Static-QCP-QUBO Baseline
 
-Static-QCP-QUBO augments AO-QUBO with a static quadratic capacity penalty based on initial capacities.
+Static-QCP-QUBO augments AO-QUBO with a static quadratic capacity-target penalty based on initial capacities.
 
 Let:
 
@@ -319,7 +319,7 @@ The common benchmark pipeline is:
 
 For the formulation benchmark, AO-QUBO and Static-QCP-QUBO use the same input stream, batch size, candidate-server budget, solvers, decoding, validation, and final evaluation objective as PRC-QUBO. Their non-residual nature is localized to the QUBO-construction block.
 
-For publication baseline runs, final local optimization is not used for the non-residual baselines. This keeps AO-QUBO and Static-QCP-QUBO as formulation baselines rather than optimized hybrid methods. For PRC-QUBO, the main solver tables report the complete annealing-backed pipeline, while the capacity-stress table below reports pre-refinement diagnostic objectives with final local reassignment disabled for every formulation.
+For the formulation-ablation runs reported in the manuscript, final local optimization is not used to strengthen the non-residual baselines. This keeps AO-QUBO and Static-QCP-QUBO as controlled capacity-representation baselines rather than optimized hybrid methods. For PRC-QUBO, the main solver tables report the complete annealing-backed pipeline, while the capacity-stress table below reports pre-refinement diagnostic objectives with final local reassignment disabled for every formulation.
 
 ## Experimental Results
 
@@ -335,7 +335,7 @@ The formulation-level comparison aggregates full-scale runs on the same `20,000 
 
 The PRC-QUBO objective in this table corresponds to the complete solver-backed pipeline after final local reassignment refinement. The capacity-stress table reports the no-final-refinement diagnostic objective separately, so the two objective values should not be treated as contradictory.
 
-The key result is not that AO-QUBO or Static-QCP-QUBO are invalid QUBOs. They are valid non-residual formulations. Their weakness in this benchmark is that they solve a stale approximation of a sequential problem: after earlier batches consume capacity, later low-energy decoded assignments often fail residual-capacity validation.
+The comparison should not be interpreted as a claim that AO-QUBO or Static-QCP-QUBO are invalid QUBO models. They are controlled non-residual capacity-representation ablations. Their limitation in this benchmark is that they solve a progressively stale approximation of a sequential problem: after earlier batches consume capacity, later low-energy decoded assignments often fail residual-capacity validation.
 
 Static-QCP-QUBO increases the average number of QUBO coefficients from `16,800` to `80,000`, but improves coverage by less than one percentage point over AO-QUBO. PRC-QUBO preserves the smaller AO-style batch scale while making the sampled Hamiltonian aware of the current residual resource state.
 
@@ -350,7 +350,7 @@ Static-QCP-QUBO increases the average number of QUBO coefficients from `16,800` 
 | **Static-QCP-QUBO + SQA** | 19.47 +/- 0.18% | 243,865 +/- 509 | 1,219.2 +/- 1,443.0 | 226.0 | 80,000 |
 | **Static-QCP-QUBO + SA** | 20.05 +/- 0.00% | 242,137 +/- 0 | 1,885.1 +/- 61.4 | 226.0 | 80,000 |
 
-Changing the annealing backend does not rescue the non-residual formulations. The limiting factor is the mismatch between the capacity state represented in the sampled Hamiltonian and the residual capacity used for final feasibility checking.
+Changing the annealing backend does not materially change the non-residual formulation outcome. The limiting factor is the mismatch between the capacity state represented in the sampled Hamiltonian and the residual capacity used for final feasibility checking.
 
 ### Capacity-Stress Sensitivity
 
@@ -363,13 +363,13 @@ The capacity-stress experiment uniformly scales server capacities after data gen
 | 0.33 | 72.02% | 5.64% | 5.42% | 98.69% | 15,659 |
 | 0.25 | 95.07% | 4.18% | 4.15% | 94.44% | 27,388 |
 
-These runs show that the formulation-level gap is not caused only by the default capacity surplus. AO-QUBO and Static-QCP-QUBO degrade sharply as utilization increases, while PRC-QUBO preserves high validated coverage because the sampled Hamiltonian is rebuilt from the current residual-capacity state before each batch.
+These runs show that the formulation-level gap is not explained solely by the aggregate capacity surplus in the default instance. AO-QUBO and Static-QCP-QUBO degrade sharply as utilization increases, while PRC-QUBO preserves high validated coverage because the sampled Hamiltonian is rebuilt from the current residual-capacity state before each batch.
 
 ![Capacity-stress formulation comparison](manuscript_revision/figures/capacity_stress_sqa_600dpi.png)
 
 ### PRC-QUBO Solver-Level Comparison
 
-After the formulation issue is removed by using PRC-QUBO, the solver-level comparison focuses on backend behavior.
+After residual-capacity representation is fixed by using PRC-QUBO, the solver-level comparison focuses on backend behavior.
 
 | Method | Objective value | Coverage (%) | Mean time (s) | Mean throughput (cam/s) |
 |---|---:|---:|---:|---:|
@@ -377,7 +377,7 @@ After the formulation issue is removed by using PRC-QUBO, the solver-level compa
 | **PRC-QUBO + SA** | 7,108.1 | 99.6 | 2,779.26 | 7.22 |
 | **Priority-capacity greedy baseline** | 225,163.4 | 25.33 | 180.01 | 28.14 |
 
-SQA and SA reach comparable PRC-QUBO assignment quality, while the implemented OpenJij SQA-backed pipeline is about `9.3x` faster than the Neal SA-backed pipeline in the reported benchmark. This is an implementation-level solver result inside the PRC-QUBO decomposition, not a claim of universal quantum advantage.
+SQA and SA reach comparable PRC-QUBO assignment quality, while the implemented OpenJij SQA-backed pipeline is about `9.3x` faster than the Neal SA-backed pipeline in the reported benchmark. This should be interpreted as an implementation-level solver result inside the PRC-QUBO decomposition, not as a claim of universal quantum advantage.
 
 ### Additional Validation Baselines
 
@@ -389,11 +389,11 @@ Two additional non-QUBO validation baselines are provided for reviewer-facing ro
 | **RC-Greedy-20** | `500 x 25` | 3 | 100.00 +/- 0.00% | 283.762 +/- 30.378 | 0.029 +/- 0.004 | small heuristic reference |
 | **Small-MILP-Oracle** | `500 x 25` | 3 | 100.00 +/- 0.00% | 189.433 +/- 13.992 | 0.378 +/- 0.039 | reduced-instance exact validation |
 
-`RC-Greedy-20` uses the same data generator, priority ordering, residual-capacity state, `80 x 20` batch interface, and `99.5%` early-stop rule as the PRC-QUBO runs, but it does not construct or solve a QUBO. On the full benchmark it reaches the same validated coverage as PRC-QUBO, but with a higher evaluation objective.
+`RC-Greedy-20` uses the same data generator, priority ordering, residual-capacity state, `80 x 20` batch interface, and `99.5%` early-stop rule as the PRC-QUBO runs, but it does not construct or solve a QUBO. On the full benchmark, it reaches the same validated coverage as PRC-QUBO, but with a higher evaluation objective. It therefore helps separate the value of residual-capacity awareness from the additional assignment-quality effect of annealing-backed QUBO search.
 
 `Small-MILP-Oracle` uses SciPy/HiGHS MILP on reduced instances. It is not intended as a full-scale competitor for the `20,000 x 800` benchmark. Its role is to validate small-instance assignment quality and to show the gap between a constructive residual-capacity heuristic and an exact reduced-instance assignment model.
 
-An optional diagnostic run of `RC-Greedy-20 --final-opt` is useful as an ablation of post-hoc reassignment. It should not be mixed into the main formulation benchmark without explanation, because it changes the comparison from online constructive assignment to global local reassignment after the sequence has already been built.
+An optional diagnostic run of `RC-Greedy-20 --final-opt` is useful as an ablation of post-hoc reassignment. It should not be mixed into the main formulation benchmark without explicit labeling, because it changes the comparison from online constructive assignment to global local reassignment after the sequence has already been built.
 
 ## Reproducing Runs
 
