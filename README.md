@@ -1,10 +1,10 @@
-# PRC-QUBO Decomposition for Large-Scale Sensor-to-Server Assignment
+# PRC-QUBO Family for Large-Scale Sensor-to-Server Assignment
 
 [![Python](https://img.shields.io/badge/Python-3.10%20recommended-blue.svg)](https://www.python.org/)
 [![OpenJij](https://img.shields.io/badge/OpenJij-0.11.6-purple.svg)](https://www.openjij.org/)
 [![D-Wave Neal](https://img.shields.io/badge/D--Wave-Neal%200.5.5-orange.svg)](https://dwave-neal-docs.readthedocs.io/)
 
-This repository accompanies a manuscript on **priority-aware residual-capacity QUBO decomposition (PRC-QUBO)** for large-scale sensor-to-server assignment in smart-city edge systems.
+This repository accompanies a manuscript on the **priority-aware residual-capacity QUBO family (PRC-QUBO)** for large-scale sensor-to-server assignment in smart-city edge systems. The current revision adds a conflict-coupled residual-capacity formulation, denoted **CC-PRC-QUBO**, for high-utilization capacity-stress regimes.
 
 The main contribution is formulation-level: the work studies which QUBO representation is appropriate for a sequential, capacity-constrained edge-resource allocation problem where accepted assignments consume server capacity and change the feasible region for later batches. Solver behavior is evaluated after that formulation question is fixed.
 
@@ -35,15 +35,18 @@ Earlier versions of this project emphasized a direct comparison between simulate
 
 The benchmark evaluates whether representing the current residual server capacity in the sampled QUBO is necessary for maintaining feasible assignments under the tested sequential edge-resource allocation protocol.
 
-To answer this, the repository contains three QUBO formulations evaluated under the same benchmark protocol:
+To answer this, the repository contains four main QUBO formulations evaluated under the same benchmark protocol:
 
 | Formulation | Capacity information inside the sampled QUBO | Purpose |
 |---|---|---|
 | **AO-QUBO** | None | Assignment-only baseline |
 | **Static-QCP-QUBO** | Initial server capacity `K_j` | Static quadratic capacity-target penalty baseline |
 | **PRC-QUBO** | Current residual capacity `R_j^(t)` | Proposed state-aware decomposition |
+| **CC-PRC-QUBO** | Current residual capacity plus intra-batch capacity-conflict couplings | Conflict-coupled extension for capacity-stress regimes |
 
 SQA and SA are then treated as solver backends. Within PRC-QUBO, they solve the same residual-capacity-aware batch Hamiltonians and differ only in the annealing dynamics and implementation.
+
+Two additional PRC-family ablations are retained for analysis: `PRC-QUBO-D`, a decoder-enhanced PRC-QUBO variant, and `CC-PRC-QUBO with conservative decoding`. These are treated as decoding/feasibility ablations rather than separate primary QUBO formulations.
 
 ## Problem Setting
 
@@ -202,6 +205,37 @@ Each released PRC-QUBO batch contains:
 16,800 total linear + quadratic QUBO coefficients per full batch
 ```
 
+### CC-PRC-QUBO Extension
+
+`CC-PRC-QUBO` is the conflict-coupled extension of PRC-QUBO. It keeps the same residual-capacity linear coefficients and the same `80 x 20` batch decomposition, but adds intra-batch capacity-conflict couplings between pairs of sensors assigned to the same candidate server.
+
+Conceptually:
+
+```math
+H_t^{\mathrm{CC\text{-}PRC}}(x)
+=
+H_t^{\mathrm{PRC}}(x)
++
+\eta
+\sum_{j\in S_t}
+\sum_{\substack{i,k\in B_t\\i \lt k}}
+\frac{l_i l_k}{(R_j^{(t)}+\epsilon)^2}
+x_{i,j}x_{k,j}.
+```
+
+The additional term penalizes combinations of high-load sensors that compete for the same residual server capacity within a batch. This is different from Static-QCP-QUBO: the couplings are rebuilt from the current residual state `R_j^(t)`, not from the initial capacity profile `K_j`.
+
+Full `80 x 20` CC-PRC-QUBO batches contain about:
+
+```text
+1,600 binary variables
+15,200 same-sensor one-hot pairwise terms
+63,200 same-server capacity-conflict pairwise terms
+80,000 total linear + quadratic QUBO coefficients per full batch
+```
+
+In the logs, `PRC-QUBO-C-no-decoder` denotes the conflict-coupled QUBO with the original decoding/validation path. It is the cleanest formulation-level test of the conflict-coupling contribution. `PRC-QUBO-D` denotes a decoder-only ablation and should not be treated as a separate primary QUBO formulation.
+
 ### AO-QUBO Baseline
 
 AO-QUBO is the assignment-only baseline. It uses the same batch variables and solver interface, but capacity is not represented inside the sampled Hamiltonian.
@@ -356,14 +390,25 @@ Changing the annealing backend does not materially change the non-residual formu
 
 The capacity-stress experiment uniformly scales server capacities after data generation while keeping seed `42`, the `20,000 x 800` instance, priority ordering, `80 x 20` batch structure, SQA backend, decoding, validation, and evaluation formula fixed. Final local reassignment refinement is disabled in these runs for all formulations; the PRC-QUBO objective column is therefore a pre-refinement diagnostic value.
 
-| Capacity scale | Utilization | AO-QUBO coverage | Static-QCP-QUBO coverage | PRC-QUBO coverage | PRC-QUBO objective, pre-refinement |
-|---:|---:|---:|---:|---:|---:|
-| 1.00 | 23.77% | 19.05% | 19.31% | 99.60% | 12,852 |
-| 0.50 | 47.53% | 8.91% | 8.84% | 99.56% | 12,939 |
-| 0.33 | 72.02% | 5.64% | 5.42% | 98.69% | 15,659 |
-| 0.25 | 95.07% | 4.18% | 4.15% | 94.44% | 27,388 |
+| Capacity scale | Utilization | AO-QUBO cov. | Static-QCP cov. | PRC-QUBO cov. | CC-PRC-QUBO cov. | CC-PRC objective |
+|---:|---:|---:|---:|---:|---:|---:|
+| 1.00 | 23.77% | 19.05% | 19.30% | 99.60% | 99.60% | 12,891 |
+| 0.50 | 47.53% | 8.91% | 8.84% | 99.56% | 99.60% | 12,918 |
+| 0.33 | 72.02% | 5.64% | 5.42% | 98.69% | 99.59% | 13,173 |
+| 0.25 | 95.07% | 4.18% | 4.15% | 94.44% | 99.70% | 12,290 |
 
-These runs show that the formulation-level gap is not explained solely by the aggregate capacity surplus in the default instance. AO-QUBO and Static-QCP-QUBO degrade sharply as utilization increases, while PRC-QUBO preserves high validated coverage because the sampled Hamiltonian is rebuilt from the current residual-capacity state before each batch.
+These runs show that the formulation-level gap is not explained solely by the aggregate capacity surplus in the default instance. AO-QUBO and Static-QCP-QUBO degrade sharply as utilization increases. PRC-QUBO remains strong at moderate utilization, but begins to lose validated assignments near the 95% stress regime. CC-PRC-QUBO restores high coverage under this stress condition by adding residual-state-dependent intra-batch capacity-conflict couplings.
+
+At 95.07% utilization, the current SQA logs report:
+
+| Variant | Coverage | Objective | Assignment cost | Rejected raw assignments | Avg. QUBO terms |
+|---|---:|---:|---:|---:|---:|
+| **PRC-QUBO** | 94.44% | 27,388.14 | 10,693.14 | 2,666 | 16,800 |
+| **PRC-QUBO-D** | 99.60% | 12,779.62 | 11,579.62 | 0 | 16,800 |
+| **CC-PRC-QUBO** | 99.70% | 12,290.09 | 11,390.09 | 525 | 80,000 |
+| **CC-PRC-QUBO with conservative decoder** | 99.60% | 12,863.76 | 11,663.76 | 0 | 80,000 |
+
+The best conflict-coupled result is obtained with the original decoding/validation path. This is important because it indicates that the improvement is not only a decoder-side repair effect; the intra-batch capacity-conflict couplings materially change the sampled QUBO landscape.
 
 ![Capacity-stress formulation comparison](manuscript_revision/figures/capacity_stress_sqa_600dpi.png)
 
@@ -459,6 +504,35 @@ python capacity_stress_experiment.py --formulation Static-QCP-QUBO --solver SQA 
 
 The reported stress table uses `capacity_scale` values `1.00`, `0.50`, `0.33`, and `0.25`, with final local reassignment refinement disabled.
 
+### CC-PRC-QUBO Article-Revision Runs
+
+The current article-revision stress and ablation suite is controlled by `prc_qubo_conflict_stress.py` and the helper scripts in `scripts/`.
+
+Run the CC-PRC-QUBO conservative-decoder stress curve and the 95.07% ablation suite:
+
+```powershell
+.\scripts\run_prc_qubo_c_article_suite.bat
+```
+
+Run only the conflict-coupled QUBO with the original decoder across the full capacity-stress curve:
+
+```powershell
+.\scripts\run_prc_qubo_c_conflict_only_stress.bat
+```
+
+Equivalent direct commands are:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\run_prc_qubo_c_article_suite.ps1 -RunAll
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\run_prc_qubo_c_article_suite.ps1 -RunConflictOnlyStressCurve
+```
+
+Rebuild the article-revision summary tables from stored JSON logs:
+
+```powershell
+python scripts\build_article_revision_summary.py --output-dir logs_article_revision
+```
+
 ### Additional Validation Baselines
 
 ```powershell
@@ -507,6 +581,8 @@ Important directories:
 | `logs_static_qcp_qubo_sqa/` | Static-QCP-QUBO + SQA summaries and progress logs |
 | `logs_static_qcp_qubo_sa/` | Static-QCP-QUBO + SA summaries and progress logs |
 | `logs_capacity_stress/` | capacity-stress summaries, progress logs, and CSV exports |
+| `logs_article_revision/` | latest CC-PRC-QUBO, PRC-QUBO-D, and article-revision SQA stress summaries |
+| `logs_quality_stress_strong_baselines/` | strong residual-aware classical baseline stress summaries |
 | `logs_rc_greedy_20/` | residual-capacity greedy validation baseline summaries and progress logs |
 | `logs_small_milp_oracle/` | reduced-instance MILP oracle summaries and progress logs |
 | `logs_openjij_windows/` | PRC-QUBO + SQA logs from the Windows/OpenJij runs |
@@ -596,10 +672,17 @@ QAnnealing/
 |-- static_qcp_qubo_sqa.py            # Static-QCP-QUBO + SQA baseline
 |-- static_qcp_qubo_sa.py             # Static-QCP-QUBO + SA baseline
 |-- capacity_stress_experiment.py     # capacity-scaling sensitivity experiment
+|-- prc_qubo_conflict_stress.py       # CC-PRC-QUBO and PRC-family stress/ablation runs
+|-- classical_metaheuristic_baselines.py
+|-- or_inspired_baselines.py
 |-- rc_greedy_20.py                   # residual-capacity greedy validation baseline
 |-- small_milp_oracle.py              # reduced-instance MILP oracle
 |-- greedy.py                         # priority-capacity greedy reference
 |-- scripts/
+|   |-- build_article_revision_summary.py
+|   |-- run_prc_qubo_c_article_suite.ps1
+|   |-- run_prc_qubo_c_article_suite.bat
+|   |-- run_prc_qubo_c_conflict_only_stress.bat
 |   |-- plot_formulation_comparison.py
 |   |-- plot_capacity_stress.py
 |-- manuscript_revision/
@@ -612,6 +695,8 @@ QAnnealing/
 |-- logs_static_qcp_qubo_sqa/
 |-- logs_static_qcp_qubo_sa/
 |-- logs_capacity_stress/
+|-- logs_article_revision/
+|-- logs_quality_stress_strong_baselines/
 |-- logs_rc_greedy_20/
 |-- logs_small_milp_oracle/
 |-- logs_openjij_windows/

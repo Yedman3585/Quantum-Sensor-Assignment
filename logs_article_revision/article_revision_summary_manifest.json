@@ -1,0 +1,12 @@
+{
+  "row_count": 51,
+  "include_diagnostic": false,
+  "roots": [
+    "logs_capacity_stress",
+    "logs_prc_qubo_conflict",
+    "logs_quality_stress_strong_baselines",
+    "logs_article_revision"
+  ],
+  "csv": "logs_article_revision\\article_revision_summary.csv",
+  "markdown": "logs_article_revision\\article_revision_summary.md"
+}
