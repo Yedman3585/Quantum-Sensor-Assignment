@@ -1,0 +1,12 @@
+[
+ {
+  "capacity_scale": 1.0,
+  "seed": 46,
+  "utilization_percent": 24.536193281019912,
+  "lagrangian_lower_bound": 5809.977974149021,
+  "feasible_objective": 5810.021288875508,
+  "covered": 20000,
+  "gap_to_bound_percent": 0.0007455230756358638,
+  "time_sec": 31.620864629745483
+ }
+]

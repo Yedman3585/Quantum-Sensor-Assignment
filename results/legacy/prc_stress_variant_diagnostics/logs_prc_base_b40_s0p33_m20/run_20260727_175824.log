@@ -1,0 +1,7 @@
+2026-07-27 17:58:24,864 - INFO - PRC diagnostic variant=base cameras=20000 servers=800 capacity_scale=0.330 batch=40 candidates=20
+2026-07-27 17:58:25,376 - INFO - total load 88453.0, base capacity 372165.7, scaled capacity 122814.7, utilization 72.0%
+2026-07-27 17:58:25,586 - INFO - batch 100: assigned 39, coverage 19.99%, success 100.0%, rejected 2
+2026-07-27 17:58:25,843 - INFO - batch 200: assigned 40, coverage 39.96%, success 100.0%, rejected 8
+2026-07-27 17:58:26,081 - INFO - batch 300: assigned 40, coverage 59.96%, success 100.0%, rejected 9
+2026-07-27 17:58:26,308 - INFO - batch 400: assigned 40, coverage 79.95%, success 100.0%, rejected 9
+2026-07-27 17:58:26,506 - INFO - 99.50% coverage threshold reached, completing

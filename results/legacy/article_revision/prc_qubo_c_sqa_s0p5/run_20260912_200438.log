@@ -1,0 +1,28 @@
+2026-09-12 20:04:38,301 - INFO - PRC-QUBO + SQA stress data generation: cameras=20000 servers=800 capacity_scale=0.500
+2026-09-12 20:04:38,826 - INFO - total load 88453.0, base capacity 372165.7, scaled capacity 186082.9, utilization 47.5%
+2026-09-12 20:04:38,827 - INFO - PRC-QUBO + SQA processing 250 batches
+2026-09-12 20:04:53,541 - INFO - batch 10: assigned 80, coverage 4.00%, success 100.0%, failed 0
+2026-09-12 20:05:08,571 - INFO - batch 20: assigned 80, coverage 8.00%, success 100.0%, failed 0
+2026-09-12 20:05:23,018 - INFO - batch 30: assigned 80, coverage 12.00%, success 100.0%, failed 0
+2026-09-12 20:05:38,079 - INFO - batch 40: assigned 80, coverage 16.00%, success 100.0%, failed 0
+2026-09-12 20:05:53,069 - INFO - batch 50: assigned 80, coverage 20.00%, success 100.0%, failed 0
+2026-09-12 20:06:08,411 - INFO - batch 60: assigned 80, coverage 24.00%, success 100.0%, failed 0
+2026-09-12 20:06:23,072 - INFO - batch 70: assigned 80, coverage 28.00%, success 100.0%, failed 0
+2026-09-12 20:06:38,356 - INFO - batch 80: assigned 80, coverage 32.00%, success 100.0%, failed 0
+2026-09-12 20:06:53,441 - INFO - batch 90: assigned 80, coverage 36.00%, success 100.0%, failed 0
+2026-09-12 20:07:08,241 - INFO - batch 100: assigned 80, coverage 40.00%, success 100.0%, failed 0
+2026-09-12 20:07:23,386 - INFO - batch 110: assigned 80, coverage 44.00%, success 100.0%, failed 0
+2026-09-12 20:07:38,715 - INFO - batch 120: assigned 80, coverage 48.00%, success 100.0%, failed 0
+2026-09-12 20:07:58,726 - INFO - batch 130: assigned 80, coverage 52.00%, success 100.0%, failed 0
+2026-09-12 20:08:18,432 - INFO - batch 140: assigned 80, coverage 56.00%, success 100.0%, failed 0
+2026-09-12 20:08:38,872 - INFO - batch 150: assigned 80, coverage 60.00%, success 100.0%, failed 0
+2026-09-12 20:08:59,418 - INFO - batch 160: assigned 80, coverage 64.00%, success 100.0%, failed 0
+2026-09-12 20:09:13,670 - INFO - batch 170: assigned 80, coverage 68.00%, success 100.0%, failed 0
+2026-09-12 20:09:26,868 - INFO - batch 180: assigned 80, coverage 72.00%, success 100.0%, failed 0
+2026-09-12 20:09:40,003 - INFO - batch 190: assigned 80, coverage 76.00%, success 100.0%, failed 0
+2026-09-12 20:09:52,964 - INFO - batch 200: assigned 80, coverage 80.00%, success 100.0%, failed 0
+2026-09-12 20:10:06,173 - INFO - batch 210: assigned 80, coverage 84.00%, success 100.0%, failed 0
+2026-09-12 20:10:19,201 - INFO - batch 220: assigned 80, coverage 88.00%, success 100.0%, failed 0
+2026-09-12 20:10:32,315 - INFO - batch 230: assigned 80, coverage 92.00%, success 100.0%, failed 0
+2026-09-12 20:10:45,554 - INFO - batch 240: assigned 80, coverage 96.00%, success 100.0%, failed 0
+2026-09-12 20:10:57,361 - INFO - 99.50% coverage threshold reached, completing

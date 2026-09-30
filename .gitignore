@@ -205,3 +205,12 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# --- project-specific ---
+.idea/
+# experiment outputs written by new runs (published results live in results/)
+/logs_*/
+/logs/
+# keep the archived run logs under results/ despite the *.log rule above
+!results/**/*.log
+!legacy/**/*.log

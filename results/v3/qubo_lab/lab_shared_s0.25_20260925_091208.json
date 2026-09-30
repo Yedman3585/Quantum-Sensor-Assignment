@@ -1,0 +1,153 @@
+{
+ "args": {
+  "capacity_scale": 0.25,
+  "window": "shared",
+  "k_percam": 5,
+  "min_gap": 0.01,
+  "max_hard": 4,
+  "configs": "F1:SA,F1:SQA",
+  "reads": 10,
+  "sweeps": 5000,
+  "trotter": 8,
+  "lam_cap": 1.0,
+  "lam_onehot": 0.45,
+  "warm": false,
+  "out": "/tmp/claude-0/lab"
+ },
+ "summary": {
+  "exact": {
+   "mean_gap_pct": 0.0,
+   "max_gap_pct": 0.0,
+   "optimal": 4,
+   "beats_greedy": 4,
+   "beats_regret_ls": 2
+  },
+  "greedy": {
+   "mean_gap_pct": 1.7542550031648307,
+   "max_gap_pct": 2.909099874115656,
+   "optimal": 0,
+   "beats_greedy": 0,
+   "beats_regret_ls": 0
+  },
+  "regret": {
+   "mean_gap_pct": 0.19578961498112152,
+   "max_gap_pct": 0.4129069269835249,
+   "optimal": 1,
+   "beats_greedy": 4,
+   "beats_regret_ls": 0
+  },
+  "regret_ls": {
+   "mean_gap_pct": 0.015674809393729623,
+   "max_gap_pct": 0.04690867363949271,
+   "optimal": 2,
+   "beats_greedy": 4,
+   "beats_regret_ls": 0
+  },
+  "F1:SA:cold": {
+   "mean_gap_pct": 5.836843741462244,
+   "max_gap_pct": 7.751311462980833,
+   "optimal": 0,
+   "beats_greedy": 0,
+   "beats_regret_ls": 0,
+   "mean_time_s": 3.2993431091308594
+  },
+  "F1:SA:cold+ls": {
+   "mean_gap_pct": 0.001533884953214823,
+   "max_gap_pct": 0.006135539812859292,
+   "optimal": 3,
+   "beats_greedy": 4,
+   "beats_regret_ls": 2,
+   "mean_time_s": 3.2993431091308594
+  },
+  "F1:SQA:cold": {
+   "mean_gap_pct": 1.4799971529122131,
+   "max_gap_pct": 1.641481249967545,
+   "optimal": 0,
+   "beats_greedy": 2,
+   "beats_regret_ls": 0,
+   "mean_time_s": 24.321890771389008
+  },
+  "F1:SQA:cold+ls": {
+   "mean_gap_pct": 0.0710724963825529,
+   "max_gap_pct": 0.18383300119220206,
+   "optimal": 1,
+   "beats_greedy": 4,
+   "beats_regret_ls": 1,
+   "mean_time_s": 24.321890771389008
+  }
+ },
+ "rows": [
+  {
+   "batch": 8,
+   "exact": 23.49829788800061,
+   "greedy": 23.783883460030594,
+   "regret": 23.49829788800061,
+   "regret_ls": 23.49829788800061,
+   "t_regret_ls": 0.05683398246765137,
+   "F1:SA:cold": 24.801122355470678,
+   "F1:SA:cold+ls": 23.499739635422873,
+   "F1:SA:cold:time": 3.5780582427978516,
+   "F1:SA:cold:onehot_reads": 1.0,
+   "F1:SA:cold:vars": 1680,
+   "F1:SQA:cold": 23.86855247569302,
+   "F1:SQA:cold+ls": 23.505971118030466,
+   "F1:SQA:cold:time": 27.095380544662476,
+   "F1:SQA:cold:onehot_reads": 1.0,
+   "F1:SQA:cold:vars": 1680
+  },
+  {
+   "batch": 18,
+   "exact": 22.06883575677259,
+   "greedy": 22.455709910097596,
+   "regret": 22.140193761323083,
+   "regret_ls": 22.06883575677259,
+   "t_regret_ls": 0.07631754875183105,
+   "F1:SA:cold": 22.99022977208654,
+   "F1:SA:cold+ls": 22.06883575677259,
+   "F1:SA:cold:time": 3.2801313400268555,
+   "F1:SA:cold:onehot_reads": 1.0,
+   "F1:SA:cold:vars": 1680,
+   "F1:SQA:cold": 22.431091557806145,
+   "F1:SQA:cold+ls": 22.08379899601687,
+   "F1:SQA:cold:time": 22.360270261764526,
+   "F1:SQA:cold:onehot_reads": 1.0,
+   "F1:SQA:cold:vars": 1680
+  },
+  {
+   "batch": 19,
+   "exact": 18.32179615713558,
+   "greedy": 18.85479550607854,
+   "regret": 18.330390668699824,
+   "regret_ls": 18.330390668699824,
+   "t_regret_ls": 0.05438065528869629,
+   "F1:SA:cold": 19.39850157992834,
+   "F1:SA:cold+ls": 18.32179615713558,
+   "F1:SA:cold:time": 3.308408498764038,
+   "F1:SA:cold:onehot_reads": 1.0,
+   "F1:SA:cold:vars": 1680,
+   "F1:SQA:cold": 18.554439295959266,
+   "F1:SQA:cold+ls": 18.32179615713558,
+   "F1:SQA:cold:time": 22.856597185134888,
+   "F1:SQA:cold:onehot_reads": 1.0,
+   "F1:SQA:cold:vars": 1680
+  },
+  {
+   "batch": 23,
+   "exact": 16.844905655522815,
+   "greedy": 17.036860184843007,
+   "regret": 16.91445943781831,
+   "regret_ls": 16.847565561120213,
+   "t_regret_ls": 0.07889151573181152,
+   "F1:SA:cold": 18.150606758527662,
+   "F1:SA:cold+ls": 16.844905655522815,
+   "F1:SA:cold:time": 3.0307743549346924,
+   "F1:SA:cold:onehot_reads": 1.0,
+   "F1:SA:cold:vars": 1680,
+   "F1:SQA:cold": 17.086306656730216,
+   "F1:SQA:cold+ls": 16.875872151137358,
+   "F1:SQA:cold:time": 24.97531509399414,
+   "F1:SQA:cold:onehot_reads": 1.0,
+   "F1:SQA:cold:vars": 1680
+  }
+ ]
+}

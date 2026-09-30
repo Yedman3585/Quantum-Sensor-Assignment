@@ -1,0 +1,153 @@
+{
+ "args": {
+  "capacity_scale": 0.25,
+  "window": "shared",
+  "k_percam": 5,
+  "min_gap": 0.01,
+  "max_hard": 4,
+  "configs": "F1:SA,F1:SQA",
+  "reads": 10,
+  "sweeps": 5000,
+  "trotter": 8,
+  "lam_cap": 1.0,
+  "lam_onehot": 0.3,
+  "warm": false,
+  "out": "/tmp/claude-0/lab"
+ },
+ "summary": {
+  "exact": {
+   "mean_gap_pct": 0.0,
+   "max_gap_pct": 0.0,
+   "optimal": 4,
+   "beats_greedy": 4,
+   "beats_regret_ls": 2
+  },
+  "greedy": {
+   "mean_gap_pct": 1.7542550031648307,
+   "max_gap_pct": 2.909099874115656,
+   "optimal": 0,
+   "beats_greedy": 0,
+   "beats_regret_ls": 0
+  },
+  "regret": {
+   "mean_gap_pct": 0.19578961498112152,
+   "max_gap_pct": 0.4129069269835249,
+   "optimal": 1,
+   "beats_greedy": 4,
+   "beats_regret_ls": 0
+  },
+  "regret_ls": {
+   "mean_gap_pct": 0.015674809393729623,
+   "max_gap_pct": 0.04690867363949271,
+   "optimal": 2,
+   "beats_greedy": 4,
+   "beats_regret_ls": 0
+  },
+  "F1:SA:cold": {
+   "mean_gap_pct": 3.138791258012008,
+   "max_gap_pct": 3.9583509466517666,
+   "optimal": 0,
+   "beats_greedy": 0,
+   "beats_regret_ls": 0,
+   "mean_time_s": 3.1701847910881042
+  },
+  "F1:SA:cold+ls": {
+   "mean_gap_pct": 0.0063488483220329565,
+   "max_gap_pct": 0.019259853475272534,
+   "optimal": 2,
+   "beats_greedy": 4,
+   "beats_regret_ls": 1,
+   "mean_time_s": 3.1701847910881042
+  },
+  "F1:SQA:cold": {
+   "mean_gap_pct": 1.6515708465474277,
+   "max_gap_pct": 2.0162673360411563,
+   "optimal": 0,
+   "beats_greedy": 2,
+   "beats_regret_ls": 0,
+   "mean_time_s": 24.90924048423767
+  },
+  "F1:SQA:cold+ls": {
+   "mean_gap_pct": 0.08216503559364681,
+   "max_gap_pct": 0.1794490570472838,
+   "optimal": 1,
+   "beats_greedy": 4,
+   "beats_regret_ls": 1,
+   "mean_time_s": 24.90924048423767
+  }
+ },
+ "rows": [
+  {
+   "batch": 8,
+   "exact": 23.49829788800061,
+   "greedy": 23.783883460030594,
+   "regret": 23.49829788800061,
+   "regret_ls": 23.49829788800061,
+   "t_regret_ls": 0.058637380599975586,
+   "F1:SA:cold": 24.1644609833655,
+   "F1:SA:cold+ls": 23.499739635422873,
+   "F1:SA:cold:time": 3.1360433101654053,
+   "F1:SA:cold:onehot_reads": 1.0,
+   "F1:SA:cold:vars": 1680,
+   "F1:SQA:cold": 23.766302212714535,
+   "F1:SQA:cold+ls": 23.54046536198279,
+   "F1:SQA:cold:time": 28.08982014656067,
+   "F1:SQA:cold:onehot_reads": 1.0,
+   "F1:SQA:cold:vars": 1680
+  },
+  {
+   "batch": 18,
+   "exact": 22.06883575677259,
+   "greedy": 22.455709910097596,
+   "regret": 22.140193761323083,
+   "regret_ls": 22.06883575677259,
+   "t_regret_ls": 0.08572173118591309,
+   "F1:SA:cold": 22.639566131719665,
+   "F1:SA:cold+ls": 22.06883575677259,
+   "F1:SA:cold:time": 3.1428983211517334,
+   "F1:SA:cold:onehot_reads": 1.0,
+   "F1:SA:cold:vars": 1680,
+   "F1:SQA:cold": 22.477508285991682,
+   "F1:SQA:cold+ls": 22.08379899601687,
+   "F1:SQA:cold:time": 22.251845359802246,
+   "F1:SQA:cold:onehot_reads": 1.0,
+   "F1:SQA:cold:vars": 1680
+  },
+  {
+   "batch": 19,
+   "exact": 18.32179615713558,
+   "greedy": 18.85479550607854,
+   "regret": 18.330390668699824,
+   "regret_ls": 18.330390668699824,
+   "t_regret_ls": 0.05481076240539551,
+   "F1:SA:cold": 19.047037148765163,
+   "F1:SA:cold+ls": 18.32179615713558,
+   "F1:SA:cold:time": 3.239396572113037,
+   "F1:SA:cold:onehot_reads": 1.0,
+   "F1:SA:cold:vars": 1680,
+   "F1:SQA:cold": 18.69121254842795,
+   "F1:SQA:cold+ls": 18.32179615713558,
+   "F1:SQA:cold:time": 23.8500554561615,
+   "F1:SQA:cold:onehot_reads": 1.0,
+   "F1:SQA:cold:vars": 1680
+  },
+  {
+   "batch": 23,
+   "exact": 16.844905655522815,
+   "greedy": 17.036860184843007,
+   "regret": 16.91445943781831,
+   "regret_ls": 16.847565561120213,
+   "t_regret_ls": 0.08796095848083496,
+   "F1:SA:cold": 17.379855212783408,
+   "F1:SA:cold+ls": 16.848149959670117,
+   "F1:SA:cold:time": 3.162400960922241,
+   "F1:SA:cold:onehot_reads": 1.0,
+   "F1:SA:cold:vars": 1680,
+   "F1:SQA:cold": 17.11403354975588,
+   "F1:SQA:cold+ls": 16.858618842032147,
+   "F1:SQA:cold:time": 25.44524097442627,
+   "F1:SQA:cold:onehot_reads": 1.0,
+   "F1:SQA:cold:vars": 1680
+  }
+ ]
+}

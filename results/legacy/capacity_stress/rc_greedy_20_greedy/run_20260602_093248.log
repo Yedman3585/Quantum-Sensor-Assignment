@@ -1,0 +1,8 @@
+2026-06-02 09:32:48,901 - INFO - RC-Greedy-20 + GREEDY stress data generation: cameras=500 servers=25 capacity_scale=0.500
+2026-06-02 09:32:48,908 - INFO - total load 2243.7, base capacity 12362.3, scaled capacity 6181.1, utilization 36.3%
+2026-06-02 09:32:48,909 - INFO - RC-Greedy-20 + GREEDY processing 25 batches
+2026-06-02 09:32:48,938 - INFO - batch 5: assigned 20, coverage 20.00%, success 100.0%, failed 0
+2026-06-02 09:32:48,965 - INFO - batch 10: assigned 20, coverage 40.00%, success 100.0%, failed 0
+2026-06-02 09:32:48,991 - INFO - batch 15: assigned 20, coverage 60.00%, success 100.0%, failed 0
+2026-06-02 09:32:49,020 - INFO - batch 20: assigned 20, coverage 80.00%, success 100.0%, failed 0
+2026-06-02 09:32:49,042 - INFO - batch 25: assigned 20, coverage 100.00%, success 100.0%, failed 0

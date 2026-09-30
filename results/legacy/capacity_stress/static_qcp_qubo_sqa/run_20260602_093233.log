@@ -1,0 +1,8 @@
+2026-06-02 09:32:33,744 - INFO - Static-QCP-QUBO + SQA stress data generation: cameras=500 servers=25 capacity_scale=0.500
+2026-06-02 09:32:33,749 - INFO - total load 2243.7, base capacity 12362.3, scaled capacity 6181.1, utilization 36.3%
+2026-06-02 09:32:33,750 - INFO - Static-QCP-QUBO + SQA processing 25 batches
+2026-06-02 09:32:34,450 - INFO - batch 5: assigned 20, coverage 20.00%, success 100.0%, failed 0
+2026-06-02 09:32:35,139 - INFO - batch 10: assigned 13, coverage 38.60%, success 100.0%, failed 0
+2026-06-02 09:32:35,788 - INFO - batch 15: assigned 9, coverage 49.80%, success 86.7%, failed 2
+2026-06-02 09:32:36,432 - INFO - batch 20: assigned 11, coverage 60.00%, success 85.0%, failed 3
+2026-06-02 09:32:36,960 - INFO - batch 25: assigned 5, coverage 68.80%, success 76.0%, failed 6

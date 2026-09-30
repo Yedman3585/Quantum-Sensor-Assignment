@@ -1,0 +1,330 @@
+python3 global_bound_check.py --scales 1.0 --seed 42 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 42  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 42  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 42  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 42  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 42  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 42 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 42 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 42 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 42 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 42 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.33 --seed 42 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 42  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 42  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 42  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 42  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 42  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 42 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 42 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 42 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 42 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 42 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.25 --seed 42 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 42  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 42  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 42  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 42  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 42  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 42 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 42 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 42 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 42 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 42 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 1.0 --seed 43 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 43  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 43  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 43  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 43  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 43  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 43 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 43 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 43 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 43 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 43 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.33 --seed 43 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 43  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 43  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 43  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 43  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 43  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 43 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 43 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 43 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 43 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 43 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.25 --seed 43 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 43  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 43  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 43  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 43  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 43  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 43 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 43 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 43 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 43 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 43 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 1.0 --seed 44 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 44  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 44  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 44  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 44  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 44  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 44 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 44 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 44 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 44 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 44 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.33 --seed 44 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 44  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 44  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 44  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 44  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 44  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 44 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 44 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 44 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 44 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 44 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.25 --seed 44 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 44  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 44  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 44  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 44  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 44  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 44 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 44 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 44 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 44 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 44 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 1.0 --seed 45 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 45  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 45  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 45  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 45  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 45  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 45 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 45 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 45 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 45 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 45 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.33 --seed 45 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 45  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 45  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 45  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 45  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 45  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 45 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 45 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 45 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 45 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 45 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.25 --seed 45 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 45  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 45  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 45  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 45  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 45  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 45 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 45 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 45 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 45 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 45 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 1.0 --seed 46 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 46  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 46  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 46  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 46  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 46  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 46 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 46 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 46 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 46 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 46 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.33 --seed 46 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 46  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 46  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 46  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 46  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 46  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 46 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 46 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 46 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 46 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 46 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.25 --seed 46 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 46  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 46  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 46  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 46  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 46  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 46 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 46 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 46 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 46 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 46 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 1.0 --seed 47 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 47  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 47  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 47  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 47  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 47  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 47 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 47 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 47 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 47 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 47 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.33 --seed 47 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 47  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 47  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 47  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 47  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 47  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 47 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 47 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 47 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 47 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 47 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.25 --seed 47 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 47  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 47  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 47  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 47  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 47  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 47 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 47 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 47 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 47 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 47 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 1.0 --seed 48 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 48  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 48  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 48  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 48  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 48  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 48 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 48 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 48 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 48 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 48 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.33 --seed 48 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 48  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 48  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 48  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 48  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 48  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 48 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 48 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 48 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 48 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 48 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.25 --seed 48 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 48  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 48  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 48  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 48  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 48  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 48 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 48 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 48 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 48 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 48 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 1.0 --seed 49 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 49  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 49  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 49  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 49  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 49  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 49 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 49 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 49 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 49 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 49 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.33 --seed 49 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 49  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 49  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 49  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 49  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 49  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 49 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 49 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 49 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 49 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 49 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.25 --seed 49 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 49  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 49  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 49  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 49  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 49  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 49 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 49 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 49 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 49 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 49 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 1.0 --seed 50 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 50  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 50  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 50  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 50  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 50  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 50 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 50 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 50 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 50 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 50 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.33 --seed 50 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 50  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 50  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 50  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 50  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 50  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 50 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 50 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 50 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 50 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 50 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.25 --seed 50 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 50  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 50  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 50  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 50  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 50  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 50 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 50 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 50 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 50 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 50 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 1.0 --seed 51 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 51  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 51  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 51  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 51  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 51  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 1.0 --seed 51 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 1.0 --seed 51 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 1.0 --seed 51 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 1.0 --seed 51 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 1.0 --seed 51 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.33 --seed 51 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 51  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 51  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 51  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 51  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 51  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.33 --seed 51 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.33 --seed 51 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.33 --seed 51 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.33 --seed 51 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.33 --seed 51 --price --price-window --out campaign/priced
+python3 global_bound_check.py --scales 0.25 --seed 51 --out campaign/global
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 51  --out campaign/plain
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 51  --out campaign/plain
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 51  --out campaign/plain
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 51  --out campaign/plain
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 51  --out campaign/plain
+python3 v3_trajectory.py --method exact --capacity-scale 0.25 --seed 51 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method greedy --capacity-scale 0.25 --seed 51 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method regret --capacity-scale 0.25 --seed 51 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sa_v3 --capacity-scale 0.25 --seed 51 --price --price-window --out campaign/priced
+python3 v3_trajectory.py --method sqa_v3 --capacity-scale 0.25 --seed 51 --price --price-window --out campaign/priced

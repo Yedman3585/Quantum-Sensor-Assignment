@@ -1,0 +1,727 @@
+# PRC-QUBO Family for Large-Scale Sensor-to-Server Assignment
+
+[![Python](https://img.shields.io/badge/Python-3.10%20recommended-blue.svg)](https://www.python.org/)
+[![OpenJij](https://img.shields.io/badge/OpenJij-0.11.6-purple.svg)](https://www.openjij.org/)
+[![D-Wave Neal](https://img.shields.io/badge/D--Wave-Neal%200.5.5-orange.svg)](https://dwave-neal-docs.readthedocs.io/)
+
+This repository accompanies a manuscript on the **priority-aware residual-capacity QUBO family (PRC-QUBO)** for large-scale sensor-to-server assignment in smart-city edge systems. The current revision adds a conflict-coupled residual-capacity formulation, denoted **CC-PRC-QUBO**, for high-utilization capacity-stress regimes.
+
+The main contribution is formulation-level: the work studies which QUBO representation is appropriate for a sequential, capacity-constrained edge-resource allocation problem where accepted assignments consume server capacity and change the feasible region for later batches. Solver behavior is evaluated after that formulation question is fixed.
+
+The benchmark uses a synthetic but reproducible city-scale instance with:
+
+- `20,000` sensors/cameras
+- `800` heterogeneous edge servers
+- fixed random seed `42`
+- priority classes, sensor loads, bandwidth demands, server capacities, coordinates, and a shared assignment-cost matrix
+- batch decomposition into `80 x 20` QUBO subproblems
+
+## Contents
+
+- [Research Focus](#research-focus)
+- [Problem Setting](#problem-setting)
+- [QUBO Formulations](#qubo-formulations)
+- [Execution Pipeline](#execution-pipeline)
+- [Experimental Results](#experimental-results)
+- [Reproducing Runs](#reproducing-runs)
+- [Logs and Figures](#logs-and-figures)
+- [OpenJij Installation Notes](#openjij-installation-notes)
+- [Repository Structure](#repository-structure)
+- [Citation](#citation)
+
+## Research Focus
+
+Earlier versions of this project emphasized a direct comparison between simulated quantum annealing (SQA) and simulated annealing (SA). The current manuscript shifts the emphasis to the QUBO formulation itself.
+
+The benchmark evaluates whether representing the current residual server capacity in the sampled QUBO is necessary for maintaining feasible assignments under the tested sequential edge-resource allocation protocol.
+
+To answer this, the repository contains four main QUBO formulations evaluated under the same benchmark protocol:
+
+| Formulation | Capacity information inside the sampled QUBO | Purpose |
+|---|---|---|
+| **AO-QUBO** | None | Assignment-only baseline |
+| **Static-QCP-QUBO** | Initial server capacity `K_j` | Static quadratic capacity-target penalty baseline |
+| **PRC-QUBO** | Current residual capacity `R_j^(t)` | Proposed state-aware decomposition |
+| **CC-PRC-QUBO** | Current residual capacity plus intra-batch capacity-conflict couplings | Conflict-coupled extension for capacity-stress regimes |
+
+SQA and SA are then treated as solver backends. Within PRC-QUBO, they solve the same residual-capacity-aware batch Hamiltonians and differ only in the annealing dynamics and implementation.
+
+Two additional PRC-family ablations are retained for analysis: `PRC-QUBO-D`, a decoder-enhanced PRC-QUBO variant, and `CC-PRC-QUBO with conservative decoding`. These are treated as decoding/feasibility ablations rather than separate primary QUBO formulations.
+
+## Problem Setting
+
+Let:
+
+- `C` be the set of sensors/cameras
+- `S` be the set of edge servers
+- `x_ij in {0,1}` indicate whether sensor `i` is assigned to server `j`
+- `c_ij` be the normalized assignment cost
+- `l_i` be the computational load of sensor `i`
+- `K_j` be the initial processing capacity of server `j`
+- `p_i in {1,2,3}` be the priority level of sensor `i`
+
+The target assignment problem combines:
+
+- low assignment cost
+- at most one committed server assignment per sensor
+- server-capacity feasibility
+- priority-aware sequencing of higher-priority and higher-load sensors
+
+A direct full assignment model would contain:
+
+```text
+20,000 x 800 = 16,000,000 binary assignment variables
+```
+
+Even the one-hot assignment penalty alone would generate:
+
+```text
+20,000 * C(800, 2) = 6,392,000,000 pairwise terms
+```
+
+This is why the implementation uses iterative batch decomposition instead of a monolithic QUBO.
+
+## QUBO Formulations
+
+All QUBO models use the standard binary quadratic form:
+
+```math
+H_{\mathrm{QUBO}}(x) =
+\sum_u Q_{u,u}x_u
++
+\sum_{u \lt v}Q_{u,v}x_u x_v .
+```
+
+Raw QUBO energies are not compared across formulations, because each Hamiltonian contains different penalty terms. The final comparison uses the common post-hoc evaluation objective: assignment cost, uncovered-sensor penalty, overload penalty, and validated coverage.
+
+### Full Target Assignment QUBO
+
+The manuscript first presents the conceptual full target assignment QUBO:
+
+```math
+H_{\mathrm{full}}(x)
+=
+\sum_{i,j} c_{i,j}x_{i,j}
++
+\lambda_1\sum_i
+\left(
+\sum_j x_{i,j}-1
+\right)^2
++
+\lambda_2\sum_j
+\left[
+\max
+\left(
+0,
+\sum_i l_i x_{i,j}-K_j
+\right)
+\right]^2 .
+```
+
+This form is useful for describing the target constrained assignment objective. It is not constructed directly at city scale because the capacity penalty either requires slack variables or introduces dense server-wise couplings.
+
+### PRC-QUBO Decomposition
+
+PRC-QUBO replaces the full QUBO with a sequence of residual-capacity-aware batch subproblems.
+
+For batch `t`, let:
+
+- `B_t` be the selected sensor batch
+- `S_t` be the selected candidate-server subset
+- `R_j^(t)` be the residual capacity of server `j` before solving batch `t`
+
+Residual capacity is updated as:
+
+```math
+R_j^{(t)}
+=
+K_j
+-
+\sum_{\tau \lt t}
+\sum_{i\in B_\tau}
+l_i x_{i,j}.
+```
+
+The batch-level PRC-QUBO Hamiltonian is:
+
+```math
+H_t^{\mathrm{PRC}}(x)
+=
+\sum_{i\in B_t}
+\sum_{j\in S_t}
+\phi_{i,j}^{(t)}x_{i,j}
++
+\lambda
+\sum_{i\in B_t}
+\sum_{\substack{j,k\in S_t\\j \lt k}}
+x_{i,j}x_{i,k}.
+```
+
+The residual-capacity-dependent linear coefficient is:
+
+```math
+\phi_{i,j}^{(t)}
+=
+-\alpha r_i(1-c_{i,j})\mathbf{1}\{l_i \le R_j^{(t)}\}
++
+\beta\mathbf{1}\{l_i \gt R_j^{(t)}\}.
+```
+
+Equivalently:
+
+```math
+\phi_{i,j}^{(t)}
+=
+\begin{cases}
+-\alpha r_i(1-c_{i,j}), & l_i \le R_j^{(t)},\\
+\beta, & l_i \gt R_j^{(t)}.
+\end{cases}
+```
+
+The released implementation uses:
+
+| Parameter | Value | Role |
+|---|---:|---|
+| `alpha` | 25 | feasible-assignment reward scale |
+| `beta` | 100 | infeasible pair penalty |
+| `lambda` | 15 | same-sensor multi-selection penalty |
+
+Operational priority is not represented by a single coefficient. It is represented jointly by:
+
+- sorting sensors by `p_i l_i` before batching
+- including priority in the cost construction
+- using the priority-related weight in the PRC-QUBO coefficient
+- decoding, residual-capacity validation, optional fallback handling, and final local refinement
+
+In the released implementation, `p_i = 3` denotes the highest priority and `p_i = 1` the lowest. The coefficient `r_i` denotes the priority-related reward multiplier used in the PRC-QUBO linear coefficient. It should not be interpreted as the sole priority mechanism. Operational priority is produced by the combined ordering, cost construction, decoding, residual-capacity validation, optional fallback handling, and final local refinement procedure.
+
+The quadratic term discourages multiple server selections for the same sensor, but the batch QUBO is not claimed to be a complete exact-penalty reformulation of the full ILP. Final feasibility is enforced by binary decoding, residual-capacity validation, optional fallback handling, final local reassignment refinement, and residual-state updates.
+
+Each released PRC-QUBO batch contains:
+
+```text
+80 x 20 = 1,600 binary variables
+80 * C(20, 2) = 15,200 one-hot pairwise terms
+16,800 total linear + quadratic QUBO coefficients per full batch
+```
+
+### CC-PRC-QUBO Extension
+
+`CC-PRC-QUBO` is the conflict-coupled extension of PRC-QUBO. It keeps the same residual-capacity linear coefficients and the same `80 x 20` batch decomposition, but adds intra-batch capacity-conflict couplings between pairs of sensors assigned to the same candidate server.
+
+Conceptually:
+
+```math
+H_t^{\mathrm{CC\text{-}PRC}}(x)
+=
+H_t^{\mathrm{PRC}}(x)
++
+\eta
+\sum_{j\in S_t}
+\sum_{\substack{i,k\in B_t\\i \lt k}}
+\frac{l_i l_k}{(R_j^{(t)}+\epsilon)^2}
+x_{i,j}x_{k,j}.
+```
+
+The additional term penalizes combinations of high-load sensors that compete for the same residual server capacity within a batch. This is different from Static-QCP-QUBO: the couplings are rebuilt from the current residual state `R_j^(t)`, not from the initial capacity profile `K_j`.
+
+Full `80 x 20` CC-PRC-QUBO batches contain about:
+
+```text
+1,600 binary variables
+15,200 same-sensor one-hot pairwise terms
+63,200 same-server capacity-conflict pairwise terms
+80,000 total linear + quadratic QUBO coefficients per full batch
+```
+
+In the logs, `PRC-QUBO-C-no-decoder` denotes the conflict-coupled QUBO with the original decoding/validation path. It is the cleanest formulation-level test of the conflict-coupling contribution. `PRC-QUBO-D` denotes a decoder-only ablation and should not be treated as a separate primary QUBO formulation.
+
+### AO-QUBO Baseline
+
+AO-QUBO is the assignment-only baseline. It uses the same batch variables and solver interface, but capacity is not represented inside the sampled Hamiltonian.
+
+For each batch:
+
+```math
+H_t^{\mathrm{AO}}(x)
+=
+\sum_{i\in B_t}
+\sum_{j\in S_t}
+\left(c_{ij}-\lambda_A\right)x_{ij}
++
+2\lambda_A
+\sum_{i\in B_t}
+\sum_{\substack{j,k\in S_t\\j \lt k}}
+x_{ij}x_{ik}.
+```
+
+This is the expanded form of:
+
+```math
+\sum_{i,j}c_{ij}x_{ij}
++
+\lambda_A\sum_i
+\left(
+\sum_j x_{ij}-1
+\right)^2
+```
+
+after dropping constants and using `x_ij^2 = x_ij`.
+
+AO-QUBO is not deliberately broken. It is a valid lower-information QUBO baseline for assignment structure. Its limitation is that capacity information enters only after solving, during the shared residual-capacity validation stage.
+
+### Static-QCP-QUBO Baseline
+
+Static-QCP-QUBO augments AO-QUBO with a static quadratic capacity-target penalty based on initial capacities.
+
+Let:
+
+```math
+\tilde{l}_i = l_i / K_{max},
+\qquad
+\tilde{K}_j = K_j / K_{max}.
+```
+
+The compact form is:
+
+```math
+H_t^{\mathrm{StaticQCP}}(x)
+=
+H_t^{\mathrm{AO}}(x)
++
+\lambda_K
+\sum_{j\in S_t}
+\left(
+\sum_{i\in B_t}
+\tilde{l}_i x_{ij}
+-
+\tilde{K}_j
+\right)^2 .
+```
+
+The implemented expanded form is:
+
+```math
+H_t^{\mathrm{StaticQCP}}(x)
+=
+\sum_{i\in B_t}\sum_{j\in S_t}
+\left[
+c_{ij}
+- \lambda_A
++ \lambda_K
+\left(
+\tilde{l}_i^2
+- 2\tilde{K}_j\tilde{l}_i
+\right)
+\right]x_{ij}
++
+2\lambda_A
+\sum_{i\in B_t}
+\sum_{\substack{j,k\in S_t\\j \lt k}}
+x_{ij}x_{ik}
++
+2\lambda_K
+\sum_{j\in S_t}
+\sum_{\substack{i,k\in B_t\\i \lt k}}
+\tilde{l}_i\tilde{l}_k x_{ij}x_{kj}.
+```
+
+Static-QCP-QUBO represents the initial-capacity level of modeling. It exposes capacity information to the solver, but the penalty remains tied to `K_j`, not to the residual state `R_j^(t)` produced by earlier committed batches. The squared term behaves as a static capacity target, not as an exact inequality encoding of `sum_i l_i x_ij <= K_j`.
+
+The full `80 x 20` Static-QCP-QUBO batches contain about:
+
+```text
+1,600 linear terms
+78,400 quadratic terms
+80,000 total QUBO coefficients
+```
+
+## Execution Pipeline
+
+The common benchmark pipeline is:
+
+1. Generate the synthetic `20,000 x 800` instance using seed `42`.
+2. Build priority, load, bandwidth, capacity, coordinate, and cost arrays.
+3. Process sensors in priority-aware batches of size `80`.
+4. Select up to `20` candidate servers per batch.
+5. Build one of the three QUBO formulations.
+6. Solve the batch QUBO with either SQA or SA.
+7. Decode the raw binary/spin sample into candidate assignments.
+8. Validate decoded assignments against current residual capacities.
+9. Commit feasible assignments and update `R_j^(t)`.
+10. Log batch-level and final metrics.
+
+For the formulation benchmark, AO-QUBO and Static-QCP-QUBO use the same input stream, batch size, candidate-server budget, solvers, decoding, validation, and final evaluation objective as PRC-QUBO. Their non-residual nature is localized to the QUBO-construction block.
+
+For the formulation-ablation runs reported in the manuscript, final local optimization is not used to strengthen the non-residual baselines. This keeps AO-QUBO and Static-QCP-QUBO as controlled capacity-representation baselines rather than optimized hybrid methods. For PRC-QUBO, the main solver tables report the complete annealing-backed pipeline, while the capacity-stress table below reports pre-refinement diagnostic objectives with final local reassignment disabled for every formulation.
+
+## Experimental Results
+
+### Formulation-Level Comparison
+
+The formulation-level comparison aggregates full-scale runs on the same `20,000 x 800` benchmark.
+
+| Formulation | Capacity state in QUBO | Runs | Coverage mean +/- sd | Covered | Uncovered | Evaluation objective | Avg. QUBO terms |
+|---|---|---:|---:|---:|---:|---:|---:|
+| **AO-QUBO** | No capacity term | 6 | 19.26 +/- 0.32% | 3,853 | 16,148 | 244,392 +/- 928 | 16,800 |
+| **Static-QCP-QUBO** | Static initial `K_j` | 6 | 19.76 +/- 0.34% | 3,951 | 16,049 | 243,001 +/- 1,000 | 80,000 |
+| **PRC-QUBO** | Residual `R_j^(t)` | 15 | 99.60 +/- 0.00% | 19,920 | 80 | about 7,108 | 16,800 |
+
+The PRC-QUBO objective in this table corresponds to the complete solver-backed pipeline after final local reassignment refinement. The capacity-stress table reports the no-final-refinement diagnostic objective separately, so the two objective values should not be treated as contradictory.
+
+The comparison should not be interpreted as a claim that AO-QUBO or Static-QCP-QUBO are invalid QUBO models. They are controlled non-residual capacity-representation ablations. Their limitation in this benchmark is that they solve a progressively stale approximation of a sequential problem: after earlier batches consume capacity, later low-energy decoded assignments often fail residual-capacity validation.
+
+Static-QCP-QUBO increases the average number of QUBO coefficients from `16,800` to `80,000`, but improves coverage by less than one percentage point over AO-QUBO. PRC-QUBO preserves the smaller AO-style batch scale while making the sampled Hamiltonian aware of the current residual resource state.
+
+![Formulation-level comparison](manuscript_revision/figures/formulation_comparison_600dpi.png)
+
+### Non-Residual Baselines by Solver
+
+| Baseline + solver | Coverage mean +/- sd | Objective mean +/- sd | Time (s) mean +/- sd | Failed batches | Avg. QUBO terms |
+|---|---:|---:|---:|---:|---:|
+| **AO-QUBO + SQA** | 19.15 +/- 0.47% | 244,758 +/- 1,324 | 192.6 +/- 96.9 | 227.7 | 16,800 |
+| **AO-QUBO + SA** | 19.38 +/- 0.00% | 244,026 +/- 0 | 1,702.6 +/- 268.2 | 226.0 | 16,800 |
+| **Static-QCP-QUBO + SQA** | 19.47 +/- 0.18% | 243,865 +/- 509 | 1,219.2 +/- 1,443.0 | 226.0 | 80,000 |
+| **Static-QCP-QUBO + SA** | 20.05 +/- 0.00% | 242,137 +/- 0 | 1,885.1 +/- 61.4 | 226.0 | 80,000 |
+
+Changing the annealing backend does not materially change the non-residual formulation outcome. The limiting factor is the mismatch between the capacity state represented in the sampled Hamiltonian and the residual capacity used for final feasibility checking.
+
+### Capacity-Stress Sensitivity
+
+The capacity-stress experiment uniformly scales server capacities after data generation while keeping seed `42`, the `20,000 x 800` instance, priority ordering, `80 x 20` batch structure, SQA backend, decoding, validation, and evaluation formula fixed. Final local reassignment refinement is disabled in these runs for all formulations; the PRC-QUBO objective column is therefore a pre-refinement diagnostic value.
+
+| Capacity scale | Utilization | AO-QUBO cov. | Static-QCP cov. | PRC-QUBO cov. | CC-PRC-QUBO cov. | CC-PRC objective |
+|---:|---:|---:|---:|---:|---:|---:|
+| 1.00 | 23.77% | 19.05% | 19.30% | 99.60% | 99.60% | 12,891 |
+| 0.50 | 47.53% | 8.91% | 8.84% | 99.56% | 99.60% | 12,918 |
+| 0.33 | 72.02% | 5.64% | 5.42% | 98.69% | 99.59% | 13,173 |
+| 0.25 | 95.07% | 4.18% | 4.15% | 94.44% | 99.70% | 12,290 |
+
+These runs show that the formulation-level gap is not explained solely by the aggregate capacity surplus in the default instance. AO-QUBO and Static-QCP-QUBO degrade sharply as utilization increases. PRC-QUBO remains strong at moderate utilization, but begins to lose validated assignments near the 95% stress regime. CC-PRC-QUBO restores high coverage under this stress condition by adding residual-state-dependent intra-batch capacity-conflict couplings.
+
+At 95.07% utilization, the current SQA logs report:
+
+| Variant | Coverage | Objective | Assignment cost | Rejected raw assignments | Avg. QUBO terms |
+|---|---:|---:|---:|---:|---:|
+| **PRC-QUBO** | 94.44% | 27,388.14 | 10,693.14 | 2,666 | 16,800 |
+| **PRC-QUBO-D** | 99.60% | 12,779.62 | 11,579.62 | 0 | 16,800 |
+| **CC-PRC-QUBO** | 99.70% | 12,290.09 | 11,390.09 | 525 | 80,000 |
+| **CC-PRC-QUBO with conservative decoder** | 99.60% | 12,863.76 | 11,663.76 | 0 | 80,000 |
+
+The best conflict-coupled result is obtained with the original decoding/validation path. This is important because it indicates that the improvement is not only a decoder-side repair effect; the intra-batch capacity-conflict couplings materially change the sampled QUBO landscape.
+
+![Capacity-stress formulation comparison](manuscript_revision/figures/capacity_stress_sqa_600dpi.png)
+
+### PRC-QUBO Solver-Level Comparison
+
+After residual-capacity representation is fixed by using PRC-QUBO, the solver-level comparison focuses on backend behavior.
+
+| Method | Objective value | Coverage (%) | Mean time (s) | Mean throughput (cam/s) |
+|---|---:|---:|---:|---:|
+| **PRC-QUBO + SQA** | 7,108.3 | 99.6 | 299.61 | 66.46 |
+| **PRC-QUBO + SA** | 7,108.1 | 99.6 | 2,779.26 | 7.22 |
+| **Priority-capacity greedy baseline** | 225,163.4 | 25.33 | 180.01 | 28.14 |
+
+SQA and SA reach comparable PRC-QUBO assignment quality, while the implemented OpenJij SQA-backed pipeline is about `9.3x` faster than the Neal SA-backed pipeline in the reported benchmark. This should be interpreted as an implementation-level solver result inside the PRC-QUBO decomposition, not as a claim of universal quantum advantage.
+
+### Additional Validation Baselines
+
+Two additional non-QUBO validation baselines are provided for reviewer-facing robustness checks.
+
+| Method | Scale | Runs | Coverage mean +/- sd | Objective mean +/- sd | Time (s) mean +/- sd | Role |
+|---|---:|---:|---:|---:|---:|---|
+| **RC-Greedy-20** | `20,000 x 800` | 3 | 99.60 +/- 0.00% | 13,269.984 +/- 0.000 | 0.743 +/- 0.054 | strong residual-capacity heuristic |
+| **RC-Greedy-20** | `500 x 25` | 3 | 100.00 +/- 0.00% | 283.762 +/- 30.378 | 0.029 +/- 0.004 | small heuristic reference |
+| **Small-MILP-Oracle** | `500 x 25` | 3 | 100.00 +/- 0.00% | 189.433 +/- 13.992 | 0.378 +/- 0.039 | reduced-instance exact validation |
+
+`RC-Greedy-20` uses the same data generator, priority ordering, residual-capacity state, `80 x 20` batch interface, and `99.5%` early-stop rule as the PRC-QUBO runs, but it does not construct or solve a QUBO. On the full benchmark, it reaches the same validated coverage as PRC-QUBO, but with a higher evaluation objective. It therefore helps separate the value of residual-capacity awareness from the additional assignment-quality effect of annealing-backed QUBO search.
+
+`Small-MILP-Oracle` uses SciPy/HiGHS MILP on reduced instances. It is not intended as a full-scale competitor for the `20,000 x 800` benchmark. Its role is to validate small-instance assignment quality and to show the gap between a constructive residual-capacity heuristic and an exact reduced-instance assignment model.
+
+An optional diagnostic run of `RC-Greedy-20 --final-opt` is useful as an ablation of post-hoc reassignment. It should not be mixed into the main formulation benchmark without explicit labeling, because it changes the comparison from online constructive assignment to global local reassignment after the sequence has already been built.
+
+## Reproducing Runs
+
+### Create a Virtual Environment
+
+Windows PowerShell:
+
+```powershell
+py -3.10 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip setuptools wheel
+```
+
+Linux/macOS:
+
+```bash
+python3.10 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip setuptools wheel
+```
+
+### Install Dependencies
+
+The repository includes pinned package versions in `requirements.txt`. Install them with:
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
+### Smoke Tests
+
+Use reduced problem sizes before full-scale runs:
+
+```powershell
+python ao_qubo_sa.py --n-cameras 500 --n-servers 25 --batch-size 20 --max-servers-per-batch 5 --num-reads 10 --log-every 5
+python ao_qubo_sqa.py --n-cameras 500 --n-servers 25 --batch-size 20 --max-servers-per-batch 5 --num-reads 10 --log-every 5
+python static_qcp_qubo_sa.py --n-cameras 500 --n-servers 25 --batch-size 20 --max-servers-per-batch 5 --num-reads 10 --log-every 5
+python static_qcp_qubo_sqa.py --n-cameras 500 --n-servers 25 --batch-size 20 --max-servers-per-batch 5 --num-reads 10 --log-every 5
+```
+
+### Full Baseline Runs
+
+The full baseline scripts default to the paper-scale `20,000 x 800` problem.
+
+```powershell
+python ao_qubo_sqa.py --log-every 10
+python ao_qubo_sa.py --log-every 10
+python static_qcp_qubo_sqa.py --log-every 10
+python static_qcp_qubo_sa.py --log-every 10
+```
+
+For publication-style non-residual baseline runs, do not add `--final-opt`.
+
+### Capacity-Stress Runs
+
+The SQA-backed capacity-stress experiment is controlled by `capacity_stress_experiment.py`. Example commands:
+
+```powershell
+python capacity_stress_experiment.py --formulation PRC-QUBO --solver SQA --capacity-scale 1.00 --log-every 10
+python capacity_stress_experiment.py --formulation AO-QUBO --solver SQA --capacity-scale 0.50 --log-every 10
+python capacity_stress_experiment.py --formulation Static-QCP-QUBO --solver SQA --capacity-scale 0.25 --log-every 10
+```
+
+The reported stress table uses `capacity_scale` values `1.00`, `0.50`, `0.33`, and `0.25`, with final local reassignment refinement disabled.
+
+### CC-PRC-QUBO Article-Revision Runs
+
+The current article-revision stress and ablation suite is controlled by `prc_qubo_conflict_stress.py` and the helper scripts in `scripts/`.
+
+Run the CC-PRC-QUBO conservative-decoder stress curve and the 95.07% ablation suite:
+
+```powershell
+.\scripts\run_prc_qubo_c_article_suite.bat
+```
+
+Run only the conflict-coupled QUBO with the original decoder across the full capacity-stress curve:
+
+```powershell
+.\scripts\run_prc_qubo_c_conflict_only_stress.bat
+```
+
+Equivalent direct commands are:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\run_prc_qubo_c_article_suite.ps1 -RunAll
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\run_prc_qubo_c_article_suite.ps1 -RunConflictOnlyStressCurve
+```
+
+Rebuild the article-revision summary tables from stored JSON logs:
+
+```powershell
+python scripts\build_article_revision_summary.py --output-dir logs_article_revision
+```
+
+### Additional Validation Baselines
+
+```powershell
+python rc_greedy_20.py --log-every 10
+python small_milp_oracle.py --n-cameras 500 --n-servers 25 --seed 42 --time-limit 300
+```
+
+For multi-run validation, repeat `small_milp_oracle.py` with seeds `42`, `43`, and `44`. The MILP script uses `scipy.optimize.milp`; if SciPy is unavailable, it can still run a tiny exact backtracking smoke test with `--n-cameras <= 18`.
+
+### PRC-QUBO Runs
+
+The original PRC-QUBO solver-backed pipelines are:
+
+```powershell
+python main_Q.py
+python main.py
+```
+
+`main_Q.py` runs the OpenJij SQA-backed PRC-QUBO pipeline. `main.py` runs the Neal SA-backed PRC-QUBO pipeline.
+
+### Regenerate the Formulation Comparison Figure
+
+The figure script reads the stored JSON summaries and PRC-QUBO reference logs.
+
+```powershell
+python scripts\plot_formulation_comparison.py --show-data
+```
+
+Expected outputs:
+
+```text
+manuscript_revision/figures/formulation_comparison_600dpi.png
+manuscript_revision/figures/qubo_comparison_graphs_cropped.pdf
+```
+
+## Logs and Figures
+
+The non-residual baselines use the same logging style as the PRC-QUBO experiments: run-level summaries plus batch-level progress files.
+
+Important directories:
+
+| Directory | Contents |
+|---|---|
+| `logs_ao_qubo_sqa/` | AO-QUBO + SQA summaries and progress logs |
+| `logs_ao_qubo_sa/` | AO-QUBO + SA summaries and progress logs |
+| `logs_static_qcp_qubo_sqa/` | Static-QCP-QUBO + SQA summaries and progress logs |
+| `logs_static_qcp_qubo_sa/` | Static-QCP-QUBO + SA summaries and progress logs |
+| `logs_capacity_stress/` | capacity-stress summaries, progress logs, and CSV exports |
+| `logs_article_revision/` | latest CC-PRC-QUBO, PRC-QUBO-D, and article-revision SQA stress summaries |
+| `logs_quality_stress_strong_baselines/` | strong residual-aware classical baseline stress summaries |
+| `logs_rc_greedy_20/` | residual-capacity greedy validation baseline summaries and progress logs |
+| `logs_small_milp_oracle/` | reduced-instance MILP oracle summaries and progress logs |
+| `logs_openjij_windows/` | PRC-QUBO + SQA logs from the Windows/OpenJij runs |
+| `logs/` | PRC-QUBO + SA logs and earlier classical run outputs |
+| `manuscript_revision/figures/` | Paper figures generated from logs |
+
+Typical baseline log files:
+
+```text
+summary_YYYYMMDD_HHMMSS.json
+progress_YYYYMMDD_HHMMSS.jsonl
+```
+
+The summary JSON files contain final coverage, objective value, total time, throughput, failed/weak batches, fallback count, rejected assignments, and QUBO structural metrics such as variables, linear terms, quadratic terms, coefficient range, and average QUBO coefficient count.
+
+## OpenJij Installation Notes
+
+The SQA-backed pipeline uses the standard Python package:
+
+```python
+import openjij as oj
+sampler = oj.SQASampler()
+response = sampler.sample_qubo(Q, num_reads=..., num_sweeps=...)
+```
+
+The official OpenJij documentation describes OpenJij as a heuristic optimization library for Ising and QUBO models with a Python interface and C++ core, installable with:
+
+```bash
+pip install openjij
+```
+
+This repository pins:
+
+```bash
+openjij==0.11.6
+```
+
+### Recommended Windows Installation
+
+Use Python 3.10 in a clean virtual environment. This avoids many wheel and dependency issues that appear with newer Python versions.
+
+```powershell
+py -3.10 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install numpy==1.24.3 scipy==1.10.1 dimod==0.12.6 openjij==0.11.6
+python -m pip install dwave-neal==0.5.5 pandas==2.0.3 dash==2.14.0 plotly==5.15.0
+```
+
+Verify:
+
+```powershell
+python -c "import openjij as oj; print(oj.__version__); print(oj.SQASampler())"
+python -c "import neal; print('neal ok')"
+```
+
+If installation fails:
+
+- Check that the active interpreter is the project venv: `python -c "import sys; print(sys.executable)"`.
+- Upgrade build helpers: `python -m pip install --upgrade pip setuptools wheel`.
+- Prefer Python 3.10 or 3.11 rather than Python 3.13.
+- If pip tries to compile from source on Windows, install Microsoft C++ Build Tools and CMake.
+- If exact reproduction is not required, try `pip install openjij` without the version pin.
+
+### CPU, GPU, and CUDA
+
+The experiments reported in this repository use the normal OpenJij Python interface on conventional CPU hardware. No physical quantum processor is used, and no CUDA-specific code path is enabled by the repository scripts.
+
+OpenJij documentation exposes lower-level C++/core interfaces and mentions GPU-implemented classical and quantum Ising model systems. Older PyPI documentation also notes that GPGPU algorithms require building OpenJij from source with CUDA detected by CMake. That is a different installation path from the standard binary `pip install openjij` workflow.
+
+For this project:
+
+- CUDA is **not required**.
+- Installing CUDA alone will **not** make these scripts use the GPU.
+- The reported SQA results are produced through `openjij.SQASampler()` as used from Python.
+- A GPU-enabled OpenJij experiment would need an explicit source/GPU build and code-level verification that the GPU backend is actually selected.
+- If you use a GPU-enabled build in future work, report it separately because runtime values would no longer be directly comparable with the current CPU-based benchmark logs.
+
+## Repository Structure
+
+```text
+QAnnealing/
+|-- main_Q.py                         # PRC-QUBO + OpenJij SQA pipeline
+|-- main.py                           # PRC-QUBO + Neal SA pipeline
+|-- ao_qubo_sqa.py                    # AO-QUBO + SQA baseline
+|-- ao_qubo_sa.py                     # AO-QUBO + SA baseline
+|-- static_qcp_qubo_sqa.py            # Static-QCP-QUBO + SQA baseline
+|-- static_qcp_qubo_sa.py             # Static-QCP-QUBO + SA baseline
+|-- capacity_stress_experiment.py     # capacity-scaling sensitivity experiment
+|-- prc_qubo_conflict_stress.py       # CC-PRC-QUBO and PRC-family stress/ablation runs
+|-- classical_metaheuristic_baselines.py
+|-- or_inspired_baselines.py
+|-- rc_greedy_20.py                   # residual-capacity greedy validation baseline
+|-- small_milp_oracle.py              # reduced-instance MILP oracle
+|-- greedy.py                         # priority-capacity greedy reference
+|-- scripts/
+|   |-- build_article_revision_summary.py
+|   |-- run_prc_qubo_c_article_suite.ps1
+|   |-- run_prc_qubo_c_article_suite.bat
+|   |-- run_prc_qubo_c_conflict_only_stress.bat
+|   |-- plot_formulation_comparison.py
+|   |-- plot_capacity_stress.py
+|-- manuscript_revision/
+|   |-- figures/
+|       |-- formulation_comparison_600dpi.png
+|       |-- capacity_stress_sqa_600dpi.png
+|       |-- qubo_comparison_graphs_cropped.pdf
+|-- logs_ao_qubo_sqa/
+|-- logs_ao_qubo_sa/
+|-- logs_static_qcp_qubo_sqa/
+|-- logs_static_qcp_qubo_sa/
+|-- logs_capacity_stress/
+|-- logs_article_revision/
+|-- logs_quality_stress_strong_baselines/
+|-- logs_rc_greedy_20/
+|-- logs_small_milp_oracle/
+|-- logs_openjij_windows/
+|-- logs/
+|-- requirements.txt
+|-- README.md
+```
+
+## Citation
+
+If you use this repository or its benchmark results, please cite:
+
+```bibtex
+@misc{mussabayev2026prcqubo,
+  title        = {Priority-Aware Residual-Capacity QUBO Decomposition for Stateful Resource Allocation in Distributed Edge Data Processing},
+  author       = {Yedige Mussabayev},
+  year         = {2026},
+  url          = {https://github.com/Yedman3585/Quantum-Sensor-Assignment}
+}
+```
+
+## License and Acknowledgments
+
+This repository accompanies the scientific manuscript on PRC-QUBO decomposition for smart-city sensor-to-server assignment.
+
+The code in this repository is released under the [MIT License](LICENSE). The bundled `OpenJij/` directory is third-party code distributed under the Apache License 2.0 (see `OpenJij/LICENSE`).
+
+The research and software development were led by Yedige Mussabayev. Scientific supervision and methodological guidance were provided by Artem Bykov. Additional scientific review and recommendations were provided by Evgeniy Lavrov.

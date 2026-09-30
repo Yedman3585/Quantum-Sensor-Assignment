@@ -1,0 +1,12 @@
+2026-07-27 18:00:56,243 - INFO - PRC diagnostic variant=guard-conflict-decoder cameras=20000 servers=800 capacity_scale=0.250 batch=20 candidates=20
+2026-07-27 18:00:56,836 - INFO - total load 88453.0, base capacity 372165.7, scaled capacity 93041.4, utilization 95.1%
+2026-07-27 18:01:02,244 - INFO - batch 100: assigned 20, coverage 10.00%, success 100.0%, rejected 0
+2026-07-27 18:01:06,781 - INFO - batch 200: assigned 20, coverage 20.00%, success 100.0%, rejected 0
+2026-07-27 18:01:11,245 - INFO - batch 300: assigned 20, coverage 30.00%, success 100.0%, rejected 0
+2026-07-27 18:01:15,774 - INFO - batch 400: assigned 20, coverage 40.00%, success 100.0%, rejected 0
+2026-07-27 18:01:20,412 - INFO - batch 500: assigned 20, coverage 50.00%, success 100.0%, rejected 0
+2026-07-27 18:01:24,935 - INFO - batch 600: assigned 20, coverage 60.00%, success 100.0%, rejected 0
+2026-07-27 18:01:30,458 - INFO - batch 700: assigned 20, coverage 70.00%, success 100.0%, rejected 0
+2026-07-27 18:01:35,029 - INFO - batch 800: assigned 20, coverage 80.00%, success 100.0%, rejected 0
+2026-07-27 18:01:39,564 - INFO - batch 900: assigned 20, coverage 90.00%, success 100.0%, rejected 0
+2026-07-27 18:01:43,794 - INFO - 99.50% coverage threshold reached, completing

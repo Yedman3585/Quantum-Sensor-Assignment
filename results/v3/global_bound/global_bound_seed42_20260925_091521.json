@@ -1,0 +1,42 @@
+[
+ {
+  "capacity_scale": 1.0,
+  "seed": 42,
+  "utilization_percent": 23.767088883343465,
+  "lagrangian_lower_bound": 5919.43205070278,
+  "feasible_objective": 5919.432968512414,
+  "covered": 20000,
+  "gap_to_bound_percent": 1.550502863181167e-05,
+  "time_sec": 25.32432985305786
+ },
+ {
+  "capacity_scale": 0.5,
+  "seed": 42,
+  "utilization_percent": 47.53417776668693,
+  "lagrangian_lower_bound": 5929.160301774963,
+  "feasible_objective": 5931.081846032811,
+  "covered": 20000,
+  "gap_to_bound_percent": 0.03240837083242108,
+  "time_sec": 24.46490216255188
+ },
+ {
+  "capacity_scale": 0.33,
+  "seed": 42,
+  "utilization_percent": 72.02148146467717,
+  "lagrangian_lower_bound": 5966.665861478718,
+  "feasible_objective": 5981.572799202536,
+  "covered": 20000,
+  "gap_to_bound_percent": 0.2498369788068387,
+  "time_sec": 25.588960647583008
+ },
+ {
+  "capacity_scale": 0.25,
+  "seed": 42,
+  "utilization_percent": 95.06835553337386,
+  "lagrangian_lower_bound": 6043.475651436602,
+  "feasible_objective": 6090.645080410387,
+  "covered": 20000,
+  "gap_to_bound_percent": 0.7805016797341198,
+  "time_sec": 24.63647961616516
+ }
+]
