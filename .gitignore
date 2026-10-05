@@ -214,3 +214,5 @@ __marimo__/
 # keep the archived run logs under results/ despite the *.log rule above
 !results/**/*.log
 !legacy/**/*.log
+# per-job stdout of experiments/run_jobs.py (results themselves are the JSON files)
+results/v3/campaign2/_joblogs/

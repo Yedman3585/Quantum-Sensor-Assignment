@@ -13,7 +13,8 @@ import time
 import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from batch_quality_benchmark import Instance, build_batch, greedy_fill, solve_exact, solve_greedy, solve_regret  # noqa: E402
+from batch_quality_benchmark import (Instance, build_batch, greedy_fill, local_search, solve_exact,  # noqa: E402
+                                     solve_greedy, solve_regret)
 from qubo_v3_lab import build_v3, decode_v3, raw_choice, run  # noqa: E402
 
 
@@ -47,6 +48,32 @@ def solve_v3(b, solver, a, seed):
     return best_x, stats
 
 
+def solve_ils(b, time_budget, rng):
+    """Iterated local search on one batch: regret start, then (destroy 20% of the batch,
+    greedy repair, shift/swap local search) until the time budget is spent. Classical
+    equal-time counterpart of SQA-v3."""
+    t0 = time.time()
+    x, _ = solve_regret(b)
+    x = local_search(b, x)
+    best, best_o = x.copy(), b.objective(x)
+    cur, cur_o = x.copy(), best_o
+    while time.time() - t0 < time_budget:
+        y = cur.copy()
+        assigned = np.where(y)[0]
+        if len(assigned) == 0:
+            break
+        k = max(1, int(0.2 * len(assigned)))
+        y[rng.choice(assigned, size=k, replace=False)] = False
+        order = rng.permutation(b.n)
+        y = local_search(b, greedy_fill(b, y, order=order))
+        o = b.objective(y)
+        if o <= cur_o + 1e-9 or rng.random() < 0.05:
+            cur, cur_o = y, o
+        if o < best_o - 1e-9:
+            best, best_o = y.copy(), o
+    return best
+
+
 def lagrange_prices(inst, iters=300):
     """Capacity prices u_j >= 0 from the Lagrangian relaxation of the full problem."""
     C, l, K = inst.wcost, inst.load, inst.cap
@@ -64,8 +91,13 @@ def lagrange_prices(inst, iters=300):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--method", required=True, choices=["exact", "greedy", "regret", "sqa_v3", "sa_v3"])
+    ap.add_argument("--method", required=True, choices=["exact", "greedy", "regret", "ils", "sqa_v3", "sa_v3"])
     ap.add_argument("--capacity-scale", type=float, default=0.25)
+    ap.add_argument("--target-util", type=float, default=None, help="percent; overrides --capacity-scale")
+    ap.add_argument("--n-cameras", type=int, default=20000)
+    ap.add_argument("--n-servers", type=int, default=800)
+    ap.add_argument("--batch-size", type=int, default=80)
+    ap.add_argument("--ils-time", type=float, default=0.8, help="seconds per batch for the ILS method")
     ap.add_argument("--window", default="percam")
     ap.add_argument("--k-percam", type=int, default=5)
     ap.add_argument("--m-shared", type=int, default=20)
@@ -86,7 +118,9 @@ def main():
     ap.add_argument("--out", default="logs_qubo_v3_trajectory")
     a = ap.parse_args()
 
-    inst = Instance(20000, 800, a.seed, a.capacity_scale)
+    inst = Instance(a.n_cameras, a.n_servers, a.seed, a.capacity_scale, a.target_util)
+    nb = int(np.ceil(a.n_cameras / a.batch_size))
+    rng = np.random.default_rng(a.seed)
     order = np.argsort(-(inst.priority * inst.load))
     residual = inst.cap.copy()
     u = None
@@ -96,8 +130,8 @@ def main():
         print(f"prices: lower bound {lb:.1f}, priced servers {int(np.sum(u > 0))}", flush=True)
     total, covered, t_all = 0.0, 0, time.time()
     agg = {"qubo_batches": 0, "qubo_calls": 0, "vars_sum": 0, "fixed_sum": 0, "viol_sum": 0}
-    for t in range(250):
-        cams = order[t * 80:(t + 1) * 80]
+    for t in range(nb):
+        cams = order[t * a.batch_size:(t + 1) * a.batch_size]
         sel = (lambda c: inst.wcost[c] + u * inst.load[c]) if (u is not None and a.price_window) else None
         b = build_batch(inst, cams, residual.copy(), a.window, a.m_shared, a.k_percam, inst.gen, sel_cost=sel)
         if u is not None:
@@ -110,6 +144,8 @@ def main():
             x, _ = solve_greedy(b)
         elif a.method == "regret":
             x, _ = solve_regret(b)
+        elif a.method == "ils":
+            x = solve_ils(b, a.ils_time, rng)
         else:
             x, st = solve_v3(b, "SQA" if a.method == "sqa_v3" else "SA", a, seed=a.seed * 1000 + t)
             if st["qubo_calls"]:
@@ -123,11 +159,11 @@ def main():
         if t % 50 == 0:
             print(f"[{a.method}] batch {t} objective so far {total:.1f} elapsed {time.time()-t_all:.0f}s", flush=True)
     assert np.all(residual >= -1e-6)
-    res = {"method": a.method, "price": bool(a.price), "price_scale": a.price_scale, "price_window": bool(a.price_window), "k_percam": a.k_percam, "window": a.window, "capacity_scale": a.capacity_scale, "seed": a.seed,
+    res = {"method": a.method, "price": bool(a.price), "price_scale": a.price_scale, "price_window": bool(a.price_window), "k_percam": a.k_percam, "window": a.window, "capacity_scale": inst.capacity_scale, "target_util": a.target_util, "n_cameras": a.n_cameras, "n_servers": a.n_servers, "seed": a.seed,
            "utilization_percent": inst.utilization, "objective": total, "covered": covered,
-           "coverage_percent": covered / 200.0, "time_sec": time.time() - t_all, **agg, "params": vars(a)}
+           "coverage_percent": covered / a.n_cameras * 100.0, "time_sec": time.time() - t_all, **agg, "params": vars(a)}
     os.makedirs(a.out, exist_ok=True)
-    path = os.path.join(a.out, f"traj_{a.method}{'_priced' if a.price else ''}_{a.window}_s{a.capacity_scale:g}_seed{a.seed}_{time.strftime('%Y%m%d_%H%M%S')}.json")
+    path = os.path.join(a.out, f"traj_{a.method}{'_priced' if a.price else ''}_{a.window}_{a.n_cameras}x{a.n_servers}_{('u%g' % a.target_util) if a.target_util else ('s%g' % a.capacity_scale)}_seed{a.seed}_{time.strftime('%Y%m%d_%H%M%S')}.json")
     json.dump(res, open(path, "w"), indent=1)
     print(json.dumps({k: v for k, v in res.items() if k != "params"}))
 

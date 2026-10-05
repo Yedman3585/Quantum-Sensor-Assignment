@@ -237,6 +237,8 @@ def run(q, solver, reads, sweeps, trotter, seed, gamma=None, beta=None):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--capacity-scale", type=float, default=0.25)
+    ap.add_argument("--target-util", type=float, default=None)
+    ap.add_argument("--instance-seed", type=int, default=42)
     ap.add_argument("--window", default="shared")
     ap.add_argument("--k-percam", type=int, default=5)
     ap.add_argument("--min-gap", type=float, default=0.01)
@@ -260,7 +262,7 @@ def main():
     ap.add_argument("--out", default="logs_qubo_v3")
     args = ap.parse_args()
 
-    inst = Instance(20000, 800, 42, args.capacity_scale)
+    inst = Instance(20000, 800, args.instance_seed, args.capacity_scale, args.target_util)
     order = np.argsort(-(inst.priority * inst.load))
     residual = inst.cap.copy()
     hard = []
@@ -344,7 +346,7 @@ def main():
                                "mean_fixed": float(np.mean([r[k + ":fixed"] for r in rows])),
                                "mean_viol_servers": float(np.mean([r[k + ":viol_servers"] for r in rows]))})
     os.makedirs(args.out, exist_ok=True)
-    path = os.path.join(args.out, f"v3_{args.window}_s{args.capacity_scale:g}_{time.strftime('%Y%m%d_%H%M%S')}.json")
+    path = os.path.join(args.out, f"v3_{args.window}_{('u%g' % args.target_util) if args.target_util else ('s%g' % args.capacity_scale)}_seed{args.instance_seed}_{time.strftime('%Y%m%d_%H%M%S')}.json")
     json.dump({"args": vars(args), "summary": summary, "rows": rows}, open(path, "w"), indent=1)
     for k, v in summary.items():
         extra = (f" t {v['mean_time_s']:.2f}s vars {v['mean_vars']:.0f} fixed {v['mean_fixed']:.0f} viol {v['mean_viol_servers']:.2f}"

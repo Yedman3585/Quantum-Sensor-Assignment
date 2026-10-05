@@ -1,0 +1,172 @@
+{
+ "args": {
+  "capacity_scale": 0.25,
+  "target_util": 95.0,
+  "instance_seed": 49,
+  "window": "percam",
+  "k_percam": 5,
+  "min_gap": 0.005,
+  "max_hard": 8,
+  "variants": "R+DW",
+  "solvers": "SQA",
+  "reads": 10,
+  "sweeps": 2000,
+  "trotter": 8,
+  "gamma": null,
+  "beta": 20.0,
+  "lam_onehot": 0.45,
+  "lam_cap": 1.0,
+  "lam_dw": null,
+  "seeds": 1,
+  "cap_mode": "unbalanced",
+  "slack_bits": 6,
+  "adaptive_rounds": 3,
+  "mu_step": 0.5,
+  "w_growth": 2.0,
+  "out": "results/v3/campaign2/ablation_beta20"
+ },
+ "summary": {
+  "exact": {
+   "mean_gap_pct": 0.0,
+   "median_gap_pct": 0.0,
+   "max_gap_pct": 0.0,
+   "optimal": 8,
+   "beats_greedy": 8,
+   "ties_or_beats_regret": 8
+  },
+  "greedy": {
+   "mean_gap_pct": 0.6774047476847925,
+   "median_gap_pct": 0.5866789103879642,
+   "max_gap_pct": 1.2539230429013777,
+   "optimal": 0,
+   "beats_greedy": 0,
+   "ties_or_beats_regret": 0
+  },
+  "regret": {
+   "mean_gap_pct": 0.0,
+   "median_gap_pct": 0.0,
+   "max_gap_pct": 0.0,
+   "optimal": 8,
+   "beats_greedy": 8,
+   "ties_or_beats_regret": 8
+  },
+  "regret_ls": {
+   "mean_gap_pct": 0.0,
+   "median_gap_pct": 0.0,
+   "max_gap_pct": 0.0,
+   "optimal": 8,
+   "beats_greedy": 8,
+   "ties_or_beats_regret": 8
+  },
+  "R+DW:SQA": {
+   "mean_gap_pct": 0.04985935997016551,
+   "median_gap_pct": 0.03639970543454508,
+   "max_gap_pct": 0.1148088860258623,
+   "optimal": 4,
+   "beats_greedy": 8,
+   "ties_or_beats_regret": 4,
+   "mean_time_s": 3.9324150681495667,
+   "mean_vars": 79.375,
+   "mean_fixed": 64.125,
+   "mean_viol_servers": 1.125
+  }
+ },
+ "rows": [
+  {
+   "batch": 35,
+   "exact": 3.0651784239576423,
+   "greedy": 3.0825864134509304,
+   "regret": 3.0651784239576423,
+   "regret_ls": 3.0651784239576423,
+   "R+DW:SQA": 3.06740985579237,
+   "R+DW:SQA:time": 4.011522054672241,
+   "R+DW:SQA:viol_servers": 2.0,
+   "R+DW:SQA:vars": 70,
+   "R+DW:SQA:fixed": 66
+  },
+  {
+   "batch": 36,
+   "exact": 2.4032406664892916,
+   "greedy": 2.4170329616012776,
+   "regret": 2.4032406664892916,
+   "regret_ls": 2.4032406664892916,
+   "R+DW:SQA": 2.4058156652895306,
+   "R+DW:SQA:time": 3.8255326747894287,
+   "R+DW:SQA:viol_servers": 1.0,
+   "R+DW:SQA:vars": 60,
+   "R+DW:SQA:fixed": 68
+  },
+  {
+   "batch": 37,
+   "exact": 1.8702235985653026,
+   "greedy": 1.882897115610712,
+   "regret": 1.8702235985653026,
+   "regret_ls": 1.8702235985653026,
+   "R+DW:SQA": 1.8702235985653026,
+   "R+DW:SQA:time": 3.9451661109924316,
+   "R+DW:SQA:viol_servers": 1.0,
+   "R+DW:SQA:vars": 70,
+   "R+DW:SQA:fixed": 66
+  },
+  {
+   "batch": 87,
+   "exact": 13.592312199004471,
+   "greedy": 13.673791829303369,
+   "regret": 13.592312199004471,
+   "regret_ls": 13.592312199004471,
+   "R+DW:SQA": 13.592312199004471,
+   "R+DW:SQA:time": 4.393656015396118,
+   "R+DW:SQA:viol_servers": 1.0,
+   "R+DW:SQA:vars": 65,
+   "R+DW:SQA:fixed": 67
+  },
+  {
+   "batch": 88,
+   "exact": 13.20757580894992,
+   "greedy": 13.287170919171235,
+   "regret": 13.20757580894992,
+   "regret_ls": 13.20757580894992,
+   "R+DW:SQA": 13.20757580894992,
+   "R+DW:SQA:time": 2.7992382049560547,
+   "R+DW:SQA:viol_servers": 0.0,
+   "R+DW:SQA:vars": 50,
+   "R+DW:SQA:fixed": 70
+  },
+  {
+   "batch": 93,
+   "exact": 10.58645432074973,
+   "greedy": 10.646993048197114,
+   "regret": 10.58645432074973,
+   "regret_ls": 10.58645432074973,
+   "R+DW:SQA": 10.58645432074973,
+   "R+DW:SQA:time": 4.539643287658691,
+   "R+DW:SQA:viol_servers": 2.0,
+   "R+DW:SQA:vars": 105,
+   "R+DW:SQA:fixed": 59
+  },
+  {
+   "batch": 95,
+   "exact": 10.285549994237101,
+   "greedy": 10.344371439432315,
+   "regret": 10.285549994237101,
+   "regret_ls": 10.285549994237101,
+   "R+DW:SQA": 10.297358719607118,
+   "R+DW:SQA:time": 3.1200520992279053,
+   "R+DW:SQA:viol_servers": 2.0,
+   "R+DW:SQA:vars": 120,
+   "R+DW:SQA:fixed": 56
+  },
+  {
+   "batch": 100,
+   "exact": 8.62023798606792,
+   "greedy": 8.728329136528163,
+   "regret": 8.62023798606792,
+   "regret_ls": 8.62023798606792,
+   "R+DW:SQA": 8.629213347197854,
+   "R+DW:SQA:time": 4.824510097503662,
+   "R+DW:SQA:viol_servers": 0.0,
+   "R+DW:SQA:vars": 95,
+   "R+DW:SQA:fixed": 61
+  }
+ ]
+}

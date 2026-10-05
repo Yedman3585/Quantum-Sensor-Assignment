@@ -43,12 +43,23 @@ P_UNCOVERED = 15.0
 # --------------------------------------------------------------------------- instance
 
 class Instance:
-    def __init__(self, n_cameras, n_servers, seed, capacity_scale):
+    def __init__(self, n_cameras, n_servers, seed, capacity_scale, target_util=None):
+        """target_util (percent) overrides capacity_scale: capacities are scaled so that
+        total load / total capacity equals target_util exactly. The cost matrix does not
+        depend on the scale (capacity term is normalised), so only capacities change."""
         gen = CapacityStressExperiment(
             "PRC-QUBO", "SQA", n_cameras=n_cameras, n_servers=n_servers, random_seed=seed,
-            capacity_scale=capacity_scale, log_root=tempfile.mkdtemp(prefix="bqb_"),
+            capacity_scale=1.0 if target_util else capacity_scale, log_root=tempfile.mkdtemp(prefix="bqb_"),
         )
         gen.generate_realistic_data()
+        if target_util:
+            scale = gen.total_load / (target_util / 100.0 * gen.base_total_capacity)
+            gen.capacity_scale = scale
+            gen.initial_capacity = gen.base_initial_capacity * scale
+            gen.remaining_capacity = gen.initial_capacity.copy()
+            gen.total_capacity = float(gen.initial_capacity.sum())
+            gen.utilization_percent = gen.total_load / gen.total_capacity * 100.0
+        self.capacity_scale = gen.capacity_scale
         self.gen = gen
         self.w = (4 - gen.priority).astype(float)
         self.cost = gen.cost_matrix

@@ -1,0 +1,200 @@
+{py} qsa/v3_trajectory.py --method ils --target-util 75 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 90 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 95 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 95 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 98 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 98 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 75 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 90 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 95 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 95 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 98 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 98 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 75 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 90 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 95 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 95 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 98 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 98 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 75 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 90 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 95 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 95 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 98 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 98 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 75 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 90 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 95 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 95 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method ils --target-util 98 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 98 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/qubo_v3_lab.py --window percam --target-util 95 --instance-seed 47 --min-gap 0.005 --max-hard 8 --variants base,R,DW,R+DW --solvers SQA,SA --out results/v3/campaign2/ablation
+{py} qsa/qubo_v3_lab.py --window percam --target-util 95 --instance-seed 47 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA,SA --adaptive-rounds 3 --out results/v3/campaign2/ablation_adaptive
+{py} qsa/qubo_v3_lab.py --window percam --target-util 95 --instance-seed 47 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA --adaptive-rounds 3 --beta 20 --out results/v3/campaign2/ablation_beta20
+{py} qsa/qubo_v3_lab.py --window percam --target-util 95 --instance-seed 48 --min-gap 0.005 --max-hard 8 --variants base,R,DW,R+DW --solvers SQA,SA --out results/v3/campaign2/ablation
+{py} qsa/qubo_v3_lab.py --window percam --target-util 95 --instance-seed 48 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA,SA --adaptive-rounds 3 --out results/v3/campaign2/ablation_adaptive
+{py} qsa/qubo_v3_lab.py --window percam --target-util 95 --instance-seed 48 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA --adaptive-rounds 3 --beta 20 --out results/v3/campaign2/ablation_beta20
+{py} qsa/qubo_v3_lab.py --window percam --target-util 95 --instance-seed 49 --min-gap 0.005 --max-hard 8 --variants base,R,DW,R+DW --solvers SQA,SA --out results/v3/campaign2/ablation
+{py} qsa/qubo_v3_lab.py --window percam --target-util 95 --instance-seed 49 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA,SA --adaptive-rounds 3 --out results/v3/campaign2/ablation_adaptive
+{py} qsa/qubo_v3_lab.py --window percam --target-util 95 --instance-seed 49 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA --adaptive-rounds 3 --beta 20 --out results/v3/campaign2/ablation_beta20
+{py} qsa/qubo_v3_lab.py --window percam --target-util 95 --instance-seed 50 --min-gap 0.005 --max-hard 8 --variants base,R,DW,R+DW --solvers SQA,SA --out results/v3/campaign2/ablation
+{py} qsa/qubo_v3_lab.py --window percam --target-util 95 --instance-seed 50 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA,SA --adaptive-rounds 3 --out results/v3/campaign2/ablation_adaptive
+{py} qsa/qubo_v3_lab.py --window percam --target-util 95 --instance-seed 50 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA --adaptive-rounds 3 --beta 20 --out results/v3/campaign2/ablation_beta20
+{py} qsa/qubo_v3_lab.py --window percam --target-util 95 --instance-seed 51 --min-gap 0.005 --max-hard 8 --variants base,R,DW,R+DW --solvers SQA,SA --out results/v3/campaign2/ablation
+{py} qsa/qubo_v3_lab.py --window percam --target-util 95 --instance-seed 51 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA,SA --adaptive-rounds 3 --out results/v3/campaign2/ablation_adaptive
+{py} qsa/qubo_v3_lab.py --window percam --target-util 95 --instance-seed 51 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA --adaptive-rounds 3 --beta 20 --out results/v3/campaign2/ablation_beta20
+{py} qsa/global_bound_check.py --target-utils 75,90,95,98 --seed 47 --out results/v3/campaign2/global
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 75 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 47 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 47 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 47 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 47 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 47 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 47 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 95 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 95 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 47 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 47 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 95 --seed 47 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 98 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 98 --seed 47 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 47 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 47 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 98 --seed 47 --window shared --out results/v3/campaign2/shared
+{py} qsa/global_bound_check.py --target-utils 75,90,95,98 --seed 48 --out results/v3/campaign2/global
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 75 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 48 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 48 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 48 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 48 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 48 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 48 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 95 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 95 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 48 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 48 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 95 --seed 48 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 98 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 98 --seed 48 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 48 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 48 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 98 --seed 48 --window shared --out results/v3/campaign2/shared
+{py} qsa/global_bound_check.py --target-utils 75,90,95,98 --seed 49 --out results/v3/campaign2/global
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 75 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 49 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 49 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 49 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 49 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 49 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 49 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 95 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 95 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 49 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 49 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 95 --seed 49 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 98 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 98 --seed 49 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 49 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 49 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 98 --seed 49 --window shared --out results/v3/campaign2/shared
+{py} qsa/global_bound_check.py --target-utils 75,90,95,98 --seed 50 --out results/v3/campaign2/global
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 75 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 50 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 50 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 50 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 50 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 50 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 50 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 95 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 95 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 50 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 50 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 95 --seed 50 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 98 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 98 --seed 50 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 50 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 50 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 98 --seed 50 --window shared --out results/v3/campaign2/shared
+{py} qsa/global_bound_check.py --target-utils 75,90,95,98 --seed 51 --out results/v3/campaign2/global
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 75 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 51 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 51 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 51 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 51 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 51 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 51 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 95 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 95 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 51 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 51 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 95 --seed 51 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method regret --target-util 98 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 98 --seed 51 --price --price-window --out results/v3/campaign2/priced
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 51 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 51 --window shared --out results/v3/campaign2/shared
+{py} qsa/v3_trajectory.py --method regret --target-util 98 --seed 51 --window shared --out results/v3/campaign2/shared

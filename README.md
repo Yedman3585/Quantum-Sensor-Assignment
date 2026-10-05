@@ -121,7 +121,7 @@ x_{i,o_m} = z_m - z_{m+1}, \qquad
 H^{\mathrm{DW}}_i = \sum_{m=0}^{k-1} \bar c_{i,o_m}\,(z_m-z_{m+1}) \;+\; A\sum_{m=1}^{k-2} z_{m+1}(1-z_m),
 ```
 
-where $\bar c_{i,o} = (\hat c_{i,o}-\min_o \hat c_{i,o})/\delta$ is the cost normalised by the median gap $\delta$ between a camera's two best options. The chosen option is the position of the wall. Every single spin flip moves the wall by one position, so single-flip dynamics never leaves the "exactly one option" manifold. With standard one-hot, moving a camera from server A to B has to pass through a state with two servers selected, which costs an energy barrier of about $A$ and freezes the annealer.
+where $\bar c_{i,o} = (\hat c_{i,o}-\min_o \hat c_{i,o})/\delta$ is the cost normalised by the median gap $\delta$ between a camera's two best options. The chosen option is the position of the wall. Moving the choice to a neighbouring option is a single spin flip at the wall, and any two options are connected by such flips through valid states only, so single-flip dynamics can move between options without crossing a penalty. With standard one-hot, moving a camera from server A to B has to pass through a state with two servers selected, which costs an energy barrier of about $A$ and freezes the annealer.
 
 ### 5. Capacity penalty
 

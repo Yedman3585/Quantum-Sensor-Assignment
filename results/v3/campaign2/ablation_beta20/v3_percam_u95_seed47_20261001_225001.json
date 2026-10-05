@@ -1,0 +1,172 @@
+{
+ "args": {
+  "capacity_scale": 0.25,
+  "target_util": 95.0,
+  "instance_seed": 47,
+  "window": "percam",
+  "k_percam": 5,
+  "min_gap": 0.005,
+  "max_hard": 8,
+  "variants": "R+DW",
+  "solvers": "SQA",
+  "reads": 10,
+  "sweeps": 2000,
+  "trotter": 8,
+  "gamma": null,
+  "beta": 20.0,
+  "lam_onehot": 0.45,
+  "lam_cap": 1.0,
+  "lam_dw": null,
+  "seeds": 1,
+  "cap_mode": "unbalanced",
+  "slack_bits": 6,
+  "adaptive_rounds": 3,
+  "mu_step": 0.5,
+  "w_growth": 2.0,
+  "out": "results/v3/campaign2/ablation_beta20"
+ },
+ "summary": {
+  "exact": {
+   "mean_gap_pct": 0.0,
+   "median_gap_pct": 0.0,
+   "max_gap_pct": 0.0,
+   "optimal": 8,
+   "beats_greedy": 8,
+   "ties_or_beats_regret": 8
+  },
+  "greedy": {
+   "mean_gap_pct": 0.7596521442436908,
+   "median_gap_pct": 0.616582124239843,
+   "max_gap_pct": 1.5893493286917983,
+   "optimal": 0,
+   "beats_greedy": 0,
+   "ties_or_beats_regret": 0
+  },
+  "regret": {
+   "mean_gap_pct": 0.0861115077071653,
+   "median_gap_pct": 0.023903953542095124,
+   "max_gap_pct": 0.2733980603795323,
+   "optimal": 4,
+   "beats_greedy": 8,
+   "ties_or_beats_regret": 8
+  },
+  "regret_ls": {
+   "mean_gap_pct": 0.0861115077071653,
+   "median_gap_pct": 0.023903953542095124,
+   "max_gap_pct": 0.2733980603795323,
+   "optimal": 4,
+   "beats_greedy": 8,
+   "ties_or_beats_regret": 8
+  },
+  "R+DW:SQA": {
+   "mean_gap_pct": 4.026663741124575,
+   "median_gap_pct": 0.021341830868481702,
+   "max_gap_pct": 32.03798332743656,
+   "optimal": 4,
+   "beats_greedy": 7,
+   "ties_or_beats_regret": 5,
+   "mean_time_s": 3.2706581950187683,
+   "mean_vars": 95.625,
+   "mean_fixed": 60.875,
+   "mean_viol_servers": 0.875
+  }
+ },
+ "rows": [
+  {
+   "batch": 80,
+   "exact": 16.321680781731082,
+   "greedy": 16.414674153771312,
+   "regret": 16.321680781731082,
+   "regret_ls": 16.321680781731082,
+   "R+DW:SQA": 16.321680781731082,
+   "R+DW:SQA:time": 3.1767542362213135,
+   "R+DW:SQA:viol_servers": 1.0,
+   "R+DW:SQA:vars": 55,
+   "R+DW:SQA:fixed": 69
+  },
+  {
+   "batch": 91,
+   "exact": 12.121591845056921,
+   "greedy": 12.191747682826309,
+   "regret": 12.152776692168684,
+   "regret_ls": 12.152776692168684,
+   "R+DW:SQA": 12.121591845056921,
+   "R+DW:SQA:time": 1.2584784030914307,
+   "R+DW:SQA:viol_servers": 0.0,
+   "R+DW:SQA:vars": 50,
+   "R+DW:SQA:fixed": 70
+  },
+  {
+   "batch": 96,
+   "exact": 9.461718059273085,
+   "greedy": 9.540026650396857,
+   "regret": 9.472165609346757,
+   "regret_ls": 9.472165609346757,
+   "R+DW:SQA": 9.461718059273085,
+   "R+DW:SQA:time": 2.8664870262145996,
+   "R+DW:SQA:viol_servers": 1.0,
+   "R+DW:SQA:vars": 95,
+   "R+DW:SQA:fixed": 61
+  },
+  {
+   "batch": 101,
+   "exact": 33.609704258510035,
+   "greedy": 33.79236514295428,
+   "regret": 33.609704258510035,
+   "regret_ls": 33.609704258510035,
+   "R+DW:SQA": 33.62641289866957,
+   "R+DW:SQA:time": 3.1328647136688232,
+   "R+DW:SQA:viol_servers": 0.0,
+   "R+DW:SQA:vars": 160,
+   "R+DW:SQA:fixed": 48
+  },
+  {
+   "batch": 159,
+   "exact": 42.24479395596952,
+   "greedy": 42.46227466577792,
+   "regret": 42.24479395596952,
+   "regret_ls": 42.24479395596952,
+   "R+DW:SQA": 42.24479395596952,
+   "R+DW:SQA:time": 2.337256669998169,
+   "R+DW:SQA:viol_servers": 1.0,
+   "R+DW:SQA:vars": 50,
+   "R+DW:SQA:fixed": 70
+  },
+  {
+   "batch": 172,
+   "exact": 42.322846879596646,
+   "greedy": 42.599806200565595,
+   "regret": 42.43855672206286,
+   "regret_ls": 42.43855672206286,
+   "R+DW:SQA": 42.357944878901804,
+   "R+DW:SQA:time": 4.49250864982605,
+   "R+DW:SQA:viol_servers": 2.0,
+   "R+DW:SQA:vars": 120,
+   "R+DW:SQA:fixed": 56
+  },
+  {
+   "batch": 174,
+   "exact": 46.92746301053519,
+   "greedy": 47.30242590585746,
+   "regret": 46.92746301053519,
+   "regret_ls": 46.92746301053519,
+   "R+DW:SQA": 46.94749337010835,
+   "R+DW:SQA:time": 4.347201108932495,
+   "R+DW:SQA:viol_servers": 1.0,
+   "R+DW:SQA:vars": 110,
+   "R+DW:SQA:fixed": 58
+  },
+  {
+   "batch": 183,
+   "exact": 42.83970768660228,
+   "greedy": 43.520580293132824,
+   "regret": 42.86018845424823,
+   "regret_ls": 42.86018845424823,
+   "R+DW:SQA": 56.56468609275848,
+   "R+DW:SQA:time": 4.553714752197266,
+   "R+DW:SQA:viol_servers": 1.0,
+   "R+DW:SQA:vars": 125,
+   "R+DW:SQA:fixed": 55
+  }
+ ]
+}

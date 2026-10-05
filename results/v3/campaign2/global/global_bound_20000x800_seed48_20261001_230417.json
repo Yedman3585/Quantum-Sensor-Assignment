@@ -1,0 +1,54 @@
+[
+ {
+  "capacity_scale": 0.32378205111470354,
+  "target_util": 75.0,
+  "n_cameras": 20000,
+  "n_servers": 800,
+  "seed": 48,
+  "utilization_percent": 75.00000000000003,
+  "lagrangian_lower_bound": 5845.71496012886,
+  "feasible_objective": 5864.404113519557,
+  "covered": 20000,
+  "gap_to_bound_percent": 0.31970688817650583,
+  "time_sec": 71.1141185760498
+ },
+ {
+  "capacity_scale": 0.2698183759289196,
+  "target_util": 90.0,
+  "n_cameras": 20000,
+  "n_servers": 800,
+  "seed": 48,
+  "utilization_percent": 90.00000000000003,
+  "lagrangian_lower_bound": 5895.043055767742,
+  "feasible_objective": 5925.4290997941935,
+  "covered": 20000,
+  "gap_to_bound_percent": 0.5154507564914514,
+  "time_sec": 67.68926310539246
+ },
+ {
+  "capacity_scale": 0.255617408774766,
+  "target_util": 95.0,
+  "n_cameras": 20000,
+  "n_servers": 800,
+  "seed": 48,
+  "utilization_percent": 95.0,
+  "lagrangian_lower_bound": 5920.360620963065,
+  "feasible_objective": 5963.74521810326,
+  "covered": 20000,
+  "gap_to_bound_percent": 0.7328032854380044,
+  "time_sec": 68.05836653709412
+ },
+ {
+  "capacity_scale": 0.24779238605717113,
+  "target_util": 98.0,
+  "n_cameras": 20000,
+  "n_servers": 800,
+  "seed": 48,
+  "utilization_percent": 97.99999999999999,
+  "lagrangian_lower_bound": 5942.690242029985,
+  "feasible_objective": 6000.538170602285,
+  "covered": 20000,
+  "gap_to_bound_percent": 0.9734299823195918,
+  "time_sec": 75.41576552391052
+ }
+]
