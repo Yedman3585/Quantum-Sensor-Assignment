@@ -1,0 +1,15 @@
+[
+ {
+  "capacity_scale": 0.2551239781383665,
+  "target_util": 98.0,
+  "n_cameras": 5000,
+  "n_servers": 200,
+  "seed": 45,
+  "utilization_percent": 98.0,
+  "lagrangian_lower_bound": 1691.5860187721914,
+  "feasible_objective": 1713.237475759928,
+  "covered": 5000,
+  "gap_to_bound_percent": 1.279950102889351,
+  "time_sec": 1.1470186710357666
+ }
+]

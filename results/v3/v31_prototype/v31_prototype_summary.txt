@@ -1,0 +1,27 @@
+
+== util 95%  seeds [42, 43, 44, 45, 46]
+greedy v3        n=5 mean   1839.9 gapLB 13.83%  uncov  12  t    0.1s | SQA-v3.1 - this  -188.0 (5/5 better, p=0.0625)
+regret v3        n=5 mean   1810.9 gapLB 12.08%  uncov   3  t    1.0s | SQA-v3.1 - this  -159.0 (5/5 better, p=0.0625)
+exact v3         n=5 mean   1802.5 gapLB 11.59%  uncov   0  t    0.6s | SQA-v3.1 - this  -150.6 (5/5 better, p=0.0625)
+ils v3           n=5 mean   1804.4 gapLB 11.71%  uncov   0  t   51.3s | SQA-v3.1 - this  -152.5 (5/5 better, p=0.0625)
+sa_v3 v3         n=5 mean   1804.7 gapLB 11.72%  uncov   2  t    6.8s | SQA-v3.1 - this  -152.8 (5/5 better, p=0.0625)
+sqa_v3 v3        n=5 mean   1806.4 gapLB 11.83%  uncov   3  t  222.2s | SQA-v3.1 - this  -154.5 (5/5 better, p=0.0625)
+greedy v3.1      n=5 mean   1652.0 gapLB  2.27%  uncov   0  t    5.7s | SQA-v3.1 - this    -0.1 (2/5 better, p=1)
+regret v3.1      n=5 mean   1650.9 gapLB  2.19%  uncov   0  t    6.5s | SQA-v3.1 - this    +1.0 (2/5 better, p=0.625)
+exact v3.1       n=5 mean   1645.9 gapLB  1.88%  uncov   0  t    6.3s | SQA-v3.1 - this    +6.0 (1/5 better, p=0.125)
+ils v3.1         n=5 mean   1650.5 gapLB  2.17%  uncov   0  t   56.8s | SQA-v3.1 - this    +1.4 (1/5 better, p=0.312)
+sa_v3 v3.1       n=5 mean   1652.7 gapLB  2.31%  uncov   0  t    8.3s | SQA-v3.1 - this    -0.7 (3/5 better, p=1)
+sqa_v3 v3.1      n=5 mean   1651.9 gapLB  2.26%  uncov   0  t   83.0s
+sqa_v3+LS v3.1   n=5 mean   1648.3 gapLB  2.04%  uncov   0  t  100.6s | SQA-v3.1 - this    +3.6 (0/5 better, p=0.0625)
+
+== util 98%  seeds [42, 43, 44, 45, 46]
+greedy v3        n=5 mean   2063.8 gapLB 27.01%  uncov  70  t    0.1s | SQA-v3.1 - this  -376.4 (5/5 better, p=0.0625)
+regret v3        n=5 mean   1922.2 gapLB 18.45%  uncov  18  t    0.9s | SQA-v3.1 - this  -234.8 (5/5 better, p=0.0625)
+exact v3         n=5 mean   1890.0 gapLB 16.51%  uncov   6  t    0.7s | SQA-v3.1 - this  -202.7 (5/5 better, p=0.0625)
+greedy v3.1      n=5 mean   1684.9 gapLB  3.90%  uncov   0  t    5.6s | SQA-v3.1 - this    +2.4 (1/5 better, p=0.312)
+regret v3.1      n=5 mean   1680.6 gapLB  3.65%  uncov   0  t    6.5s | SQA-v3.1 - this    +6.8 (0/5 better, p=0.0625)
+exact v3.1       n=5 mean   1678.2 gapLB  3.48%  uncov   0  t    6.8s | SQA-v3.1 - this    +9.2 (0/5 better, p=0.0625)
+ils v3.1         n=5 mean   1680.5 gapLB  3.62%  uncov   0  t   56.7s | SQA-v3.1 - this    +6.9 (0/5 better, p=0.0625)
+sa_v3 v3.1       n=5 mean   1681.6 gapLB  3.71%  uncov   0  t    9.3s | SQA-v3.1 - this    +5.7 (1/5 better, p=0.188)
+sqa_v3 v3.1      n=5 mean   1687.4 gapLB  4.06%  uncov   0  t   95.5s
+sqa_v3+LS v3.1   n=5 mean   1679.8 gapLB  3.59%  uncov   0  t  112.4s | SQA-v3.1 - this    +7.6 (2/5 better, p=0.312)

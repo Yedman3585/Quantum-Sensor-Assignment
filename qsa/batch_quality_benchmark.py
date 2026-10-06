@@ -99,7 +99,7 @@ class Batch:
         return bool(per_cam.max(initial=0) <= 1 and np.all(per_srv <= self.R + 1e-9))
 
 
-def build_batch(inst, cams, residual, window, m_shared, k_percam, gen, sel_cost=None):
+def build_batch(inst, cams, residual, window, m_shared, k_percam, gen, sel_cost=None, k_slack=0):
     if window == "shared":
         gen.remaining_capacity = residual
         top, _ = gen.select_prc_servers(cams)
@@ -122,6 +122,13 @@ def build_batch(inst, cams, residual, window, m_shared, k_percam, gen, sel_cost=
         k = min(k_percam, len(feas))
         crow = (inst.wcost[c] if sel_cost is None else sel_cost(c))
         best = feas[np.argpartition(crow[feas], k - 1)[:k]]
+        if k_slack > 0 and len(feas) > k:
+            # QUBO-v3.1: also offer the cheapest servers among those with the most residual headroom,
+            # so that cameras of one batch do not all compete for the same few priced-cheapest servers
+            rest = np.setdiff1d(feas, best)
+            roomy = rest[np.argsort(-residual[rest])[:max(4 * k_slack, k_slack)]]
+            extra = roomy[np.argsort(crow[roomy])[:k_slack]]
+            best = np.concatenate([best, extra])
         per_cam.append(best)
         for s in best:
             chosen.setdefault(int(s), len(chosen))

@@ -35,6 +35,8 @@ def solve_v3(b, solver, a, seed):
         rover = None
         for smp in samples:
             x, v = decode_v3(b, smp, fixed, dinfo, True)
+            if a.polish:
+                x = local_search(b, x)
             o = b.objective(x)
             if o < best_o:
                 best_x, best_o, stats["viol"] = x, o, v
@@ -74,9 +76,12 @@ def solve_ils(b, time_budget, rng):
     return best
 
 
-def lagrange_prices(inst, iters=300):
-    """Capacity prices u_j >= 0 from the Lagrangian relaxation of the full problem."""
+def lagrange_prices(inst, iters=300, cams=None, cap=None):
+    """Capacity prices u_j >= 0 from the Lagrangian relaxation of the full problem, or (QUBO-v3.1)
+    of the residual problem: the cameras not yet assigned and the residual capacities."""
     C, l, K = inst.wcost, inst.load, inst.cap
+    if cams is not None:
+        C, l, K = C[cams], l[cams], np.maximum(cap, 0.0)
     u = np.zeros(len(K)); best, best_u = -np.inf, u.copy()
     for it in range(iters):
         R = C + np.outer(l, u)
@@ -115,6 +120,11 @@ def main():
     ap.add_argument("--price", action="store_true", help="add Lagrangian capacity prices u_j*l_i to decision costs")
     ap.add_argument("--price-scale", type=float, default=1.0)
     ap.add_argument("--price-window", action="store_true", help="also choose per-camera candidates by priced cost")
+    ap.add_argument("--reprice", type=int, default=0,
+                    help="QUBO-v3.1: recompute Lagrangian prices on the remaining cameras and residual capacities every T batches (0 = static prices)")
+    ap.add_argument("--reprice-iters", type=int, default=300)
+    ap.add_argument("--k-slack", type=int, default=0, help="QUBO-v3.1: extra candidates per camera from the servers with most residual capacity")
+    ap.add_argument("--polish", action="store_true", help="shift/swap local search on every decoded QUBO sample")
     ap.add_argument("--out", default="logs_qubo_v3_trajectory")
     a = ap.parse_args()
 
@@ -132,8 +142,11 @@ def main():
     agg = {"qubo_batches": 0, "qubo_calls": 0, "vars_sum": 0, "fixed_sum": 0, "viol_sum": 0}
     for t in range(nb):
         cams = order[t * a.batch_size:(t + 1) * a.batch_size]
+        if a.price and a.reprice > 0 and t > 0 and t % a.reprice == 0:
+            u, _ = lagrange_prices(inst, iters=a.reprice_iters, cams=order[t * a.batch_size:], cap=residual)
+            u = u * a.price_scale
         sel = (lambda c: inst.wcost[c] + u * inst.load[c]) if (u is not None and a.price_window) else None
-        b = build_batch(inst, cams, residual.copy(), a.window, a.m_shared, a.k_percam, inst.gen, sel_cost=sel)
+        b = build_batch(inst, cams, residual.copy(), a.window, a.m_shared, a.k_percam, inst.gen, sel_cost=sel, k_slack=a.k_slack)
         if u is not None:
             add = u[b.servers[b.ps]] * b.l[b.pi]
             b.val = b.val + add
@@ -159,11 +172,11 @@ def main():
         if t % 50 == 0:
             print(f"[{a.method}] batch {t} objective so far {total:.1f} elapsed {time.time()-t_all:.0f}s", flush=True)
     assert np.all(residual >= -1e-6)
-    res = {"method": a.method, "price": bool(a.price), "price_scale": a.price_scale, "price_window": bool(a.price_window), "k_percam": a.k_percam, "window": a.window, "capacity_scale": inst.capacity_scale, "target_util": a.target_util, "n_cameras": a.n_cameras, "n_servers": a.n_servers, "seed": a.seed,
+    res = {"method": a.method, "price": bool(a.price), "reprice": a.reprice, "k_slack": a.k_slack, "polish": a.polish, "price_scale": a.price_scale, "price_window": bool(a.price_window), "k_percam": a.k_percam, "window": a.window, "capacity_scale": inst.capacity_scale, "target_util": a.target_util, "n_cameras": a.n_cameras, "n_servers": a.n_servers, "seed": a.seed,
            "utilization_percent": inst.utilization, "objective": total, "covered": covered,
            "coverage_percent": covered / a.n_cameras * 100.0, "time_sec": time.time() - t_all, **agg, "params": vars(a)}
     os.makedirs(a.out, exist_ok=True)
-    path = os.path.join(a.out, f"traj_{a.method}{'_priced' if a.price else ''}_{a.window}_{a.n_cameras}x{a.n_servers}_{('u%g' % a.target_util) if a.target_util else ('s%g' % a.capacity_scale)}_seed{a.seed}_{time.strftime('%Y%m%d_%H%M%S')}.json")
+    path = os.path.join(a.out, f"traj_{a.method}{'_priced' if a.price else ''}{('_rp%d' % a.reprice) if a.reprice else ''}{'_ls' if a.polish else ''}{('_ks%d' % a.k_slack) if a.k_slack else ''}_{a.window}_{a.n_cameras}x{a.n_servers}_{('u%g' % a.target_util) if a.target_util else ('s%g' % a.capacity_scale)}_seed{a.seed}_{time.strftime('%Y%m%d_%H%M%S')}.json")
     json.dump(res, open(path, "w"), indent=1)
     print(json.dumps({k: v for k, v in res.items() if k != "params"}))
 
