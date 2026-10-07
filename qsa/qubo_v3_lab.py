@@ -72,15 +72,16 @@ class QB:
                     self.q[key] += w * v1 * v2
 
 
-def reduce_batch(b):
-    """Returns fixed pairs (bool over pairs) and the set of 'safe' servers (cannot overflow)."""
+def reduce_batch(b, nofix=None):
+    """Returns fixed pairs (bool over pairs) and the set of 'safe' servers (cannot overflow).
+    nofix: optional bool mask over cameras that must stay free (e.g. cameras with pairwise terms)."""
     total = np.bincount(b.ps, weights=b.l[b.pi], minlength=b.m)
     safe = total <= b.R + 1e-9
     fixed = np.zeros(b.npairs, bool)
     fixed_cam = np.zeros(b.n, bool)
     for i in range(b.n):
         ps = b.pairs_of_cam[i]
-        if len(ps) == 0:
+        if len(ps) == 0 or (nofix is not None and nofix[i]):
             continue
         p = ps[np.argmin(b.val[ps])]
         if safe[b.ps[p]]:
@@ -89,8 +90,14 @@ def reduce_batch(b):
     return fixed, fixed_cam, safe
 
 
-def build_v3(b, use_dw, use_red, lam_onehot=0.45, lam_cap=1.0, lam1=0.2, lam_dw=None, cap_mode="unbalanced", slack_bits=6, srv_w=None, srv_mu=None):
-    fixed, fixed_cam, safe = reduce_batch(b) if use_red else (np.zeros(b.npairs, bool), np.zeros(b.n, bool),
+def build_v3(b, use_dw, use_red, lam_onehot=0.45, lam_cap=1.0, lam1=0.2, lam_dw=None, cap_mode="unbalanced", slack_bits=6, srv_w=None, srv_mu=None, quad=None):
+    """quad: optional list of (pair_p, pair_q, weight) pairwise costs w * x_p * x_q (same units as costs)."""
+    nofix = None
+    if quad:
+        nofix = np.zeros(b.n, bool)
+        for p_, q_, _ in quad:
+            nofix[b.pi[p_]] = True; nofix[b.pi[q_]] = True
+    fixed, fixed_cam, safe = reduce_batch(b, nofix) if use_red else (np.zeros(b.npairs, bool), np.zeros(b.n, bool),
                                                               np.zeros(b.m, bool))
     # cost normalisation (same as v2)
     dec = getattr(b, "dec", b.pcost)          # decision cost (may include capacity prices)
@@ -101,6 +108,12 @@ def build_v3(b, use_dw, use_red, lam_onehot=0.45, lam_cap=1.0, lam1=0.2, lam_dw=
     lin_dummy = (P_UNCOVERED - cmin) / unit
     A = max(lam_onehot * float(np.percentile(np.concatenate([lin_pair, np.minimum(lin_dummy, lin_pair.max())]), 95)), 1.0)
     Wdw = A if lam_dw is None else lam_dw * A
+    # pairwise terms on domain-wall expressions are unbounded below off the valid manifold
+    # (x = z_m - z_{m+1} can be -1), so each camera's wall penalty must dominate its pairwise weight
+    qdeg = np.zeros(b.n)
+    if quad:
+        for p_, q_, w_ in quad:
+            qdeg[b.pi[p_]] += abs(w_) / unit; qdeg[b.pi[q_]] += abs(w_) / unit
     qb = QB()
     xexpr = {}          # pair -> Expr
     decode_info = []    # per free camera: (i, options list (pair or -1 dummy), vars)
@@ -119,10 +132,11 @@ def build_v3(b, use_dw, use_red, lam_onehot=0.45, lam_cap=1.0, lam1=0.2, lam_dw=
                 if opts[m] >= 0:
                     xexpr[opts[m]] = xm
                 qb.lin(xm, costs[m])
+            Wi = Wdw + 2.0 * qdeg[i]
             for m in range(1, k - 1):                     # z_{m+1} <= z_m : Wdw * z_{m+1}(1 - z_m)
-                qb.q[(z[m], z[m])] += Wdw
+                qb.q[(z[m], z[m])] += Wi
                 a_, c_ = sorted((z[m - 1], z[m]))
-                qb.q[(a_, c_)] -= Wdw
+                qb.q[(a_, c_)] -= Wi
             decode_info.append((i, opts, z))
         else:
             xs = [qb.new() for _ in range(k)]
@@ -134,6 +148,9 @@ def build_v3(b, use_dw, use_red, lam_onehot=0.45, lam_cap=1.0, lam1=0.2, lam_dw=
             s = Expr(-1.0, {v: 1.0 for v in xs})
             qb.prod(s, s, A)
             decode_info.append((i, opts, xs))
+    if quad:
+        for p_, q_, w_ in quad:
+            qb.prod(xexpr[p_], xexpr[q_], w_ / unit)
     cap_servers = 0
     for s in range(b.m):
         if use_red and safe[s]:

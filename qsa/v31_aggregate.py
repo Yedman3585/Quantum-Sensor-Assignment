@@ -5,7 +5,10 @@ rows = collections.defaultdict(dict)
 def add(f, tag):
     d = json.load(open(f)); n = d["method"] + ("+LS" if d.get("polish") else "") + tag
     rows[(d["target_util"], d["seed"])][n] = (d["objective"], d["n_cameras"] - d["covered"], d["time_sec"])
-for f in glob.glob("results/v3/v31_prototype/r4/*.json"): add(f, " v3.1")
+for f in glob.glob("results/v3/v31_prototype/r4/*.json"):
+    # in r4, SQA/SA/ILS ranked their candidates by unpriced cost; fixed and re-run in r5
+    if json.load(open(f))["method"] in ("exact", "greedy", "regret"): add(f, " v3.1")
+for f in glob.glob("results/v3/v31_prototype/r5/*.json"): add(f, " v3.1")
 for f in glob.glob("results/v3/v31_prototype/r4_static/*.json"): add(f, " v3")
 for f in glob.glob("results/v3/campaign2/scale/*5000x200*.json"):
     d = json.load(open(f))
