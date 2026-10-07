@@ -1,0 +1,140 @@
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 42 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 42 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 42 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 42 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 75 --seed 42 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 42 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 42 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 42 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 75 --seed 42 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 42 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 42 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 42 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 43 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 90 --seed 42 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 43 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 42 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 43 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 43 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 75 --seed 43 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 75 --seed 43 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 43 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 43 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 43 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 43 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 43 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 43 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 44 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 44 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 90 --seed 43 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 43 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 44 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 44 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 75 --seed 44 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 44 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 75 --seed 44 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 44 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 44 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 44 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 44 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 44 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 45 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 90 --seed 44 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 45 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 44 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 45 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 45 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 75 --seed 45 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 75 --seed 45 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 45 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 45 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 45 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 45 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 45 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 45 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 46 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 90 --seed 45 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 46 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 45 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 46 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 46 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 75 --seed 46 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 75 --seed 46 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 46 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 46 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 46 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 46 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 46 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 46 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 47 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 47 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 90 --seed 46 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 46 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 47 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 47 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 75 --seed 47 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 75 --seed 47 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 47 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 47 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 47 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 47 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 47 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 47 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 48 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 90 --seed 47 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 48 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 47 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 48 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 48 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 75 --seed 48 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 75 --seed 48 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 48 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 48 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 48 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 48 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 48 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 48 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 49 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 90 --seed 48 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 49 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 48 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 49 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 49 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 75 --seed 49 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 49 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 75 --seed 49 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 49 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 49 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 49 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 49 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 49 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 50 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 50 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 90 --seed 49 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 49 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 50 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 50 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 75 --seed 50 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 75 --seed 50 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 50 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 50 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 50 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 50 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 50 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 50 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 75 --seed 51 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 90 --seed 50 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 51 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 50 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 75 --seed 51 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 75 --seed 51 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 75 --seed 51 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 75 --seed 51 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 51 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 75 --seed 51 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 51 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 51 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method regret --target-util 90 --seed 51 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 51 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method ils --target-util 90 --seed 51 --price --price-window --reprice 5 --k-slack 2 --out results/v3/campaign3/v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 51 --price --price-window --reprice 5 --k-slack 2 --polish --out results/v3/campaign3/v31
