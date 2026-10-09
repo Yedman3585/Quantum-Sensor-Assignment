@@ -1,0 +1,360 @@
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 100 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 101 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 102 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 103 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 104 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 105 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 106 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 107 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 108 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast-bias 0.3
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.1
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.15
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.2
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 109 --price --price-window --k-slack 2 --out results/v3/margin_tuning --reprice 5 --forecast twin --forecast-bias 0.3

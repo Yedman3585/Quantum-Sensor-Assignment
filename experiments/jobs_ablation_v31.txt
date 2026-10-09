@@ -1,0 +1,30 @@
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 42 --min-gap 0.005 --max-hard 8 --variants base,R,DW,R+DW --solvers SQA,SA --out results/v3/ablation_v31/plain
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 42 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA,SA --adaptive-rounds 3 --out results/v3/ablation_v31/adaptive
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 42 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA --adaptive-rounds 3 --beta 20 --out results/v3/ablation_v31/beta20
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 43 --min-gap 0.005 --max-hard 8 --variants base,R,DW,R+DW --solvers SQA,SA --out results/v3/ablation_v31/plain
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 43 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA,SA --adaptive-rounds 3 --out results/v3/ablation_v31/adaptive
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 43 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA --adaptive-rounds 3 --beta 20 --out results/v3/ablation_v31/beta20
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 44 --min-gap 0.005 --max-hard 8 --variants base,R,DW,R+DW --solvers SQA,SA --out results/v3/ablation_v31/plain
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 44 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA,SA --adaptive-rounds 3 --out results/v3/ablation_v31/adaptive
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 44 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA --adaptive-rounds 3 --beta 20 --out results/v3/ablation_v31/beta20
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 45 --min-gap 0.005 --max-hard 8 --variants base,R,DW,R+DW --solvers SQA,SA --out results/v3/ablation_v31/plain
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 45 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA,SA --adaptive-rounds 3 --out results/v3/ablation_v31/adaptive
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 45 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA --adaptive-rounds 3 --beta 20 --out results/v3/ablation_v31/beta20
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 46 --min-gap 0.005 --max-hard 8 --variants base,R,DW,R+DW --solvers SQA,SA --out results/v3/ablation_v31/plain
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 46 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA,SA --adaptive-rounds 3 --out results/v3/ablation_v31/adaptive
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 46 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA --adaptive-rounds 3 --beta 20 --out results/v3/ablation_v31/beta20
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 47 --min-gap 0.005 --max-hard 8 --variants base,R,DW,R+DW --solvers SQA,SA --out results/v3/ablation_v31/plain
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 47 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA,SA --adaptive-rounds 3 --out results/v3/ablation_v31/adaptive
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 47 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA --adaptive-rounds 3 --beta 20 --out results/v3/ablation_v31/beta20
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 48 --min-gap 0.005 --max-hard 8 --variants base,R,DW,R+DW --solvers SQA,SA --out results/v3/ablation_v31/plain
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 48 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA,SA --adaptive-rounds 3 --out results/v3/ablation_v31/adaptive
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 48 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA --adaptive-rounds 3 --beta 20 --out results/v3/ablation_v31/beta20
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 49 --min-gap 0.005 --max-hard 8 --variants base,R,DW,R+DW --solvers SQA,SA --out results/v3/ablation_v31/plain
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 49 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA,SA --adaptive-rounds 3 --out results/v3/ablation_v31/adaptive
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 49 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA --adaptive-rounds 3 --beta 20 --out results/v3/ablation_v31/beta20
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 50 --min-gap 0.005 --max-hard 8 --variants base,R,DW,R+DW --solvers SQA,SA --out results/v3/ablation_v31/plain
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 50 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA,SA --adaptive-rounds 3 --out results/v3/ablation_v31/adaptive
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 50 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA --adaptive-rounds 3 --beta 20 --out results/v3/ablation_v31/beta20
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 51 --min-gap 0.005 --max-hard 8 --variants base,R,DW,R+DW --solvers SQA,SA --out results/v3/ablation_v31/plain
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 51 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA,SA --adaptive-rounds 3 --out results/v3/ablation_v31/adaptive
+{py} qsa/qubo_v3_lab.py --v31 --window percam --target-util 95 --instance-seed 51 --min-gap 0.005 --max-hard 8 --variants R+DW --solvers SQA --adaptive-rounds 3 --beta 20 --out results/v3/ablation_v31/beta20

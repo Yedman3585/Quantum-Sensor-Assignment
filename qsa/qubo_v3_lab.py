@@ -276,29 +276,51 @@ def main():
     ap.add_argument("--adaptive-rounds", type=int, default=1, help=">1: re-sample with prices/weights raised on overflowing servers")
     ap.add_argument("--mu-step", type=float, default=0.5)
     ap.add_argument("--w-growth", type=float, default=2.0)
+    ap.add_argument("--v31", action="store_true",
+                    help="QUBO-v3.1 batches: priced window, headroom candidates (k-slack 2), prices re-computed on the "
+                         "residual problem every 5 batches; batch gaps measured on the priced decision objective")
+    ap.add_argument("--n-cameras", type=int, default=20000)
+    ap.add_argument("--n-servers", type=int, default=800)
     ap.add_argument("--out", default="logs_qubo_v3")
     args = ap.parse_args()
 
-    inst = Instance(20000, 800, args.instance_seed, args.capacity_scale, args.target_util)
+    def obj(b, x):
+        """Objective the batch solvers optimise: the true batch objective, or (v3.1) the priced decision objective."""
+        return float(b.val[x].sum() + P_UNCOVERED * b.n) if args.v31 else b.objective(x)
+
+    inst = Instance(args.n_cameras, args.n_servers, args.instance_seed, args.capacity_scale, args.target_util)
     order = np.argsort(-(inst.priority * inst.load))
     residual = inst.cap.copy()
     hard = []
-    for t in range(250):
+    u = None
+    if args.v31:
+        from v3_trajectory import lagrange_prices
+        u, _ = lagrange_prices(inst)
+    for t in range(int(np.ceil(args.n_cameras / 80))):
         cams = order[t * 80:(t + 1) * 80]
-        b = build_batch(inst, cams, residual.copy(), args.window, 20, args.k_percam, inst.gen)
+        if args.v31:
+            if t > 0 and t % 5 == 0:
+                u, _ = lagrange_prices(inst, iters=300, cams=order[t * 80:], cap=residual, top=40)
+            b = build_batch(inst, cams, residual.copy(), args.window, 20, args.k_percam, inst.gen,
+                            sel_cost=lambda c: inst.wcost[c] + u * inst.load[c], k_slack=2)
+            add = u[b.servers[b.ps]] * b.l[b.pi]
+            b.val = b.val + add
+            b.dec = b.pcost + add
+        else:
+            b = build_batch(inst, cams, residual.copy(), args.window, 20, args.k_percam, inst.gen)
         xe, _ = solve_exact(b)
         xg, _ = solve_greedy(b)
-        if (b.objective(xg) - b.objective(xe)) / b.objective(xe) >= args.min_gap and len(hard) < args.max_hard:
+        if (obj(b, xg) - obj(b, xe)) / obj(b, xe) >= args.min_gap and len(hard) < args.max_hard:
             hard.append((t, b, xe, xg))
         residual[b.servers] -= np.bincount(b.ps[xe], weights=b.l[b.pi[xe]], minlength=b.m)
     print(f"collected {len(hard)} hard batches ({args.window}, scale {args.capacity_scale})", flush=True)
 
     rows = []
     for t, b, xe, xg in hard:
-        oe = b.objective(xe)
+        oe = obj(b, xe)
         xr, _ = solve_regret(b)
-        row = {"batch": t, "exact": oe, "greedy": b.objective(xg), "regret": b.objective(xr),
-               "regret_ls": b.objective(local_search(b, xr))}
+        row = {"batch": t, "exact": oe, "greedy": obj(b, xg), "regret": obj(b, xr),
+               "regret_ls": obj(b, local_search(b, xr))}
         for var in args.variants.split(","):
             use_red = "R" in var.split("+")
             use_dw = "DW" in var.split("+")
@@ -310,7 +332,7 @@ def main():
                 best, viol, tt = [], [], 0.0
                 for sd in range(args.seeds):
                     if not q:          # everything fixed by reduction
-                        x = greedy_fill(b, fixed.copy()); best.append(b.objective(x)); viol.append(0)
+                        x = greedy_fill(b, fixed.copy()); best.append(obj(b, x)); viol.append(0)
                         continue
                     srv_w = np.ones(b.m); srv_mu = np.zeros(b.m)
                     objs, vs = [], []
@@ -329,7 +351,7 @@ def main():
                         for smp in samples:
                             x, v = decode_v3(b, smp, fixed, dd, use_dw)
                             assert b.feasible(x)
-                            o = b.objective(x); objs.append(o); vs.append(v)
+                            o = obj(b, x); objs.append(o); vs.append(v)
                             if o < rbest:
                                 rbest = o
                                 raw = raw_choice(b, smp, fixed, dd, use_dw)
@@ -363,7 +385,7 @@ def main():
                                "mean_fixed": float(np.mean([r[k + ":fixed"] for r in rows])),
                                "mean_viol_servers": float(np.mean([r[k + ":viol_servers"] for r in rows]))})
     os.makedirs(args.out, exist_ok=True)
-    path = os.path.join(args.out, f"v3_{args.window}_{('u%g' % args.target_util) if args.target_util else ('s%g' % args.capacity_scale)}_seed{args.instance_seed}_{time.strftime('%Y%m%d_%H%M%S')}.json")
+    path = os.path.join(args.out, f"v3{'1' if args.v31 else ''}_{args.window}_{('u%g' % args.target_util) if args.target_util else ('s%g' % args.capacity_scale)}_seed{args.instance_seed}_{time.strftime('%Y%m%d_%H%M%S')}.json")
     json.dump({"args": vars(args), "summary": summary, "rows": rows}, open(path, "w"), indent=1)
     for k, v in summary.items():
         extra = (f" t {v['mean_time_s']:.2f}s vars {v['mean_vars']:.0f} fixed {v['mean_fixed']:.0f} viol {v['mean_viol_servers']:.2f}"
