@@ -1,0 +1,180 @@
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 42 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 42 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 42 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 42 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 42 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 42 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 42 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 42 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 42 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 42 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 42 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 42 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 42 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 42 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 42 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 42 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 42 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 42 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 43 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 43 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 43 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 43 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 43 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 43 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 43 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 43 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 43 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 43 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 43 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 43 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 43 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 43 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 43 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 43 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 43 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 43 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 44 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 44 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 44 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 44 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 44 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 44 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 44 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 44 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 44 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 44 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 44 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 44 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 44 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 44 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 44 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 44 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 44 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 44 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 45 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 45 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 45 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 45 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 45 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 45 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 45 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 45 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 45 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 45 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 45 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 45 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 45 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 45 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 45 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 45 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 45 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 45 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 46 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 46 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 46 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 46 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 46 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 46 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 46 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 46 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 46 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 46 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 46 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 46 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 46 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 46 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 46 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 46 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 46 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 46 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 47 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 47 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 47 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 47 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 47 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 47 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 47 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 47 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 47 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 47 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 47 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 47 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 47 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 47 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 47 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 47 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 47 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 47 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 48 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 48 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 48 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 48 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 48 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 48 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 48 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 48 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 48 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 48 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 48 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 48 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 48 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 48 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 48 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 48 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 48 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 48 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 49 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 49 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 49 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 49 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 49 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 49 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 49 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 49 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 49 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 49 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 49 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 49 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 49 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 49 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 49 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 49 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 49 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 49 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 50 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 50 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 50 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 50 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 50 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 50 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 50 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 50 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 50 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 50 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 50 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 50 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 50 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 50 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 50 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 50 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 50 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 50 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 51 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 51 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 51 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 51 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 51 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 51 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 51 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 51 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 51 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 51 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 51 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 98 --seed 51 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 51 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 51 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method exact --target-util 90 --seed 51 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 51 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 51 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio --reprice 5 --forecast twin
+{py} qsa/v3_trajectory.py --method greedy --target-util 90 --seed 51 --weight prio --price --price-window --k-slack 2 --out results/v3/weight_prio
