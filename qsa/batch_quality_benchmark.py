@@ -42,8 +42,35 @@ P_UNCOVERED = 15.0
 
 # --------------------------------------------------------------------------- instance
 
+class ClusteredLayout:
+    """Urban-like layout: activity centres with Gaussian spread plus a uniform background.
+    The centres (positions, spreads, weights) are fixed by the instance seed and describe the city;
+    individual sensor and server positions are drawn around them."""
+    def __init__(self, seed, n_centres=12, bg_cameras=0.3, bg_servers=0.4, server_spread=1.5):
+        rs = np.random.RandomState(seed + 555)
+        self.cx = rs.uniform(100, 900, n_centres); self.cy = rs.uniform(100, 900, n_centres)
+        self.sig = rs.uniform(40, 120, n_centres)
+        self.w = rs.dirichlet(np.ones(n_centres))
+        self.bg_cameras, self.bg_servers, self.server_spread = bg_cameras, bg_servers, server_spread
+
+    def draw(self, rs, n, background, spread=1.0):
+        x = rs.uniform(0, 1000, n); y = rs.uniform(0, 1000, n)
+        clustered = rs.uniform(size=n) >= background
+        k = rs.choice(len(self.w), size=n, p=self.w)
+        gx = rs.normal(self.cx[k], self.sig[k] * spread); gy = rs.normal(self.cy[k], self.sig[k] * spread)
+        x[clustered] = gx[clustered]; y[clustered] = gy[clustered]
+        reflect = lambda v: np.clip(1000 - np.abs(1000 - np.abs(v)), 0, 1000)   # mirror at the city boundary
+        return reflect(x), reflect(y)
+
+    def cameras(self, rs, n):
+        return self.draw(rs, n, self.bg_cameras)
+
+    def servers(self, rs, n):
+        return self.draw(rs, n, self.bg_servers, self.server_spread)
+
+
 class Instance:
-    def __init__(self, n_cameras, n_servers, seed, capacity_scale, target_util=None):
+    def __init__(self, n_cameras, n_servers, seed, capacity_scale, target_util=None, layout="uniform"):
         """target_util (percent) overrides capacity_scale: capacities are scaled so that
         total load / total capacity equals target_util exactly. The cost matrix does not
         depend on the scale (capacity term is normalised), so only capacities change."""
@@ -59,6 +86,16 @@ class Instance:
             gen.remaining_capacity = gen.initial_capacity.copy()
             gen.total_capacity = float(gen.initial_capacity.sum())
             gen.utilization_percent = gen.total_load / gen.total_capacity * 100.0
+        self.layout = layout
+        self.layout_model = None
+        if layout == "clustered":
+            # priorities, loads and capacities are unchanged; only positions (and hence costs) are redrawn
+            self.layout_model = ClusteredLayout(seed)
+            gen.camera_x, gen.camera_y = self.layout_model.cameras(np.random.RandomState(seed + 556), n_cameras)
+            gen.server_x, gen.server_y = self.layout_model.servers(np.random.RandomState(seed + 557), n_servers)
+            gen._build_cost_matrix()
+        elif layout != "uniform":
+            raise ValueError(layout)
         self.capacity_scale = gen.capacity_scale
         self.gen = gen
         self.w = (4 - gen.priority).astype(float)

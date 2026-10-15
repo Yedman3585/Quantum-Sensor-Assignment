@@ -130,7 +130,10 @@ class Forecast:
             ld = np.zeros(n)
             for p_, lo, hi in ((3, 8, 15), (2, 4, 8), (1, 1, 3)):
                 m = pr == p_; ld[m] = rs.uniform(lo, hi, m.sum())
-            x = rs.uniform(0, 1000, n); y = rs.uniform(0, 1000, n)
+            if inst.layout_model is not None:
+                x, y = inst.layout_model.cameras(rs, n)      # same city layout, different sensors
+            else:
+                x = rs.uniform(0, 1000, n); y = rs.uniform(0, 1000, n)
             d_real = np.hypot(g.camera_x[:, None] - g.server_x[None, :], g.camera_y[:, None] - g.server_y[None, :])
             d = np.hypot(x[:, None] - g.server_x[None, :], y[:, None] - g.server_y[None, :])
             cinv = 1.0 / (g.initial_capacity + 1e-9)
@@ -196,6 +199,8 @@ def main():
     ap.add_argument("--trace", action="store_true", help="store per-batch objective, QUBO size and assignment")
     ap.add_argument("--polish", action="store_true", help="shift/swap local search on every decoded QUBO sample")
     ap.add_argument("--out", default="logs_qubo_v3_trajectory")
+    ap.add_argument("--layout", default="uniform", choices=["uniform", "clustered"],
+                    help="sensor/server placement: uniform (all campaigns) or clustered urban layout")
     ap.add_argument("--weight", default="inv", choices=["inv", "prio"],
                     help="priority weight in the objective: inv w_i = 4 - p_i (default, as in all campaigns), prio w_i = p_i")
     ap.add_argument("--forecast", default="oracle", choices=["oracle", "twin", "noise"],
@@ -204,7 +209,7 @@ def main():
     ap.add_argument("--forecast-bias", type=float, default=0.0, help="systematic relative error of forecast loads")
     a = ap.parse_args()
 
-    inst = Instance(a.n_cameras, a.n_servers, a.seed, a.capacity_scale, a.target_util)
+    inst = Instance(a.n_cameras, a.n_servers, a.seed, a.capacity_scale, a.target_util, layout=a.layout)
     if a.weight == "prio":
         inst.w = inst.priority.astype(float)
         inst.wcost = inst.cost * inst.w[:, None]
@@ -265,11 +270,11 @@ def main():
         if t % 50 == 0:
             print(f"[{a.method}] batch {t} objective so far {total:.1f} elapsed {time.time()-t_all:.0f}s", flush=True)
     assert np.all(residual >= -1e-6)
-    res = {"method": a.method, "price": bool(a.price), "reprice": a.reprice, "reprice_top": a.reprice_top, "k_slack": a.k_slack, "polish": a.polish, "weight": a.weight, "forecast": a.forecast, "forecast_level": a.forecast_level, "forecast_bias": a.forecast_bias, "price_scale": a.price_scale, "price_window": bool(a.price_window), "k_percam": a.k_percam, "window": a.window, "capacity_scale": inst.capacity_scale, "target_util": a.target_util, "n_cameras": a.n_cameras, "n_servers": a.n_servers, "seed": a.seed,
+    res = {"method": a.method, "price": bool(a.price), "reprice": a.reprice, "reprice_top": a.reprice_top, "k_slack": a.k_slack, "polish": a.polish, "weight": a.weight, "layout": a.layout, "batch_size": a.batch_size, "reprice_period": a.reprice, "forecast": a.forecast, "forecast_level": a.forecast_level, "forecast_bias": a.forecast_bias, "price_scale": a.price_scale, "price_window": bool(a.price_window), "k_percam": a.k_percam, "window": a.window, "capacity_scale": inst.capacity_scale, "target_util": a.target_util, "n_cameras": a.n_cameras, "n_servers": a.n_servers, "seed": a.seed,
            "utilization_percent": inst.utilization, "objective": total, "covered": covered,
            "coverage_percent": covered / a.n_cameras * 100.0, "time_sec": time.time() - t_all, **agg, "params": vars(a), **({"trace": trace} if a.trace else {})}
     os.makedirs(a.out, exist_ok=True)
-    path = os.path.join(a.out, f"traj_{a.method}{'_priced' if a.price else ''}{('_rp%d' % a.reprice) if a.reprice else ''}{'_ls' if a.polish else ''}{'_wprio' if a.weight == 'prio' else ''}{('_ks%d' % a.k_slack) if a.k_slack else ''}{('_fc-%s%g%+g' % (a.forecast, a.forecast_level, a.forecast_bias)) if (a.forecast != 'oracle' or a.forecast_bias) else ''}_{a.window}_{a.n_cameras}x{a.n_servers}_{('u%g' % a.target_util) if a.target_util else ('s%g' % a.capacity_scale)}_seed{a.seed}_{time.strftime('%Y%m%d_%H%M%S')}.json")
+    path = os.path.join(a.out, f"traj_{a.method}{'_priced' if a.price else ''}{('_rp%d' % a.reprice) if a.reprice else ''}{'_ls' if a.polish else ''}{'_wprio' if a.weight == 'prio' else ''}{'_clu' if a.layout == 'clustered' else ''}{('_B%d' % a.batch_size) if a.batch_size != 80 else ''}{('_ks%d' % a.k_slack) if a.k_slack else ''}{('_fc-%s%g%+g' % (a.forecast, a.forecast_level, a.forecast_bias)) if (a.forecast != 'oracle' or a.forecast_bias) else ''}_{a.window}_{a.n_cameras}x{a.n_servers}_{('u%g' % a.target_util) if a.target_util else ('s%g' % a.capacity_scale)}_seed{a.seed}_{time.strftime('%Y%m%d_%H%M%S')}.json")
     json.dump(res, open(path, "w"), indent=1)
     print(json.dumps({k: v for k, v in res.items() if k not in ("params", "trace")}))
 
