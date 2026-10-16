@@ -1,0 +1,120 @@
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 42 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 42 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 42 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 42 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 42 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 42 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 42 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 42 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 42 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 42 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 42 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 43 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 43 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 43 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 43 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 43 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 42 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 43 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 43 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 43 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 43 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 43 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 43 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 44 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 44 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 44 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 44 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 44 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 43 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 44 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 44 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 44 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 44 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 44 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 44 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 45 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 45 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 45 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 45 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 45 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 44 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 45 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 45 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 45 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 45 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 45 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 45 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 46 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 46 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 46 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 46 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 46 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 45 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 46 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 46 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 46 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 46 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 46 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 46 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 47 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 47 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 47 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 47 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 47 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 46 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 47 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 47 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 47 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 47 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 47 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 47 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 48 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 48 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 48 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 48 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 48 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 47 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 48 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 48 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 48 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 48 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 48 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 48 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 49 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 49 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 49 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 49 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 49 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 48 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 49 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 49 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 49 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 49 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 49 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 49 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 50 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 50 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 50 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 50 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 50 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 49 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 50 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 50 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 50 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 50 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 50 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 50 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 51 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 51 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 51 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 51 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 51 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 50 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 51 --price --price-window --k-slack 2 --reprice 5 --batch-size 160 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 51 --price --price-window --k-slack 2 --reprice 5 --batch-size 320 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 51 --price --price-window --k-slack 2 --reprice 5 --batch-size 40 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 51 --price --price-window --k-slack 2 --reprice 10 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 51 --price --price-window --k-slack 2 --reprice 25 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 51 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity
+{py} qsa/v3_trajectory.py --method exact --target-util 98 --seed 51 --price --price-window --k-slack 2 --reprice 1 --out results/v3/sensitivity

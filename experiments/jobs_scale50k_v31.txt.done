@@ -1,0 +1,9 @@
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 42 --n-cameras 50000 --n-servers 2000 --price --price-window --k-slack 2 --reprice 5 --out results/v3/scale_v31
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 43 --n-cameras 50000 --n-servers 2000 --price --price-window --k-slack 2 --reprice 5 --out results/v3/scale_v31
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 42 --n-cameras 50000 --n-servers 2000 --price --price-window --k-slack 2 --reprice 5 --out results/v3/scale_v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 42 --n-cameras 50000 --n-servers 2000 --price --price-window --k-slack 2 --reprice 5 --out results/v3/scale_v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 43 --n-cameras 50000 --n-servers 2000 --price --price-window --k-slack 2 --reprice 5 --out results/v3/scale_v31
+{py} qsa/v3_trajectory.py --method exact --target-util 95 --seed 44 --n-cameras 50000 --n-servers 2000 --price --price-window --k-slack 2 --reprice 5 --out results/v3/scale_v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 44 --n-cameras 50000 --n-servers 2000 --price --price-window --k-slack 2 --reprice 5 --out results/v3/scale_v31
+{py} qsa/v3_trajectory.py --method greedy --target-util 95 --seed 44 --n-cameras 50000 --n-servers 2000 --price --price-window --k-slack 2 --reprice 5 --out results/v3/scale_v31
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 43 --n-cameras 50000 --n-servers 2000 --price --price-window --k-slack 2 --reprice 5 --out results/v3/scale_v31
