@@ -1,0 +1,40 @@
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 95 --seed 42
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 98 --seed 42
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 90 --seed 42
+{py} qsa/online_baselines.py --policy lp --reprice 5 --target-util 90 --seed 42
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 95 --seed 43
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 98 --seed 43
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 90 --seed 43
+{py} qsa/online_baselines.py --policy lp --reprice 5 --target-util 90 --seed 43
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 95 --seed 44
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 98 --seed 44
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 90 --seed 44
+{py} qsa/online_baselines.py --policy lp --reprice 5 --target-util 90 --seed 44
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 95 --seed 45
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 98 --seed 45
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 90 --seed 45
+{py} qsa/online_baselines.py --policy lp --reprice 5 --target-util 90 --seed 45
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 95 --seed 46
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 98 --seed 46
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 90 --seed 46
+{py} qsa/online_baselines.py --policy lp --reprice 5 --target-util 90 --seed 46
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 95 --seed 47
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 98 --seed 47
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 90 --seed 47
+{py} qsa/online_baselines.py --policy lp --reprice 5 --target-util 90 --seed 47
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 95 --seed 48
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 98 --seed 48
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 90 --seed 48
+{py} qsa/online_baselines.py --policy lp --reprice 5 --target-util 90 --seed 48
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 95 --seed 49
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 98 --seed 49
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 90 --seed 49
+{py} qsa/online_baselines.py --policy lp --reprice 5 --target-util 90 --seed 49
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 95 --seed 50
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 98 --seed 50
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 90 --seed 50
+{py} qsa/online_baselines.py --policy lp --reprice 5 --target-util 90 --seed 50
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 95 --seed 51
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 98 --seed 51
+{py} qsa/online_baselines.py --policy lp --reprice 5 --forecast-bias 0.05 --target-util 90 --seed 51
+{py} qsa/online_baselines.py --policy lp --reprice 5 --target-util 90 --seed 51

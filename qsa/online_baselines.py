@@ -18,9 +18,10 @@ from batch_quality_benchmark import P_UNCOVERED, Instance, build_batch, solve_ex
 from v3_trajectory import lagrange_prices  # noqa: E402
 
 
-def lp_prices(inst, cams, cap, top=40):
-    """Exact capacity duals of the LP relaxation of the residual problem (each sensor: its `top` cheapest servers)."""
-    C = inst.wcost[cams]; l = inst.load[cams]; n, m = len(cams), len(cap)
+def lp_prices(inst, cams, cap, top=40, bias=0.0):
+    """Exact capacity duals of the LP relaxation of the residual problem (each sensor: its `top` cheapest servers);
+    bias > 0 scales the remaining demand by (1 + bias), as the demand margin of v3.1."""
+    C = inst.wcost[cams]; l = inst.load[cams] * (1.0 + bias); n, m = len(cams), len(cap)
     cols = np.argpartition(C, top - 1, axis=1)[:, :top]
     c = np.concatenate([np.take_along_axis(C, cols, axis=1).ravel(), np.full(n, P_UNCOVERED)])
     rows = np.repeat(np.arange(n), top)
@@ -49,6 +50,7 @@ def main():
     ap.add_argument("--dmd-rate", default="uniform", choices=["uniform", "load"],
                     help="target consumption per batch: K_j/T (uniform) or residual capacity times the batch's share of the remaining load")
     ap.add_argument("--lookahead", type=int, default=2)
+    ap.add_argument("--forecast-bias", type=float, default=0.0, help="lp: demand margin applied to the remaining loads")
     ap.add_argument("--out", default="results/v3/online_baselines")
     a = ap.parse_args()
 
@@ -63,7 +65,7 @@ def main():
         u0, lb = lagrange_prices(inst)
         scale = float(np.mean(u0[u0 > 0])) if np.any(u0 > 0) else 1e-3
         if a.policy == "lp":
-            u, _ = lp_prices(inst, order, residual)
+            u, _ = lp_prices(inst, order, residual, bias=a.forecast_bias)
         else:
             u = u0.copy() if a.dmd_init == "lagrange" else np.zeros(a.n_servers)
             rho = inst.cap / nb                       # target consumption per batch
@@ -74,7 +76,7 @@ def main():
     for t in range(nb):
         cams = order[t * B:(t + 1) * B]
         if a.policy == "lp" and t > 0 and t % a.reprice == 0:
-            tp = time.time(); u, _ = lp_prices(inst, order[t * B:], residual); t_prices += time.time() - tp
+            tp = time.time(); u, _ = lp_prices(inst, order[t * B:], residual, bias=a.forecast_bias); t_prices += time.time() - tp
         if a.policy == "lookahead":
             ucams = order[t * B:(t + 1 + a.lookahead) * B]
             b = build_batch(inst, ucams, residual.copy(), "percam", 20, a.k_percam, inst.gen, k_slack=a.k_slack)
@@ -104,11 +106,11 @@ def main():
     res = {"method": "exact", "policy": a.policy, "target_util": a.target_util, "seed": a.seed, "layout": a.layout,
            "n_cameras": a.n_cameras, "n_servers": a.n_servers, "batch_size": B, "reprice": a.reprice,
            "eta": a.eta if a.policy == "dmd" else None, "dmd_init": a.dmd_init if a.policy == "dmd" else None, "dmd_rate": a.dmd_rate if a.policy == "dmd" else None,
-           "lookahead": a.lookahead if a.policy == "lookahead" else None,
+           "lookahead": a.lookahead if a.policy == "lookahead" else None, "forecast_bias": a.forecast_bias,
            "objective": total, "covered": covered, "time_sec": time.time() - t0, "price_time_sec": t_prices, **extra,
            "params": vars(a)}
     os.makedirs(a.out, exist_ok=True)
-    tag = {"lp": f"lp_rp{a.reprice}", "dmd": f"dmd_eta{a.eta:g}_{a.dmd_init}_{a.dmd_rate}", "lookahead": f"la{a.lookahead}"}[a.policy]
+    tag = {"lp": f"lp_rp{a.reprice}" + (f"_b{a.forecast_bias:+g}" if a.forecast_bias else ""), "dmd": f"dmd_eta{a.eta:g}_{a.dmd_init}_{a.dmd_rate}", "lookahead": f"la{a.lookahead}"}[a.policy]
     path = os.path.join(a.out, f"ob_{tag}{'_clu' if a.layout == 'clustered' else ''}_{a.n_cameras}x{a.n_servers}_u{a.target_util:g}_seed{a.seed}_{time.strftime('%Y%m%d_%H%M%S')}.json")
     json.dump(res, open(path, "w"), indent=1)
     print(json.dumps({k: v for k, v in res.items() if k != "params"}))
