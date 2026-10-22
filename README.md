@@ -8,7 +8,6 @@
 
 QUBO decomposition for assigning video sensors (cameras) to capacitated edge servers in a smart-city setting. Each batch of cameras is turned into a QUBO and sampled with simulated quantum annealing (OpenJij SQA); the results are benchmarked against classical heuristics, exact batch MILP and a global Lagrangian reference.
 
-> The accompanying manuscript is under revision. This repository contains the code, the raw experiment logs and the figures; the manuscript sources are added after publication.
 
 ## Contents
 
