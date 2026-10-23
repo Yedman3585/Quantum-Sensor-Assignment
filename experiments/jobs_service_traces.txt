@@ -1,0 +1,62 @@
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 95 --seed 43
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 95 --seed 43 --reprice 5 --k-slack 2
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 95 --seed 43 --reprice 5 --k-slack 2 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 95 --seed 43 --reprice 5 --k-slack 2 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 98 --seed 43
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 98 --seed 43 --reprice 5 --k-slack 2
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 98 --seed 43 --reprice 5 --k-slack 2 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 98 --seed 43 --reprice 5 --k-slack 2 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 95 --seed 44
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 95 --seed 44 --reprice 5 --k-slack 2
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 95 --seed 44 --reprice 5 --k-slack 2 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 95 --seed 44 --reprice 5 --k-slack 2 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 98 --seed 44
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 98 --seed 44 --reprice 5 --k-slack 2
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 98 --seed 44 --reprice 5 --k-slack 2 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 98 --seed 44 --reprice 5 --k-slack 2 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 95 --seed 45
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 95 --seed 45 --reprice 5 --k-slack 2
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 95 --seed 45 --reprice 5 --k-slack 2 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 95 --seed 45 --reprice 5 --k-slack 2 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 98 --seed 45
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 98 --seed 45 --reprice 5 --k-slack 2
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 98 --seed 45 --reprice 5 --k-slack 2 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 98 --seed 45 --reprice 5 --k-slack 2 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 95 --seed 46
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 95 --seed 46 --reprice 5 --k-slack 2
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 95 --seed 46 --reprice 5 --k-slack 2 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 95 --seed 46 --reprice 5 --k-slack 2 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 98 --seed 46
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 98 --seed 46 --reprice 5 --k-slack 2
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 98 --seed 46 --reprice 5 --k-slack 2 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --out results/v3/svctrace --target-util 98 --seed 46 --reprice 5 --k-slack 2 --forecast twin --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 95 --seed 42
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 95 --seed 42 --reprice 5 --k-slack 2
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 95 --seed 42 --reprice 5 --k-slack 2 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 98 --seed 42
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 98 --seed 42 --reprice 5 --k-slack 2
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 98 --seed 42 --reprice 5 --k-slack 2 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 95 --seed 43
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 95 --seed 43 --reprice 5 --k-slack 2
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 95 --seed 43 --reprice 5 --k-slack 2 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 98 --seed 43
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 98 --seed 43 --reprice 5 --k-slack 2
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 98 --seed 43 --reprice 5 --k-slack 2 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 95 --seed 44
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 95 --seed 44 --reprice 5 --k-slack 2
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 95 --seed 44 --reprice 5 --k-slack 2 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 98 --seed 44
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 98 --seed 44 --reprice 5 --k-slack 2
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 98 --seed 44 --reprice 5 --k-slack 2 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 95 --seed 45
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 95 --seed 45 --reprice 5 --k-slack 2
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 95 --seed 45 --reprice 5 --k-slack 2 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 98 --seed 45
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 98 --seed 45 --reprice 5 --k-slack 2
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 98 --seed 45 --reprice 5 --k-slack 2 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 95 --seed 46
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 95 --seed 46 --reprice 5 --k-slack 2
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 95 --seed 46 --reprice 5 --k-slack 2 --forecast-bias 0.05
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 98 --seed 46
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 98 --seed 46 --reprice 5 --k-slack 2
+{py} qsa/v3_trajectory.py --method exact --price --price-window --trace --weight prio --out results/v3/svctrace --target-util 98 --seed 46 --reprice 5 --k-slack 2 --forecast-bias 0.05

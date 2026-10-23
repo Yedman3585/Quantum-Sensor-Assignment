@@ -2,11 +2,13 @@
 
 [![Python](https://img.shields.io/badge/Python-3.10%20recommended-blue.svg)](https://www.python.org/)
 [![OpenJij](https://img.shields.io/badge/OpenJij-0.11.6-purple.svg)](https://www.openjij.org/)
-[![D-Wave Neal](https://img.shields.io/badge/D--Wave-Neal%200.5.5-orange.svg)](https://dwave-neal-docs.readthedocs.io/)
+[![D-Wave Neal](https://img.shields.io/badge/D--Wave-Neal%200.5.7-orange.svg)](https://dwave-neal-docs.readthedocs.io/)
 [![SciPy HiGHS](https://img.shields.io/badge/SciPy-HiGHS%20MILP-8caae6.svg)](https://scipy.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 QUBO decomposition for assigning video sensors (cameras) to capacitated edge servers in a smart-city setting. Each batch of cameras is turned into a QUBO and sampled with simulated quantum annealing (OpenJij SQA); the results are benchmarked against classical heuristics, exact batch MILP and a global Lagrangian reference.
+
+> **Documentation.** [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) explains the method: the problem, the QUBO primer, capacity prices, re-pricing, the demand margin, the QUBO-v3.1 encoding and the baselines. [`docs/METRICS.md`](docs/METRICS.md) defines every metric and test. [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) lists every experiment with its command, data and results. The overview below describes the QUBO-v3 stage; the current method (QUBO-v3.1 with residual re-pricing and a 5% demand margin) is described in the documentation.
 
 > The accompanying manuscript is under revision. This repository contains the code, the raw experiment logs and the figures; the manuscript sources are added after publication.
 
@@ -264,7 +266,7 @@ results/
   v3/campaign/                    10 seeds × 3 utilisation levels × 2 architectures × 5 methods + global reference
   v3/...                          development runs of QUBO-v3 (seed 42)
   legacy/                         summaries and run logs of the revision-stage experiments
-docs/                             README figures (img/) and make_readme_figures.py to regenerate the QUBO-v3 plots
+docs/                             METHODOLOGY.md, METRICS.md, EXPERIMENTS.md; README figures (img/) and make_readme_figures.py
 ```
 
 ## OpenJij installation notes
