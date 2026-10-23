@@ -11,9 +11,6 @@ QUBO decomposition for assigning video sensors (cameras) to capacitated edge ser
 <<<<<<< HEAD
 > **Documentation.** [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) explains the method: the problem, the QUBO primer, capacity prices, re-pricing, the demand margin, the QUBO-v3.1 encoding and the baselines. [`docs/METRICS.md`](docs/METRICS.md) defines every metric and test. [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md) lists every experiment with its command, data and results. The overview below describes the QUBO-v3 stage; the current method (QUBO-v3.1 with residual re-pricing and a 5% demand margin) is described in the documentation.
 
-> The accompanying manuscript is under revision. This repository contains the code, the raw experiment logs and the figures; the manuscript sources are added after publication.
-=======
->>>>>>> 8c275d05a95a54b0d2442a7ae987418b55a9c4f4
 
 ## Contents
 
