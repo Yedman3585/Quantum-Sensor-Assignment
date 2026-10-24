@@ -1,0 +1,170 @@
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 42 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 95 --seed 42 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 90 --seed 42 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 42 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 98 --seed 42 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 42 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 42 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 42 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 43 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 95 --seed 43 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 90 --seed 43 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 43 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 98 --seed 43 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 43 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 43 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 44 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 43 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 90 --seed 44 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 95 --seed 44 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 44 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 98 --seed 44 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 44 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 44 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 45 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 44 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 90 --seed 45 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 95 --seed 45 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 45 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 98 --seed 45 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 45 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 46 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 45 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 45 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 90 --seed 46 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 95 --seed 46 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 46 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 98 --seed 46 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 46 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 46 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 47 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 46 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 95 --seed 47 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 90 --seed 47 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 47 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 98 --seed 47 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 47 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 48 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 47 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 47 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 95 --seed 48 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 90 --seed 48 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 48 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 98 --seed 48 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 48 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 48 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 49 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 48 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 95 --seed 49 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 90 --seed 49 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 49 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 98 --seed 49 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 49 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 50 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 49 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 49 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 90 --seed 50 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 95 --seed 50 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 50 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 98 --seed 50 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 50 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 50 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 90 --seed 51 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 50 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 95 --seed 51 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 90 --seed 51 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 51 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --target-util 98 --seed 51 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 42 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 90 --seed 42 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 90 --seed 42 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 95 --seed 51 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 51 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 95 --seed 42 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 95 --seed 42 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sqa_v3 --polish --target-util 98 --seed 51 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast twin --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 98 --seed 42 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 95 --seed 42 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 90 --seed 43 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 90 --seed 43 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 98 --seed 42 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 98 --seed 42 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 95 --seed 43 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 95 --seed 43 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 43 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 98 --seed 43 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 98 --seed 43 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 95 --seed 43 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 90 --seed 44 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 90 --seed 44 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 98 --seed 43 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 95 --seed 44 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 95 --seed 44 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 44 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 98 --seed 44 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 98 --seed 44 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 95 --seed 44 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 90 --seed 45 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 90 --seed 45 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 98 --seed 44 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 95 --seed 45 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 95 --seed 45 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 45 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 98 --seed 45 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 95 --seed 45 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 98 --seed 45 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 90 --seed 46 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 98 --seed 45 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 90 --seed 46 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 95 --seed 46 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 46 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 95 --seed 46 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 98 --seed 46 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 98 --seed 46 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 95 --seed 46 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 90 --seed 47 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 90 --seed 47 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 98 --seed 46 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 95 --seed 47 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 95 --seed 47 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 47 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 98 --seed 47 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 95 --seed 47 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 98 --seed 47 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 90 --seed 48 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 90 --seed 48 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 95 --seed 48 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 48 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 95 --seed 48 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 98 --seed 47 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 98 --seed 48 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 98 --seed 48 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 95 --seed 48 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 90 --seed 49 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 90 --seed 49 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 98 --seed 48 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 95 --seed 49 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 95 --seed 49 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 98 --seed 49 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 49 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 98 --seed 49 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 95 --seed 49 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 90 --seed 50 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 90 --seed 50 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 98 --seed 49 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 95 --seed 50 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 95 --seed 50 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 50 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 98 --seed 50 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 98 --seed 50 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 95 --seed 50 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 90 --seed 51 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 90 --seed 51 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 98 --seed 50 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 95 --seed 51 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 95 --seed 51 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 90 --seed 51 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/online_baselines.py --policy lookahead --lookahead 2 --weight prio --target-util 98 --seed 51 --out results/v3/weight_prio_online
+{py} qsa/online_baselines.py --policy dmd --eta 0.1 --dmd-init lagrange --weight prio --target-util 98 --seed 51 --out results/v3/weight_prio_online
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 95 --seed 51 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
+{py} qsa/v3_trajectory.py --method sa_v3 --target-util 98 --seed 51 --weight prio --price --price-window --k-slack 2 --reprice 5 --forecast-bias 0.05 --out results/v3/weight_prio_solvers
