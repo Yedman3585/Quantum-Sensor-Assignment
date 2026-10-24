@@ -386,7 +386,7 @@ At 95% the pattern is the same and milder; the high-priority distances are 41.9 
 - **High-priority cameras are not displaced under this weight:** 39.8 vs 42.0 offline at 98%. Low-priority cameras again get the offline service level (32.9 vs 32.2).
 - **Conclusion:** which class absorbs the scarcity is decided by the weights of the objective. The coordination layer reproduces the offline trade-off in both cases.
 
-Figures: `fig_service` (default weight) and `fig_service_wprio`. Panel (a) shows the distance by class, panel (b) the saturation over the horizon.
+Figures: `fig3_mechanism` (default weight, 98%), `figS2_mechanism_u95` and `figS4_service_wprio` ($w_i=p_i$).
 
 ---
 
@@ -402,21 +402,30 @@ Pairwise costs for cameras with overlapping views, on the 5,000-camera map:
 
 ## 14. Figures
 
-All paper figures are produced by one script from the raw results in this repository:
+All figures are produced by one script from the raw results in this repository (vector PDF + 300 dpi PNG):
 ```
-python qsa/make_figs_v4.py --repo . --out figures            # all figures
-python qsa/make_figs_v4.py --repo . --out figures gap_util margin   # selected figures
+python qsa/make_figures.py --repo . --out figures                  # all figures
+python qsa/make_figures.py --repo . --out figures gap_util margin  # selected figures
 ```
 
-| Figure | Content | Data |
+Style: Nature / Scientific Reports guidelines.
+
+- Width 183 mm (double column) or 89 mm (single column).
+- Arial-compatible sans-serif font, 6–7 pt, embedded.
+- No titles inside the figures: panel letters only, and the description goes in the caption.
+- Colour encodes the coordination policy and is identical in every figure. Utilisation is encoded by marker fill (95% hollow, 98% filled), never by colour.
+- Logarithmic axes share one tick set.
+- Error bars are 95% t-intervals over seeds.
+
+| File | Content | Data |
 |---|---|---|
-| `fig_gap_util` | gap to LB vs utilisation for all coordination policies and the offline solution; (a) uniform, (b) clustered | campaign 3, forecast, margin test, online baselines, clustered |
-| `fig_trajectory2` | cumulative excess over the offline solution by batch, seed 42, 95/98% | `results/v3/figtrace` |
-| `fig_margin` | (a) margin tuning on the validation seeds; (b) test-seed results by information level | margin tuning, margin test |
-| `fig_policy_time` | (a) quality vs time of the coordination policies; (b) time of the batch solvers at equal quality (ASUS) | online baselines, timing series |
-| `fig_sensitivity` | gap vs $T_p$ and vs B, with and without the margin | sensitivity, sensitivity_m05 |
-| `fig_ablation2` | encoding ablation, static vs v3.1 hard batches, SA vs SQA | ablation folders |
-| `fig_weight` (Supplementary) | policies under $w_i=p_i$ | weight_prio |
-| `fig_service`, `fig_service_wprio` | (a) distance by priority class; (b) share of capacity on saturated servers over the horizon (98%) | `results/v3/service_summary` |
-
-Each policy has the same colour, marker and line style in every figure, so the figures can also be read in greyscale.
+| `fig1_method` | schematic: coordination layer (remaining demand with margin → residual Lagrangian prices → decision costs) and batch layer (windows → reduction → batch solver → commit) | – |
+| `fig2_gap_util` | gap vs utilisation for all coordination policies and the offline solution; (a) uniform, (b) clustered | campaign 3, margin test, online baselines, clustered |
+| `fig3_mechanism` | where the loss arises at 98%: (a) cumulative excess over offline by batch, seed 42; (b) capacity on full servers by batch; (c) distance by priority class | `figtrace`, `service_summary` |
+| `fig4_margin` | (a) margin tuning on the validation seeds; (b) information levels on the test seeds | margin tuning, forecast, margin test |
+| `fig5_policy_time` | (a) quality vs time of the coordination policies (95%); (b) time of the batch solvers inside the final policy, labelled with the gap | timing series (ASUS), online baselines |
+| `fig6_ablation` | encoding ablation on hard batches, static vs re-pricing, SA vs SQA, on a shared axis | ablation folders |
+| `figS1_sensitivity` | gap vs $T_p$ and vs $B$, with and without the margin | sensitivity, sensitivity_m05 |
+| `figS2_mechanism_u95` | Fig. 3 at 95% | `figtrace`, `service_summary` |
+| `figS3_weight` | policies under $w_i=p_i$ | weight_prio |
+| `figS4_service_wprio` | saturation and distance by class under $w_i=p_i$ | `service_summary` |

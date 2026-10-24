@@ -46,7 +46,7 @@ The offline solution is 0.3–1.0% above LB, so LB is nearly tight and a gap to 
 
 | Metric | Definition | Use |
 |---|---|---|
-| **Cumulative excess** | $E_t=100\sum_{\tau\le t}\big(F_\tau-F^{\rm off}_\tau\big)/\mathrm{LB}$, where $F_\tau$ is the true cost of batch $\tau$ and $F^{\rm off}_\tau$ is the offline cost of the **same cameras** | where in the horizon the loss arises (`fig_trajectory2`). Static prices: $E_t<0$ early (cheaper than offline), then a steep rise at the end. Re-pricing with a margin: a small early premium, then flat |
+| **Cumulative excess** | $E_t=100\sum_{\tau\le t}\big(F_\tau-F^{\rm off}_\tau\big)/\mathrm{LB}$, where $F_\tau$ is the true cost of batch $\tau$ and $F^{\rm off}_\tau$ is the offline cost of the **same cameras** | where in the horizon the loss arises (`fig3_mechanism` a). Static prices: $E_t<0$ early (cheaper than offline), then a steep rise at the end. Re-pricing with a margin: a small early premium, then flat |
 | **Final excess** | $E_T$, equal to (gap to LB) − (offline gap to LB) | |
 | **Half-capacity saturation batch** | the first batch after which the servers holding 50% of the total capacity are at least 99% full | how early capacity becomes scarce (Section 4) |
 
@@ -78,7 +78,7 @@ These metrics turn an abstract objective gap into service terms: how much farthe
 | **Saturated servers** | share of servers with final utilisation $\ge99\%$ |
 | **CV of utilisation** | coefficient of variation (std/mean) of the final per-server utilisation $\sum_{i\to j}l_i/K_j$ |
 | Half-capacity saturation batch | Section 2 |
-| Saturation curve | share of the total capacity on servers ≥ 99% full after every batch (`saturation_curves.json`, `fig_service` b) |
+| Saturation curve | share of the total capacity on servers ≥ 99% full after every batch (`saturation_curves.json`, `fig3_mechanism` b) |
 
 At 95–98% utilisation most servers end up nearly full under every policy. The informative part is **when** they become full and **which cameras** were still unplaced at that time.
 
@@ -144,4 +144,4 @@ Stored per run as `qubo_batches`, `qubo_calls`, `vars_sum`, `fixed_sum` and `vio
 | campaign tables with Wilcoxon/Holm | `qsa/c2_aggregate.py`, `qsa/c3_aggregate.py`, `qsa/fc20k_aggregate.py`, `qsa/weight_aggregate.py`, `qsa/r2_tables.py` | `*_summary.md` in the result folders |
 | batch gaps, ablation | `qsa/qubo_v3_lab.py` | `results/v3/ablation_v31`, `results/v3/campaign2/ablation` |
 | service and load metrics | `qsa/service_metrics.py` | `results/v3/svctrace`, `results/v3/figtrace` → `results/v3/service_summary/` |
-| all figures | `qsa/make_figs_v4.py` | reads the folders above |
+| all figures | `qsa/make_figures.py` | reads the folders above |
