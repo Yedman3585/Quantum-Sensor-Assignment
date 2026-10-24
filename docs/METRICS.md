@@ -97,6 +97,8 @@ These metrics isolate the batch solver from the coordination layer.
 | Overloaded servers before repair | servers over capacity in the best raw read, before decoding repairs |
 | Repairs | cameras moved by the repair step after decoding |
 
+**Why hard batches.** In most batches, greedy already finds the batch optimum: under QUBO-v3.1 the exact reduction leaves a median of 2 of 80 cameras free. Averaged over all 250 batches, every solver would look optimal and the encodings could not be told apart. The 0.5% threshold (`--min-gap 0.005`) keeps the batches in which the batch solver can make a difference. Under QUBO-v3.1 they are the last batches of the horizon (about batches 243–249), where the residual capacity is nearly exhausted. The ablation therefore measures the encodings on the hardest subproblems that actually occur; it does not describe a typical batch. The effect on the full trajectory is reported separately (Section 4 of `EXPERIMENTS.md`).
+
 Code: `qsa/qubo_v3_lab.py` (with `--v31` for the v3.1 batches).
 
 ---
