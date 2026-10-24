@@ -1,0 +1,272 @@
+[
+{
+"seed": 100,
+"target_util": 90.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4212.3745356321315,
+"sec": 33.0408992767334
+},
+{
+"seed": 100,
+"target_util": 95.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4276.939777835156,
+"sec": 33.60789442062378
+},
+{
+"seed": 100,
+"target_util": 98.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4347.929772901312,
+"sec": 33.07895064353943
+},
+{
+"seed": 101,
+"target_util": 90.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4200.727080451163,
+"sec": 32.36337924003601
+},
+{
+"seed": 101,
+"target_util": 95.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4256.846853235962,
+"sec": 32.95012140274048
+},
+{
+"seed": 101,
+"target_util": 98.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4306.854646121714,
+"sec": 33.85286521911621
+},
+{
+"seed": 102,
+"target_util": 90.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4239.471590843179,
+"sec": 35.061413049697876
+},
+{
+"seed": 102,
+"target_util": 95.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4288.828557995223,
+"sec": 35.175288915634155
+},
+{
+"seed": 102,
+"target_util": 98.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4327.242335769308,
+"sec": 33.74624156951904
+},
+{
+"seed": 103,
+"target_util": 90.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4095.9219191461016,
+"sec": 33.826648473739624
+},
+{
+"seed": 103,
+"target_util": 95.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4141.441433744644,
+"sec": 32.50399875640869
+},
+{
+"seed": 103,
+"target_util": 98.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4180.09094185761,
+"sec": 30.672733783721924
+},
+{
+"seed": 104,
+"target_util": 90.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4133.738576837357,
+"sec": 30.292317390441895
+},
+{
+"seed": 104,
+"target_util": 95.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4188.496996301424,
+"sec": 30.50303339958191
+},
+{
+"seed": 104,
+"target_util": 98.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4238.18707340823,
+"sec": 31.64864468574524
+},
+{
+"seed": 105,
+"target_util": 90.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4199.032143239916,
+"sec": 33.332664251327515
+},
+{
+"seed": 105,
+"target_util": 95.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4245.922943162622,
+"sec": 34.35653376579285
+},
+{
+"seed": 105,
+"target_util": 98.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4283.051662512551,
+"sec": 33.886337757110596
+},
+{
+"seed": 106,
+"target_util": 90.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4045.5177833738876,
+"sec": 32.716187477111816
+},
+{
+"seed": 106,
+"target_util": 95.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4117.06482144373,
+"sec": 33.499451637268066
+},
+{
+"seed": 106,
+"target_util": 98.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4194.3467388908575,
+"sec": 32.467203855514526
+},
+{
+"seed": 107,
+"target_util": 90.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4241.04078731578,
+"sec": 32.67840337753296
+},
+{
+"seed": 107,
+"target_util": 95.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4285.767361449561,
+"sec": 32.48876357078552
+},
+{
+"seed": 107,
+"target_util": 98.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4320.191587416946,
+"sec": 32.55638551712036
+},
+{
+"seed": 108,
+"target_util": 90.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4219.4404558075175,
+"sec": 34.343772649765015
+},
+{
+"seed": 108,
+"target_util": 95.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4273.140020518822,
+"sec": 32.725157260894775
+},
+{
+"seed": 108,
+"target_util": 98.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4317.8368340126,
+"sec": 33.08902955055237
+},
+{
+"seed": 109,
+"target_util": 90.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4075.030622198046,
+"sec": 33.66383624076843
+},
+{
+"seed": 109,
+"target_util": 95.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4126.734163869041,
+"sec": 33.245195388793945
+},
+{
+"seed": 109,
+"target_util": 98.0,
+"weight": "prio",
+"layout": "uniform",
+"n_cameras": 20000,
+"lb": 4173.667858292898,
+"sec": 34.36541938781738
+}
+]

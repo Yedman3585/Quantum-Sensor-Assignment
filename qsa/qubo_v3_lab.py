@@ -281,6 +281,7 @@ def main():
                          "residual problem every 5 batches; batch gaps measured on the priced decision objective")
     ap.add_argument("--n-cameras", type=int, default=20000)
     ap.add_argument("--n-servers", type=int, default=800)
+    ap.add_argument("--weight", default="inv", choices=["inv", "prio"], help="priority weight: inv w_i = 4 - p_i (default), prio w_i = p_i")
     ap.add_argument("--out", default="logs_qubo_v3")
     args = ap.parse_args()
 
@@ -289,6 +290,8 @@ def main():
         return float(b.val[x].sum() + P_UNCOVERED * b.n) if args.v31 else b.objective(x)
 
     inst = Instance(args.n_cameras, args.n_servers, args.instance_seed, args.capacity_scale, args.target_util)
+    if args.weight == "prio":
+        inst.w = inst.priority.astype(float); inst.wcost = inst.cost * inst.w[:, None]
     order = np.argsort(-(inst.priority * inst.load))
     residual = inst.cap.copy()
     hard = []

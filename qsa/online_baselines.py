@@ -50,11 +50,14 @@ def main():
     ap.add_argument("--dmd-rate", default="uniform", choices=["uniform", "load"],
                     help="target consumption per batch: K_j/T (uniform) or residual capacity times the batch's share of the remaining load")
     ap.add_argument("--lookahead", type=int, default=2)
+    ap.add_argument("--weight", default="inv", choices=["inv", "prio"], help="priority weight: inv w_i = 4 - p_i (default), prio w_i = p_i")
     ap.add_argument("--forecast-bias", type=float, default=0.0, help="lp: demand margin applied to the remaining loads")
     ap.add_argument("--out", default="results/v3/online_baselines")
     a = ap.parse_args()
 
     inst = Instance(a.n_cameras, a.n_servers, a.seed, 0.25, a.target_util, layout=a.layout)
+    if a.weight == "prio":
+        inst.w = inst.priority.astype(float); inst.wcost = inst.cost * inst.w[:, None]
     B = a.batch_size; nb = int(np.ceil(a.n_cameras / B))
     order = np.argsort(-(inst.priority * inst.load))
     residual = inst.cap.copy()
@@ -106,12 +109,12 @@ def main():
     res = {"method": "exact", "policy": a.policy, "target_util": a.target_util, "seed": a.seed, "layout": a.layout,
            "n_cameras": a.n_cameras, "n_servers": a.n_servers, "batch_size": B, "reprice": a.reprice,
            "eta": a.eta if a.policy == "dmd" else None, "dmd_init": a.dmd_init if a.policy == "dmd" else None, "dmd_rate": a.dmd_rate if a.policy == "dmd" else None,
-           "lookahead": a.lookahead if a.policy == "lookahead" else None, "forecast_bias": a.forecast_bias,
+           "lookahead": a.lookahead if a.policy == "lookahead" else None, "forecast_bias": a.forecast_bias, "weight": a.weight,
            "objective": total, "covered": covered, "time_sec": time.time() - t0, "price_time_sec": t_prices, **extra,
            "params": vars(a)}
     os.makedirs(a.out, exist_ok=True)
     tag = {"lp": f"lp_rp{a.reprice}" + (f"_b{a.forecast_bias:+g}" if a.forecast_bias else ""), "dmd": f"dmd_eta{a.eta:g}_{a.dmd_init}_{a.dmd_rate}", "lookahead": f"la{a.lookahead}"}[a.policy]
-    path = os.path.join(a.out, f"ob_{tag}{'_clu' if a.layout == 'clustered' else ''}_{a.n_cameras}x{a.n_servers}_u{a.target_util:g}_seed{a.seed}_{time.strftime('%Y%m%d_%H%M%S')}.json")
+    path = os.path.join(a.out, f"ob_{tag}{'_wprio' if a.weight == 'prio' else ''}{'_clu' if a.layout == 'clustered' else ''}_{a.n_cameras}x{a.n_servers}_u{a.target_util:g}_seed{a.seed}_{time.strftime('%Y%m%d_%H%M%S')}.json")
     json.dump(res, open(path, "w"), indent=1)
     print(json.dumps({k: v for k, v in res.items() if k != "params"}))
 
