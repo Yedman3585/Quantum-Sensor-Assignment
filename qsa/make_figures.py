@@ -442,19 +442,29 @@ def fig_sensitivity(D, out):
 
 # ------------------------------------------------------------------ Fig. S3: priority weight w = p
 def fig_weight(D, out):
-    LBp = {(d["target_util"], d["seed"]): d["lb"] for d in json.load(open(f"{D.V}/weight_prio_summary/lb_prio_20k.json"))}
+    """Main policies and LP prices under w_i = p_i (gap to the w = p lower bound)."""
+    LBp = {}
+    for f in ("lb_prio_20k.json", "lb_prio_75.json"):
+        p = f"{D.V}/weight_prio_summary/{f}"
+        if os.path.exists(p):
+            for d in json.load(open(p)): LBp[(float(d["target_util"]), d["seed"])] = d["lb"]
     gd = collections.defaultdict(dict)
-    for f in glob.glob(f"{D.V}/weight_prio/*.json"):
-        d = json.load(open(f))
-        if d["method"] != "exact": continue
-        lb = LBp[(d["target_util"], d["seed"])]; gd[(cond(d), d["target_util"])][d["seed"]] = (d["objective"] - lb) / lb * 100
-    fig, ax = plt.subplots(figsize=(W1, 55 * MM))
-    for k, ent, lab in [("static", "static", None), ("reprice", "reprice", None), ("twin", "twin5", "Demand statistics")]:
-        us = [u for u in (90.0, 95.0, 98.0) if gd.get((k, u))]
-        st = ENT[ent]; v = [list(gd[(k, u)].values()) for u in us]
-        ax.errorbar(us, [np.mean(x) for x in v], yerr=[ci95(x) for x in v], color=st["c"], marker=st["m"], ls=st["ls"], mec=st["c"], lw=1.1, label=lab or st["lab"])
-    ax.set_xticks([90, 95, 98]); ax.set_xlim(88.5, 99.5); ax.set_xlabel("Utilisation (%)"); logaxis(ax, 0.5, 10); ax.set_ylabel(YLAB)
-    ax.legend(loc="upper left"); tag(ax, r"weight $w_i=p_i$", "lower right")
+    for sub in ("weight_prio", "weight_prio_online"):
+        for f in glob.glob(f"{D.V}/{sub}/*.json"):
+            d = json.load(open(f))
+            if d["method"] != "exact" or (float(d["target_util"]), d["seed"]) not in LBp: continue
+            k = ("lp5" if d.get("forecast_bias") else "lp") if d.get("policy") == "lp" else (None if d.get("policy") else cond(d))
+            if k is None: continue
+            lb = LBp[(float(d["target_util"]), d["seed"])]; gd[(k, float(d["target_util"]))][d["seed"]] = (d["objective"] - lb) / lb * 100
+    fig, ax = plt.subplots(figsize=(W1, 62 * MM))
+    for k in ["static", "reprice", "lp", "lp5", "twin5", "reprice5"]:
+        us = [u for u in U4 if len(gd.get((k, u), {})) >= 3]
+        if not us: continue
+        st = ENT[k]; v = [list(gd[(k, u)].values()) for u in us]
+        ax.errorbar(us, [np.mean(x) for x in v], yerr=[ci95(x) for x in v], color=st["c"], marker=st["m"], ls=st["ls"], mec=st["c"],
+                    mfc=st["c"], lw=1.1, elinewidth=0.8, label=st["lab"])
+    ax.set_xticks(U4); ax.set_xlim(72.5, 99.5); ax.set_xlabel("Utilisation (%)"); logaxis(ax, 0.2, 20); ax.set_ylabel(YLAB)
+    ax.legend(loc="upper left", fontsize=5.8, ncol=2, columnspacing=1.0, handlelength=2.2); tag(ax, r"weight $w_i=p_i$", "lower right")
     save(fig, out, "figS3_weight")
 
 

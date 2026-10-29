@@ -33,7 +33,7 @@ This document defines every number reported in the paper and in `results/`. For 
 | uniform 20k, seeds 42–51 | `results/v3/campaign2/global/*` |
 | validation seeds 100–109 | `results/v3/margin_tuning_summary/lb_val_100_109.json` |
 | clustered layout | `results/v3/clustered_summary/lb_clustered_20k.json` |
-| $w_i=p_i$ | `results/v3/weight_prio_summary/lb_prio_20k.json` |
+| $w_i=p_i$ | `results/v3/weight_prio_summary/lb_prio_20k.json` (90–98%), `lb_prio_75.json` (75%), `lb_prio_val_100_109.json` (validation seeds), `lb_prio_clustered.json` (clustered) |
 | 50k | `results/v3/campaign2/scale_global` |
 
 The offline solution is 0.3–1.0% above LB, so LB is nearly tight and a gap to LB is an honest upper estimate of the distance to the optimum.
@@ -143,7 +143,7 @@ Stored per run as `qubo_batches`, `qubo_calls`, `vars_sum`, `fixed_sum` and `vio
 |---|---|---|
 | objective, coverage, QUBO size, time per run | `qsa/v3_trajectory.py`, `qsa/online_baselines.py` | `results/v3/<campaign>/*.json` |
 | LB and offline solution | `qsa/global_bound_check.py`, `qsa/lb_prio.py`, `qsa/offline_global.py` | the LB files of Section 1 |
-| campaign tables with Wilcoxon/Holm | `qsa/c2_aggregate.py`, `qsa/c3_aggregate.py`, `qsa/fc20k_aggregate.py`, `qsa/weight_aggregate.py`, `qsa/r2_tables.py` | `*_summary.md` in the result folders |
+| campaign tables with Wilcoxon/Holm | `qsa/c2_aggregate.py`, `qsa/c3_aggregate.py`, `qsa/fc20k_aggregate.py`, `qsa/weight_aggregate.py`, `qsa/wprio_aggregate.py`, `qsa/r2_tables.py` | `*_summary.md` in the result folders |
 | batch gaps, ablation | `qsa/qubo_v3_lab.py` | `results/v3/ablation_v31`, `results/v3/campaign2/ablation` |
 | service and load metrics | `qsa/service_metrics.py` | `results/v3/svctrace`, `results/v3/figtrace` → `results/v3/service_summary/` |
 | all figures | `qsa/make_figures.py` | reads the folders above |

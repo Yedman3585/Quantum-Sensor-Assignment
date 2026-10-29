@@ -41,9 +41,9 @@ where $c_{ij}$ is a normalised cost made of distance, load, priority and server 
 | Demand statistics only + 5% margin | 0.93% | 1.47% | 1.83% | 2.51% |
 | Offline solution (sees everything, may revise) | 0.29% | 0.57% | 0.74% | 1.03% |
 
-- **The coordination layer, not the batch solver, determines quality.** Exact MILP, greedy, regret, ILS, SA and SQA with local search all end within about 0.1 pp of each other under the same coordination.
+- **The coordination layer, not the batch solver, determines quality.** Under the same coordination, exact MILP, greedy, regret, ILS, SA and SQA with local search end within 0.12 pp of each other. Pure SQA, without local search, is up to 0.15 pp behind the best solver.
 - **Comparison with online-allocation baselines.** The proposed prices are within 0.2 pp of exact LP bid prices with the same margin, at 1/8–1/17 of the run time. Dual mirror descent (6–22%) and a 2-batch rolling-horizon MILP (27–46%) are far worse.
-- **Robustness.** The results hold on a clustered city layout, at 50,000 × 2,000, and under the alternative weight $w_i=p_i$.
+- **Robustness.** The results hold on a clustered city layout and at 50,000 × 2,000. They also hold under the alternative weight $w_i=p_i$ (a full repeat study of 950 runs): the 5% margin is again best on the validation seeds and improves re-pricing on 9–10 of 10 test seeds. One difference: under this weight, exact LP prices *without* a margin beat ours at 90–95%, while LP prices *with* the margin break down at 98%. The Lagrangian prices with the margin stay stable under both weights.
 - **The QUBO side.** After an exact reduction the median batch QUBO has 14 variables, and the size does not grow with $N$ or $M$. Domain-wall encoding removes the one-hot energy barriers. On classical hardware SQA is **not** better than exact batch optimisation, ILS or SA, and pure SQA is slightly weaker than they are. With local search it reaches batch optimality. The QUBO is offered as a compact, provably well-formed subproblem for Ising hardware, not as a source of speed-up.
 
 Details, paired tests and all other experiments are in [`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md).

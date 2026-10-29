@@ -84,7 +84,7 @@ Objective values agree to 1e−12 across machines. Run times are only compared w
 | 11 | Online baselines: LP, LP+5%, DMD, rolling horizon | 20k, 42–51 | `jobs_online_*.txt` | `results/v3/online_baselines/` | `r2_tables.py` |
 | 12 | Sensitivity B, $T_p$ without margin / with +5% | 20k, 42–51 | `jobs_sensitivity.txt`, `jobs_mac_r3.txt` | `results/v3/sensitivity{,_m05}/` | `r2_tables.py` |
 | 13 | Scale 50k × 2k, v3.1 without margin / with +5% | 42–44 | `jobs_scale50k_v31.txt`, `jobs_mac_r3.txt` | `results/v3/scale_v31{,_m05}/` | `r2_tables.py` |
-| 14 | Priority weight $w_i=p_i$ | 20k, 42–51 | `jobs_weight_c.txt` | `results/v3/weight_prio/` | `weight_aggregate.py` |
+| 14 | Priority weight $w_i=p_i$: full repeat study (main table, margin tuning, batch solvers, online baselines, clustered, ablation) | 20k, 42–51 and 100–109, about 1,150 runs | `jobs_weight_c.txt`, `jobs_wprio_mac.txt`, `jobs_wprio_asus.txt` | `results/v3/weight_prio*/`, `ablation_v31_wprio/` | `weight_aggregate.py`, `wprio_aggregate.py` |
 | 15 | Timing series (single machine) | 20k, 42–46 | `jobs_timing_asus.txt` | `results/v3/timing_asus/` | – |
 | 16 | Service and load metrics (both weights, with offline assignments) | 20k, 42–46 | `jobs_service_traces.txt` | `results/v3/svctrace/` | `service_metrics.py` |
 | 17 | Anti-affinity probe | 5k | – | `results/v3/anti_affinity_probe/` | – |
@@ -284,6 +284,8 @@ Exact information, exact batches, seeds 42–51. Values are gap to LB (%); in br
 
 ## 10. Scale and priority weight
 
+### Scale
+
 **50,000 × 2,000, 95%, seeds 42–44.** Gap to LB in %; all cameras are covered under v3.1.
 
 | Policy | Exact | Greedy | SQA-v3.1+LS |
@@ -295,15 +297,84 @@ Exact information, exact batches, seeds 42–51. Values are gap to LB (%); in br
 
 The gap does not grow with size: at 20k the corresponding values are 1.64% (exact information) and 0.89% (+5%). The batch QUBO does not grow either: the median is 7 variables at 50k.
 
-**Priority weight $w_i=p_i$, seeds 42–51, exact batches.** The LB is recomputed with this weight.
+### Priority weight $w_i=p_i$ (full repeat study)
 
-| Policy | 90% | 95% | 98% |
-|---|---|---|---|
-| Static prices | 2.65 | 3.79 | 5.96 |
-| Exact information | 0.95 | 1.52 | 2.78 |
-| Statistics only | 1.69 | 2.23 | 3.39 |
+Under $w_i=p_i$, high priority counts most in the objective. Every block of the main study was repeated under this weight with the lower bounds recomputed: about 1,150 runs on two machines.
 
-The ranking of policies does not depend on the weight. Static prices lose less here, because the expensive late cameras (low priority) now carry the smallest weight.
+- Data: `results/v3/weight_prio`, `weight_prio_tuning`, `weight_prio_solvers`, `weight_prio_online`, `weight_prio_clustered`, `ablation_v31_wprio`.
+- Full tables with tests: `results/v3/weight_prio_summary/wprio_full_summary.md`.
+- Built with `python qsa/wprio_aggregate.py results/v3`.
+
+The tables report gaps to the $w_i=p_i$ lower bound. Wins and Wilcoxon p are against the same information without a margin (Holm correction within each column).
+
+**Main table, exact batches, seeds 42–51:**
+
+| Policy | 75% | 90% | 95% | 98% |
+|---|---|---|---|---|
+| Static prices | 1.52 | 2.65 | 3.79 | 5.96 |
+| Re-pricing | 0.42 | 0.95 | 1.52 | 2.78 |
+| **Re-pricing + 5%** | **0.40** (9/1) | **0.81** (10/0) | **1.08** (10/0) | **1.37** (10/0) |
+| Statistics only | 0.94 | 1.69 | 2.23 | 3.39 |
+| Statistics only + 5% | 0.88 (9/1) | 1.46 (9/1) | 1.86 (7/3) | 2.26 (10/0) |
+
+- All margin effects are significant at p ≤ 0.04 after correction.
+- Greedy gives the same values within 0.02 pp.
+
+**Margin tuning, validation seeds 100–109.** +5% is the best margin in 5 of 6 settings. The exception is statistics only at 98%, where +10% gives 2.38 against 2.48. The margin chosen under the default weight therefore transfers.
+
+**Batch solvers with the margin (90 / 95 / 98%):**
+
+| Solver | Gap (%) | vs exact |
+|---|---|---|
+| Exact | 0.81 / 1.08 / 1.37 | – |
+| Greedy | 0.81 / 1.10 / 1.38 | n.s. |
+| SA-v3.1 | 0.83 / 1.12 / 1.39 | behind at 90/95% (0/10) |
+| SQA-v3.1 | 0.84 / 1.12 / 1.42 | behind everywhere (0/10) |
+| SQA-v3.1+LS | 0.81 / 1.09 / 1.36 | n.s. |
+
+With statistics only + 5%, SQA-v3.1+LS and exact are also indistinguishable.
+
+**Online baselines (90 / 95 / 98%):**
+
+| Policy | Gap (%) | Comparison |
+|---|---|---|
+| Re-pricing + 5% (ours) | 0.81 / 1.08 / 1.37 | – |
+| LP bid prices | 0.63 / 0.93 / 1.50 | better than ours at 90% (10/0) and 95% (9/1); worse at 98% (3/7) |
+| LP bid prices + 5% | 0.67 / 1.42 / **6.95, 182 uncovered** | breaks down at 98% |
+| Dual mirror descent | 7.2 / 8.4 / 9.7 | 0/10 everywhere |
+| Rolling horizon (2 batches) | 10.5 / 13.9 / 18.7, 33 uncovered at 98% | 0/10 everywhere |
+
+On the Mac, LP prices took about 1,600 s per run against 41 s for ours.
+
+**Clustered layout (90 / 95 / 98%):**
+
+| Policy | Gap (%) |
+|---|---|
+| Static prices | 3.62 / 5.05 / 8.26 |
+| Re-pricing | 1.26 / 2.23 / 4.40 |
+| Re-pricing + 5% | 1.24 / 1.43 / 2.52 |
+| Statistics only + 5% | 1.76 / 2.10 / 3.11 |
+
+The margin wins at 95% (9/1) and 98% (10/0) and is neutral at 90%.
+
+**Encoding ablation (59 hard batches, 95%):** the pattern is the same as under the default weight.
+
+| Configuration | Gap to batch optimum |
+|---|---|
+| R + DW + adaptive, SQA | 1.82% |
+| R + DW + adaptive, SA | 1.99% |
+| Greedy | 2.03% |
+| Regret + LS | 0.34% |
+
+**Reading.**
+
+- Every qualitative conclusion holds under the second weight:
+  - coordination decides the quality;
+  - 5% is the right margin;
+  - the batch solver does not matter;
+  - SQA needs local search to reach batch optimality.
+- The effect is smaller, because the late (low-priority) cameras now carry the smallest weight. Static prices lose 1.5–6% instead of 4–17%.
+- **New nuance:** exact LP duals without a margin are slightly better than our prices at 90–95%. With the margin, however, they are fragile, while the Lagrangian prices with the margin are stable under both weights.
 
 ---
 
@@ -382,7 +453,7 @@ At 95% the pattern is the same and milder; the high-priority distances are 41.9 
 | **Re-pricing + 5%** | **1.08 / 1.51** | **−0.05 / −0.41** | 39.8 | 32.9 |
 | Offline solution | 1.13 / 1.92 | 0 | 42.0 | 32.2 |
 
-- **The margin transfers to the other weight without re-tuning.** It was tuned under $w_i=4-p_i$ only. Under $w_i=p_i$ it improves re-pricing from 1.67 / 3.35% to 1.08 / 1.51% and is slightly *better* than the offline heuristic, which is weaker under this weight (1.1–1.9% above LB).
+- **The margin transfers to the other weight.** Here, on 5 seeds, it improves re-pricing from 1.67 / 3.35% to 1.08 / 1.51% and is slightly *better* than the offline heuristic, which is weaker under this weight (1.1–1.9% above LB). The 10-seed repeat study with margin tuning confirms 5% (Section 10).
 - **High-priority cameras are not displaced under this weight:** 39.8 vs 42.0 offline at 98%. Low-priority cameras again get the offline service level (32.9 vs 32.2).
 - **Conclusion:** which class absorbs the scarcity is decided by the weights of the objective. The coordination layer reproduces the offline trade-off in both cases.
 
@@ -427,5 +498,5 @@ Style: Nature / Scientific Reports guidelines.
 | `fig6_ablation` | encoding ablation on hard batches, static vs re-pricing, SA vs SQA, on a shared axis | ablation folders |
 | `figS1_sensitivity` | gap vs $T_p$ and vs $B$, with and without the margin | sensitivity, sensitivity_m05 |
 | `figS2_mechanism_u95` | Fig. 3 at 95% | `figtrace`, `service_summary` |
-| `figS3_weight` | policies under $w_i=p_i$ | weight_prio |
+| `figS3_weight` | policies under $w_i=p_i$ at 75–98%, including LP prices with and without the margin | `weight_prio`, `weight_prio_online` |
 | `figS4_service_wprio` | saturation and distance by class under $w_i=p_i$ | `service_summary` |

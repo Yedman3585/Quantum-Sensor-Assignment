@@ -273,7 +273,7 @@ Re-pricing needs the remaining demand $\mathcal C^{(t)}$. The code separates **w
 Without a margin the prices therefore *underestimate* scarcity, and capacity runs out at the end of the horizon (Section 11 of [`EXPERIMENTS.md`](EXPERIMENTS.md), trajectory figure). The margin is a hedge in the sense of a safety stock.
 
 - **How it was chosen.** $b\in\{0,5,10,15,20,30\}\%$ was tested on validation seeds 100–109, for both kinds of information and at 90, 95 and 98%. $b=5\%$ was best in all 6 settings and was then evaluated once on the test seeds.
-- **Exact LP duals need it too.** It improves exact LP bid prices by the same order (Section 9), so it compensates for myopic re-pricing in general, not for the inexact subgradient.
+- **Exact LP duals need it too.** Under the default weight it improves exact LP bid prices by the same order (Section 9), so it compensates for myopic re-pricing in general, not for the inexact subgradient. Exact duals are more sensitive to the margin, though. Under $w_i=p_i$ at 98% utilisation, LP prices with the margin leave 182 cameras uncovered: the inflated demand exceeds the capacity, and the exact duals rise to the level of the uncovered penalty. The subgradient prices with the same margin stay stable.
 - **It interacts with the re-pricing period.** With rarer re-pricing (T_p = 25 or B = 320), 5% is no longer enough. Tune the margin together with $T_p$ and $B$.
 
 ---
@@ -402,7 +402,7 @@ The exact batch MILP is the best any batch solver can do for each batch **in iso
 | Rolling-horizon MILP | batch $t$ optimised jointly with the next 2 batches (true future cameras); only batch $t$ is committed; no prices | the next 160 cameras | `--policy lookahead --lookahead 2` |
 | Offline solution | Section 3 | everything, revisable | `global_bound_check.py`, `offline_global.py` |
 
-The LP bid prices are the quality ceiling of price-only coordination. The Lagrangian subgradient approximates the same duals at 1/8–1/17 of the cost. Earlier metaheuristics in the shared-window setting (GRASP, BRKGA, tabu search, capacity-priced greedy) are in `baselines/` and `results/legacy/`.
+Without a margin, the LP bid prices are the quality ceiling of price-only coordination. The Lagrangian subgradient approximates the same duals at 1/8–1/40 of the cost. With the 5% margin, the two are within 0.2 pp under the default weight. Under $w_i=p_i$, LP prices without a margin are 0.15–0.2 pp better at 90–95%, but LP prices with the margin break down at 98% (Section A4). Earlier metaheuristics in the shared-window setting (GRASP, BRKGA, tabu search, capacity-priced greedy) are in `baselines/` and `results/legacy/`.
 
 ---
 
@@ -426,7 +426,8 @@ The LP bid prices are the quality ceiling of price-only coordination. The Lagran
 - Distance is a latency proxy, and bandwidth is not constrained.
 - The camera order is fixed, and committed batches are never revised.
 - SQA runs only as a CPU emulation; no physical annealer was used.
-- The demand margin is a tuned constant. A margin that adapts to the remaining horizon is future work.
+- The demand margin is a tuned constant. Under both weights 5% is best or nearly best on the validation seeds, but it must be tuned jointly with the re-pricing period. A margin that adapts to the remaining horizon is future work.
+- The objective weight is a policy choice. Under $w_i=4-p_i$, high-priority cameras are moved farther when capacity is scarce; under $w_i=p_i$ they are not. Every conclusion holds under both weights; the size of the effect differs (Section 10 of `EXPERIMENTS.md`).
 
 **What SQA does and does not show.** On classical hardware SQA does not outperform exact batch optimisation, ILS or SA. The value of the QUBO side is a compact, well-conditioned batch model with proven properties: a median of 14 variables, an exact reduction and a barrier-free encoding. With local search, annealers sample this model to batch optimality, and it is ready for physical Ising machines.
 
